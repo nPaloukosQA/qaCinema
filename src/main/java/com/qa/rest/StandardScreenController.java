@@ -41,7 +41,7 @@ public class StandardScreenController {
     }
 
     @DeleteMapping("/deleteStandardScreen/{standardScreenId}")
-    public ResponseEntity<?> deleteBox(@PathVariable Long standardScreenId){
+    public ResponseEntity<?> deleteStandardScreen(@PathVariable Long standardScreenId){
         return this.service.deleteStandardScreen(standardScreenId)
         ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         : ResponseEntity.ok(this.service.getStandardScreenById(standardScreenId));
