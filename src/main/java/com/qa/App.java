@@ -1,5 +1,10 @@
 package com.qa;
 
+import com.qa.domain.Films;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Hello world!
  *
