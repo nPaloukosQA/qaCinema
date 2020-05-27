@@ -32,7 +32,7 @@ public class StandardScreenService {
         return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public StandardScreenDTO findStandardScreenById(Long standardScreenId) {
+    public StandardScreenDTO getStandardScreenById(Long standardScreenId) {
         return this.mapToDTO(this.repo.findById(standardScreenId).orElseThrow(StandardScreenNotFoundException::new));
     }
 
