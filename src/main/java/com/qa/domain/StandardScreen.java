@@ -17,11 +17,11 @@ public class StandardScreen {
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
 
-//    @OneToMany (mappedBy = "standardScreen", fetch = FetchType.LAZY)
-//    private List<Booking> bookings = new ArrayList<>();
-//
-//    @ManyToOne (targetEntity = Films.class)
-//    private StandardScreen standardScreen;
+    @OneToMany (mappedBy = "standardScreen", fetch = FetchType.LAZY)
+    private List<BookingInfo> bookingInfo = new ArrayList<>();
+
+    @ManyToOne (targetEntity = Films.class)
+    private StandardScreen standardScreen;
 
     public StandardScreen() {
 
@@ -82,21 +82,21 @@ public class StandardScreen {
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
 
-//    public List<Booking> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(List<Booking> bookings) {
-//        this.bookings = bookings;
-//    }
-//
-//    public StandardScreen getStandardScreen() {
-//        return standardScreen;
-//    }
-//
-//    public void setStandardScreen(StandardScreen standardScreen) {
-//        this.standardScreen = standardScreen;
-//    }
+    public List<BookingInfo> getBookingInfo() {
+        return bookingInfo;
+    }
+
+    public void setBookingInfo(List<BookingInfo> bookingInfo) {
+        this.bookingInfo = bookingInfo;
+    }
+
+    public StandardScreen getStandardScreen() {
+        return standardScreen;
+    }
+
+    public void setStandardScreen(StandardScreen standardScreen) {
+        this.standardScreen = standardScreen;
+    }
 
     @Override
     public String toString() {
@@ -106,8 +106,8 @@ public class StandardScreen {
                 ", standardScreenBookingId=" + standardScreenBookingId +
                 ", standardScreenScreeningTime=" + standardScreenScreeningTime +
                 ", standardScreenSeatsBooked='" + standardScreenSeatsBooked + '\'' +
-//                ", bookings=" + bookings +
-//                ", standardScreen=" + standardScreen +
+                ", bookingInfo=" + bookingInfo +
+                ", standardScreen=" + standardScreen +
                 '}';
     }
 
@@ -120,18 +120,13 @@ public class StandardScreen {
                 Objects.equals(getStandardScreenFilmId(), that.getStandardScreenFilmId()) &&
                 Objects.equals(getStandardScreenBookingId(), that.getStandardScreenBookingId()) &&
                 Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
-                Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked())
-// delete this semi colon
-                ;
-//                &&
-//                Objects.equals(getBookings(), that.getBookings()) &&
-//                Objects.equals(getStandardScreen(), that.getStandardScreen());
+                Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked()) &&
+                Objects.equals(getBookingInfo(), that.getBookingInfo()) &&
+                Objects.equals(getStandardScreen(), that.getStandardScreen());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStandardScreeningId(), getStandardScreenFilmId(), getStandardScreenBookingId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked()
-//                , getBookings(), getStandardScreen()
-        );
+        return Objects.hash(getStandardScreeningId(), getStandardScreenFilmId(), getStandardScreenBookingId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookingInfo(), getStandardScreen());
     }
 }
