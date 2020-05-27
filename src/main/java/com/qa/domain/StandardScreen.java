@@ -2,6 +2,8 @@ package com.qa.domain;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,6 +16,12 @@ public class StandardScreen {
     private Long standardScreenBookingId;
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
+
+//    @OneToMany (mappedBy = "standardScreen", fetch = FetchType.LAZY)
+//    private List<Booking> bookings = new ArrayList<>();
+//
+//    @ManyToOne (targetEntity = Films.class)
+//    private StandardScreen standardScreen;
 
     public StandardScreen() {
     }
@@ -73,6 +81,22 @@ public class StandardScreen {
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
 
+//    public List<Booking> getBookings() {
+//        return bookings;
+//    }
+//
+//    public void setBookings(List<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
+//
+//    public StandardScreen getStandardScreen() {
+//        return standardScreen;
+//    }
+//
+//    public void setStandardScreen(StandardScreen standardScreen) {
+//        this.standardScreen = standardScreen;
+//    }
+
     @Override
     public String toString() {
         return "StandardScreen{" +
@@ -81,6 +105,8 @@ public class StandardScreen {
                 ", standardScreenBookingId=" + standardScreenBookingId +
                 ", standardScreenScreeningTime=" + standardScreenScreeningTime +
                 ", standardScreenSeatsBooked='" + standardScreenSeatsBooked + '\'' +
+//                ", bookings=" + bookings +
+//                ", standardScreen=" + standardScreen +
                 '}';
     }
 
@@ -93,11 +119,18 @@ public class StandardScreen {
                 Objects.equals(getStandardScreenFilmId(), that.getStandardScreenFilmId()) &&
                 Objects.equals(getStandardScreenBookingId(), that.getStandardScreenBookingId()) &&
                 Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
-                Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked());
+                Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked())
+// delete this semi colon
+                ;
+//                &&
+//                Objects.equals(getBookings(), that.getBookings()) &&
+//                Objects.equals(getStandardScreen(), that.getStandardScreen());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStandardScreeningId(), getStandardScreenFilmId(), getStandardScreenBookingId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked());
+        return Objects.hash(getStandardScreeningId(), getStandardScreenFilmId(), getStandardScreenBookingId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked()
+//                , getBookings(), getStandardScreen()
+        );
     }
 }
