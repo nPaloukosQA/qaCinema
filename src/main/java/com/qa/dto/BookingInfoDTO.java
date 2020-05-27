@@ -1,6 +1,6 @@
 package com.qa.dto;
 
-public class BookingDTO {
+public class BookingInfoDTO {
 
     private Long bookingInfoId;
     private Long standardScreeningId;
@@ -12,4 +12,8 @@ public class BookingDTO {
     private String phoneNumber;
     private String address;
     private String postCode;
+
+    public BookingInfoDTO() {
+
+    }
 }
