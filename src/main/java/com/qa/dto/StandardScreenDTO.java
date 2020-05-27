@@ -1,6 +1,7 @@
 package com.qa.dto;
 
 import java.util.List;
+import java.util.Objects;
 
 public class StandardScreenDTO {
 
@@ -10,7 +11,7 @@ public class StandardScreenDTO {
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
 
-//    private List<BookingDTO> bookings;
+    private List<BookingInfoDTO> bookings;
 
     public StandardScreenDTO() {
 
@@ -64,11 +65,41 @@ public class StandardScreenDTO {
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
 
-//    public List<BookingDTO> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(List<BookingDTO> bookings) {
-//        this.bookings = bookings;
-//    }
+    public List<BookingInfoDTO> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<BookingInfoDTO> bookings) {
+        this.bookings = bookings;
+    }
+
+    @Override
+    public String toString() {
+        return "StandardScreenDTO{" +
+                "standardScreeningId=" + standardScreeningId +
+                ", standardScreenFilmId=" + standardScreenFilmId +
+                ", standardScreenBookingId=" + standardScreenBookingId +
+                ", standardScreenScreeningTime=" + standardScreenScreeningTime +
+                ", standardScreenSeatsBooked='" + standardScreenSeatsBooked + '\'' +
+                ", bookings=" + bookings +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StandardScreenDTO)) return false;
+        StandardScreenDTO that = (StandardScreenDTO) o;
+        return Objects.equals(getStandardScreeningId(), that.getStandardScreeningId()) &&
+                Objects.equals(getStandardScreenFilmId(), that.getStandardScreenFilmId()) &&
+                Objects.equals(getStandardScreenBookingId(), that.getStandardScreenBookingId()) &&
+                Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
+                Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked()) &&
+                Objects.equals(getBookings(), that.getBookings());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStandardScreeningId(), getStandardScreenFilmId(), getStandardScreenBookingId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookings());
+    }
 }
