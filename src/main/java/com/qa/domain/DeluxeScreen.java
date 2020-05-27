@@ -1,9 +1,10 @@
 package com.qa.domain;
 
-import antlr.collections.List;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class DeluxeScreen {
@@ -17,7 +18,10 @@ public class DeluxeScreen {
     private String seatsBooked;
 
 //    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-//    private List<package_info> package_infoList = new ArrayList<>();
+//    private List<Films> films = new ArrayList<>();
+
+//    @ManyToOne(targetEntity = BookingInfo.class)
+//    private BookingInfo bookingInfo;;
 
     public DeluxeScreen(){
 
