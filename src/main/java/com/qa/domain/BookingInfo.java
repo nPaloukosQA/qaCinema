@@ -24,7 +24,7 @@ public class BookingInfo {
     private StandardScreen standardScreen;
 
     @ManyToOne (targetEntity = DeluxeScreen.class)
-    private DeluxeScreen deluxScreen;
+    private DeluxeScreen deluxeScreen;
 
     public BookingInfo() {
 
@@ -143,12 +143,12 @@ public class BookingInfo {
         this.standardScreen = standardScreen;
     }
 
-    public DeluxeScreen getDeluxScreen() {
-        return deluxScreen;
+    public DeluxeScreen getDeluxeScreen() {
+        return deluxeScreen;
     }
 
-    public void setDeluxScreen(DeluxeScreen deluxScreen) {
-        this.deluxScreen = deluxScreen;
+    public void setDeluxeScreen(DeluxeScreen deluxScreen) {
+        this.deluxeScreen = deluxScreen;
     }
 
     @Override
@@ -165,7 +165,7 @@ public class BookingInfo {
                 ", address='" + address + '\'' +
                 ", postCode='" + postCode + '\'' +
                 ", standardScreen=" + standardScreen +
-                ", deluxScreen=" + deluxScreen +
+                ", deluxScreen=" + deluxeScreen +
                 '}';
     }
 
@@ -185,11 +185,11 @@ public class BookingInfo {
                 Objects.equals(getAddress(), that.getAddress()) &&
                 Objects.equals(getPostCode(), that.getPostCode()) &&
                 Objects.equals(getStandardScreen(), that.getStandardScreen()) &&
-                Objects.equals(getDeluxScreen(), that.getDeluxScreen());
+                Objects.equals(getDeluxeScreen(), that.getDeluxeScreen());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getBookingInfoId(), getStandardScreeningId(), getDeluxScreeningId(), getFirstName(), getSurname(), getDateOfBirth(), getEmail(), getPhoneNumber(), getAddress(), getPostCode(), getStandardScreen(), getDeluxScreen());
+        return Objects.hash(getBookingInfoId(), getStandardScreeningId(), getDeluxScreeningId(), getFirstName(), getSurname(), getDateOfBirth(), getEmail(), getPhoneNumber(), getAddress(), getPostCode(), getStandardScreen(), getDeluxeScreen());
     }
 }
