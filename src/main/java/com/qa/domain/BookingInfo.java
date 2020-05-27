@@ -1,7 +1,5 @@
 package com.qa.domain;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 
 @Entity

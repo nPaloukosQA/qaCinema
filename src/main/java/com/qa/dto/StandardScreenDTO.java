@@ -10,7 +10,7 @@ public class StandardScreenDTO {
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
 
-//    private List<BookingDTO> bookings;
+    private List<BookingDTO> bookings;
 
     public StandardScreenDTO() {
 
@@ -64,11 +64,11 @@ public class StandardScreenDTO {
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
 
-//    public List<BookingDTO> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(List<BookingDTO> bookings) {
-//        this.bookings = bookings;
-//    }
+    public List<BookingDTO> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<BookingDTO> bookings) {
+        this.bookings = bookings;
+    }
 }
