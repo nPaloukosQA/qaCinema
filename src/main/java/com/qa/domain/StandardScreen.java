@@ -24,6 +24,7 @@ public class StandardScreen {
 //    private StandardScreen standardScreen;
 
     public StandardScreen() {
+
     }
 
     public StandardScreen(Long standardScreenFilmId, Long standardScreenBookingId, Double standardScreenScreeningTime, String standardScreenSeatsBooked) {
