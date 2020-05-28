@@ -19,7 +19,7 @@ public class StandardScreen {
     private List<BookingInfo> bookingInfo = new ArrayList<>();
 
     @ManyToOne (targetEntity = Films.class)
-    private StandardScreen standardScreen;
+    private Films films;
 
     public StandardScreen() {
 
@@ -68,12 +68,12 @@ public class StandardScreen {
         this.bookingInfo = bookingInfo;
     }
 
-    public StandardScreen getStandardScreen() {
-        return standardScreen;
+    public Films getFilms() {
+        return films;
     }
 
-    public void setStandardScreen(StandardScreen standardScreen) {
-        this.standardScreen = standardScreen;
+    public void setFilms(Films films) {
+        this.films = films;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class StandardScreen {
                 ", standardScreenScreeningTime=" + standardScreenScreeningTime +
                 ", standardScreenSeatsBooked='" + standardScreenSeatsBooked + '\'' +
                 ", bookingInfo=" + bookingInfo +
-                ", standardScreen=" + standardScreen +
+                ", films=" + films +
                 '}';
     }
 
@@ -96,11 +96,11 @@ public class StandardScreen {
                 Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
                 Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked()) &&
                 Objects.equals(getBookingInfo(), that.getBookingInfo()) &&
-                Objects.equals(getStandardScreen(), that.getStandardScreen());
+                Objects.equals(getFilms(), that.getFilms());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookingInfo(), getStandardScreen());
+        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookingInfo(), getFilms());
     }
 }

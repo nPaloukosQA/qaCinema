@@ -38,8 +38,6 @@ public class StandardScreenService {
 
     public StandardScreenDTO updateStandardScreen(Long standardScreenId, StandardScreen standardScreen) {
         StandardScreen update = this.repo.findById(standardScreenId).orElseThrow(StandardScreenNotFoundException::new);
-        update.setStandardScreenFilmId(standardScreen.getStandardScreenFilmId());
-        update.setStandardScreenBookingId(standardScreen.getStandardScreenBookingId());
         update.setStandardScreenScreeningTime(standardScreen.getStandardScreenScreeningTime());
         update.setStandardScreenSeatsBooked(standardScreen.getStandardScreenSeatsBooked());
         StandardScreen tempStandardScreen = this.repo.save(update);
