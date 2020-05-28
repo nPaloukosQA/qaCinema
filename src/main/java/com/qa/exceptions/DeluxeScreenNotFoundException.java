@@ -6,4 +6,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.persistence.EntityNotFoundException;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "That service does not exist")
-public class DeluxeNotFoundException extends EntityNotFoundException {}
+public class DeluxeScreenNotFoundException extends EntityNotFoundException {}
