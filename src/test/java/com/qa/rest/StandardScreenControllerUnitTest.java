@@ -78,17 +78,32 @@ public class StandardScreenControllerUnitTest {
 
 //    @Test
 //    public void  updateStandardScreenTest() {
+//        StandardScreen newStandardScreen = new StandardScreen(2.0,"A1");
+//        StandardScreen updateStandardScreen = new StandardScreen(newStandardScreen.getStandardScreenScreeningTime(), newStandardScreen.getStandardScreenSeatsBooked());
+//        updateStandardScreen.setStandardScreeningId(standardScreenId);
 //
+//        StandardScreenDTO updateStandardScreenDTO = new ModelMapper().map(updateStandardScreen, StandardScreenDTO.class);
+//
+//        when(this.service.getStandardScreenById(standardScreenId)).thenReturn(java.util.Optional.ofNullable(testStandardScreenWithId));
+//        when(this.service.(updateStandardScreen)).thenReturn(updateStandardScreen);
+//        when(this.mapper.map(updateStandardScreen, StandardScreenDTO.class)).thenReturn(updateStandardScreenDTO);
+//
+//        assertEquals(updateStandardScreen, this.service.updateStandardScreen(standardScreenId, newStandardScreen));
+//        verify(this.service, times(1)).getStandardScreenById(standardScreenId);
+//        verify(this.service, times(1)).save(updateStandardScreen);
 //    }
 
-//    @Test
-//    public void deleteStandardScreenTestTrue() {
-//
-//    }
+    @Test
+    public void deleteStandardScreenTestTrue() {
+        when(service.deleteStandardScreen(2L)).thenReturn(true);
+        this.standardScreenController.deleteStandardScreen(2L);
+        verify(service, times(1)).deleteStandardScreen(2L);
+    }
 
-//    @Test
-//    public void deleteStandardScreenTestFalse() {
-//
-//    }
+    @Test
+    public void deleteStandardScreenTestFalse() {
+        this.standardScreenController.deleteStandardScreen(standardScreenId);
+        verify(service, times(1)).deleteStandardScreen(standardScreenId);
+    }
 
 }
