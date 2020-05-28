@@ -76,4 +76,19 @@ public class StandardScreenControllerUnitTest {
         verify(service, times(1)).getStandardScreenById(standardScreenId);
     }
 
+//    @Test
+//    public void  updateStandardScreenTest() {
+//
+//    }
+
+//    @Test
+//    public void deleteStandardScreenTestTrue() {
+//
+//    }
+
+//    @Test
+//    public void deleteStandardScreenTestFalse() {
+//
+//    }
+
 }
