@@ -22,7 +22,7 @@ public class DeluxeScreen {
     private List<BookingInfo> bookingInfo = new ArrayList<>();
 
     @ManyToOne(targetEntity = Films.class)
-    private DeluxeScreen deluxeScreen;
+    private Films films;
 
     public DeluxeScreen(){
     }
@@ -90,12 +90,12 @@ public class DeluxeScreen {
         this.bookingInfo = bookingInfo;
     }
 
-    public DeluxeScreen getDeluxeScreen() {
-        return deluxeScreen;
+    public Films getFilms() {
+        return films;
     }
 
-    public void setDeluxeScreen(DeluxeScreen deluxeScreen) {
-        this.deluxeScreen = deluxeScreen;
+    public void setFilms(Films films) {
+        this.films = films;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class DeluxeScreen {
                 ", deluxeScreeningTime=" + deluxeScreeningTime +
                 ", deluxeSeatsBooked=" + deluxeSeatsBooked + '\'' +
                 ", bookingInfo=" + bookingInfo +
-                ", standardScreen=" + deluxeScreen +
+                ", films=" + films +
                 '}';
     }
 
@@ -122,11 +122,11 @@ public class DeluxeScreen {
                 Objects.equals(deluxeScreeningTime, that.deluxeScreeningTime) &&
                 Objects.equals(deluxeSeatsBooked, that.deluxeSeatsBooked) &&
                 Objects.equals(bookingInfo, that.bookingInfo) &&
-                Objects.equals(deluxeScreen, that.deluxeScreen);
+                Objects.equals(films, that.films);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(deluxeScreeningId, deluxeFilmId, deluxeBookingId, deluxeScreeningTime, deluxeSeatsBooked, bookingInfo, deluxeScreen);
+        return Objects.hash(deluxeScreeningId, deluxeFilmId, deluxeBookingId, deluxeScreeningTime, deluxeSeatsBooked, bookingInfo, films);
     }
 }
