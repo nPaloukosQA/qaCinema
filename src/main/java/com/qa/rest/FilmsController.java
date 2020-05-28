@@ -26,7 +26,7 @@ public class FilmsController {
     }
 
     @GetMapping("/getAllFilms")
-    public ResponseEntity<List<FilmsDTO>> getAllStandardScreens() {
+    public ResponseEntity<List<FilmsDTO>> getAllFilms() {
         return ResponseEntity.ok(this.service.readFilms());
     }
 
