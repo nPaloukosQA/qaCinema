@@ -9,6 +9,8 @@ FilmsDTO {
     private Long FilmsID;
     private String filmsTitle;
     private String filmsClassification;
+    private Boolean filmsIsFeature;
+    private String filmsOMDBID;
 
     private List<StandardScreenDTO> standardScreen;
     private List<DeluxeScreenDTO> deluxeScreen;
@@ -17,10 +19,12 @@ FilmsDTO {
 
     }
 
-    public FilmsDTO(String filmsTitle, String filmsClassification, List<StandardScreenDTO> standardScreen, List<DeluxeScreenDTO> deluxeScreen) {
+    public FilmsDTO(String filmsTitle, String filmsClassification, Boolean filmsIsFeature, String filmsOMDBID, List<StandardScreenDTO> standardScreen, List<DeluxeScreenDTO> deluxeScreen) {
 
         this.filmsTitle = filmsTitle;
         this.filmsClassification = filmsClassification;
+        this.filmsIsFeature = filmsIsFeature;
+        this.filmsOMDBID = filmsOMDBID;
         this.standardScreen = standardScreen;
         this.deluxeScreen = deluxeScreen;
 
@@ -50,6 +54,22 @@ FilmsDTO {
         this.filmsClassification = filmsClassification;
     }
 
+    public Boolean getFilmsIsFeature() {
+        return filmsIsFeature;
+    }
+
+    public void setFilmsIsFeature(Boolean filmsIsFeature) {
+        this.filmsIsFeature = filmsIsFeature;
+    }
+
+    public String getFilmsOMDBID() {
+        return filmsOMDBID;
+    }
+
+    public void setFilmsOMDBID(String filmsOMDBID) {
+        this.filmsOMDBID = filmsOMDBID;
+    }
+
     public List<StandardScreenDTO> getStandardScreen() {
         return standardScreen;
     }
@@ -72,6 +92,8 @@ FilmsDTO {
                 "FilmsID=" + FilmsID +
                 ", filmsTitle='" + filmsTitle + '\'' +
                 ", filmsClassification='" + filmsClassification + '\'' +
+                ", filmsIsFeature=" + filmsIsFeature +
+                ", filmsOMDBID='" + filmsOMDBID + '\'' +
                 ", standardScreen=" + standardScreen +
                 ", deluxeScreen=" + deluxeScreen +
                 '}';
@@ -85,12 +107,14 @@ FilmsDTO {
         return Objects.equals(FilmsID, filmsDTO.FilmsID) &&
                 Objects.equals(filmsTitle, filmsDTO.filmsTitle) &&
                 Objects.equals(filmsClassification, filmsDTO.filmsClassification) &&
+                Objects.equals(filmsIsFeature, filmsDTO.filmsIsFeature) &&
+                Objects.equals(filmsOMDBID, filmsDTO.filmsOMDBID) &&
                 Objects.equals(standardScreen, filmsDTO.standardScreen) &&
                 Objects.equals(deluxeScreen, filmsDTO.deluxeScreen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(FilmsID, filmsTitle, filmsClassification, standardScreen, deluxeScreen);
+        return Objects.hash(FilmsID, filmsTitle, filmsClassification, filmsIsFeature, filmsOMDBID, standardScreen, deluxeScreen);
     }
 }
