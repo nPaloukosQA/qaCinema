@@ -28,7 +28,7 @@ public class DeluxeScreenService {
         return this.mapper.map(deluxeScreen, DeluxeScreenDTO.class);
     }
 
-    private DeluxeScreenDTO createDeluxeScreen(DeluxeScreen deluxeScreen) {
+    public DeluxeScreenDTO createDeluxeScreen(DeluxeScreen deluxeScreen) {
         return this.mapToDTO(this.repo.save(deluxeScreen));
     }
 
