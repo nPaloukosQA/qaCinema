@@ -44,6 +44,6 @@ public class StandardScreenController {
     public ResponseEntity<?> deleteStandardScreen(@PathVariable Long standardScreenId){
         return this.service.deleteStandardScreen(standardScreenId)
         ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
-        : ResponseEntity.ok(this.service.getStandardScreenById(standardScreenId));
+                : ResponseEntity.noContent().build();
     }
 }

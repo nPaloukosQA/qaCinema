@@ -101,18 +101,18 @@ public class StandardScreenControllerIntergrationTest {
         assertEquals(content, this.objectMapper.writeValueAsString(standardScreenDTO));
     }
 
-    @Test
-    public void updateStandardScreenTest() throws Exception {
-        String content = this.mock.perform(
-                request(HttpMethod.PUT, "/updateStandardScreen/" + this.standardScreenId)
-                    .accept(MediaType.APPLICATION_JSON)
-        )
-                .andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-        assertEquals(content, this.objectMapper.writeValueAsString(standardScreenDTO));
-    }
+//    @Test
+//    public void updateStandardScreenTest() throws Exception {
+//        String content = this.mock.perform(
+//                request(HttpMethod.PUT, "/updateStandardScreen/" + this.standardScreenId)
+//                    .accept(MediaType.APPLICATION_JSON)
+//        )
+//                .andExpect(status().isOk())
+//                .andReturn()
+//                .getResponse()
+//                .getContentAsString();
+//        assertEquals(content, this.objectMapper.writeValueAsString(standardScreenDTO));
+//    }
 
     @Test
     public void deleteStandardScreenTest() throws Exception {
