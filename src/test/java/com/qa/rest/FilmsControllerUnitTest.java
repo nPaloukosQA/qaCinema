@@ -82,4 +82,12 @@ public class FilmsControllerUnitTest {
         verify(this.service, times(1)).createFilms(testFilms);
     }
 
+    @Test
+    public void getFilmsByIDTest() {
+        when(this.service.getFilmsById(testID)).thenReturn(this.filmsDTO);
+        assertEquals(this.filmsController.getFilmsById(testID), new ResponseEntity<FilmsDTO>(
+                this.filmsDTO, HttpStatus.OK));
+        verify(service, times(1)).getFilmsById(testID);
+    }
+
 }
