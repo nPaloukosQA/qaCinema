@@ -74,4 +74,12 @@ public class FilmsControllerUnitTest {
         verify(service, times(1)).readFilms();
     }
 
+    @Test
+    public void createFilmsTest() {
+        when(this.service.createFilms(testFilms)).thenReturn(this.filmsDTO);
+        assertEquals(this.filmsController.createFilms(testFilms), new ResponseEntity<FilmsDTO>(
+                this.filmsDTO, HttpStatus.CREATED));
+        verify(this.service, times(1)).createFilms(testFilms);
+    }
+
 }
