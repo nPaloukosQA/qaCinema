@@ -12,8 +12,6 @@ public class StandardScreen {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long standardScreeningId;
-    private Long standardScreenFilmId;
-    private Long standardScreenBookingId;
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
 
@@ -27,17 +25,13 @@ public class StandardScreen {
 
     }
 
-    public StandardScreen(Long standardScreenFilmId, Long standardScreenBookingId, Double standardScreenScreeningTime, String standardScreenSeatsBooked) {
-        this.standardScreenFilmId = standardScreenFilmId;
-        this.standardScreenBookingId = standardScreenBookingId;
+    public StandardScreen(Double standardScreenScreeningTime, String standardScreenSeatsBooked) {
         this.standardScreenScreeningTime = standardScreenScreeningTime;
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
 
-    public StandardScreen(Long standardScreeningId, Long standardScreenFilmId, Long standardScreenBookingId, Double standardScreenScreeningTime, String standardScreenSeatsBooked) {
+    public StandardScreen(Long standardScreeningId, Double standardScreenScreeningTime, String standardScreenSeatsBooked) {
         this.standardScreeningId = standardScreeningId;
-        this.standardScreenFilmId = standardScreenFilmId;
-        this.standardScreenBookingId = standardScreenBookingId;
         this.standardScreenScreeningTime = standardScreenScreeningTime;
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
@@ -48,22 +42,6 @@ public class StandardScreen {
 
     public void setStandardScreeningId(Long standardScreeningId) {
         this.standardScreeningId = standardScreeningId;
-    }
-
-    public Long getStandardScreenFilmId() {
-        return standardScreenFilmId;
-    }
-
-    public void setStandardScreenFilmId(Long standardScreenFilmId) {
-        this.standardScreenFilmId = standardScreenFilmId;
-    }
-
-    public Long getStandardScreenBookingId() {
-        return standardScreenBookingId;
-    }
-
-    public void setStandardScreenBookingId(Long standardScreenBookingId) {
-        this.standardScreenBookingId = standardScreenBookingId;
     }
 
     public Double getStandardScreenScreeningTime() {
@@ -102,8 +80,6 @@ public class StandardScreen {
     public String toString() {
         return "StandardScreen{" +
                 "standardScreeningId=" + standardScreeningId +
-                ", standardScreenFilmId=" + standardScreenFilmId +
-                ", standardScreenBookingId=" + standardScreenBookingId +
                 ", standardScreenScreeningTime=" + standardScreenScreeningTime +
                 ", standardScreenSeatsBooked='" + standardScreenSeatsBooked + '\'' +
                 ", bookingInfo=" + bookingInfo +
@@ -117,8 +93,6 @@ public class StandardScreen {
         if (!(o instanceof StandardScreen)) return false;
         StandardScreen that = (StandardScreen) o;
         return Objects.equals(getStandardScreeningId(), that.getStandardScreeningId()) &&
-                Objects.equals(getStandardScreenFilmId(), that.getStandardScreenFilmId()) &&
-                Objects.equals(getStandardScreenBookingId(), that.getStandardScreenBookingId()) &&
                 Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
                 Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked()) &&
                 Objects.equals(getBookingInfo(), that.getBookingInfo()) &&
@@ -127,6 +101,6 @@ public class StandardScreen {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStandardScreeningId(), getStandardScreenFilmId(), getStandardScreenBookingId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookingInfo(), getStandardScreen());
+        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookingInfo(), getStandardScreen());
     }
 }
