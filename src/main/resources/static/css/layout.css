@@ -13,3 +13,11 @@ body{
 .font-header1 {
     font-size: large;
 }
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.text-grey {
+    color: gray;
+}
