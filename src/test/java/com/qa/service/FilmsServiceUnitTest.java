@@ -58,9 +58,7 @@ public class FilmsServiceUnitTest {
     public void setUpForTests() {
         this.filmsList = new ArrayList<>();
         this.testStandardScreen = new StandardScreen();
-        this.standardScreen.add(testStandardScreen);
         this.testDeluxeScreen = new DeluxeScreen();
-        this.deluxeScreen.add(testDeluxeScreen);
         this.testFilms = new Films("Title", "classification", true,
                 "AAA", standardScreen, deluxeScreen);
         this.filmsList.add(testFilms);
@@ -74,8 +72,16 @@ public class FilmsServiceUnitTest {
     public void getAllFilmsTest() {
         when(repo.findAll()).thenReturn(this.filmsList);
         when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
-        assertFalse("Service returned no Users", this.service.readFilms().isEmpty());
+        assertFalse("Service returned no films", this.service.readFilms().isEmpty());
         verify(repo, times(1)).findAll();
+    }
+
+    @Test
+    public void createFilmsTest() {
+        when(repo.save(testFilms)).thenReturn(testFilmsWithID);
+        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
+        assertEquals(this.service.createFilms(testFilms), this.filmsDTO);
+        verify(repo, times(1)).save(this.testFilms);
     }
 
 }

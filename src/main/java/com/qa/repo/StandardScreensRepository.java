@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StandardScreensRepository extends JpaRepository<StandardScreen, Long> {
 
-    StandardScreen findByStandardScreenBookingId(Long standardScreenId);
+
 
 }
