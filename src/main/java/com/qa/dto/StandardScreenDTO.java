@@ -6,8 +6,6 @@ import java.util.Objects;
 public class StandardScreenDTO {
 
     private Long standardScreeningId;
-    private Long standardScreenFilmId;
-    private Long standardScreenBookingId;
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
 
@@ -17,10 +15,8 @@ public class StandardScreenDTO {
 
     }
 
-    public StandardScreenDTO(Long standardScreenFilmId, Long standardScreenBookingId, Double standardScreenScreeningTime, String standardScreenSeatsBooked){
+    public StandardScreenDTO(Double standardScreenScreeningTime, String standardScreenSeatsBooked){
         super();
-        this.standardScreenFilmId = standardScreenFilmId;
-        this.standardScreenBookingId = standardScreenBookingId;
         this.standardScreenScreeningTime = standardScreenScreeningTime;
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
@@ -31,22 +27,6 @@ public class StandardScreenDTO {
 
     public void setStandardScreeningId(Long standardScreeningId) {
         this.standardScreeningId = standardScreeningId;
-    }
-
-    public Long getStandardScreenFilmId() {
-        return standardScreenFilmId;
-    }
-
-    public void setStandardScreenFilmId(Long standardScreenFilmId) {
-        this.standardScreenFilmId = standardScreenFilmId;
-    }
-
-    public Long getStandardScreenBookingId() {
-        return standardScreenBookingId;
-    }
-
-    public void setStandardScreenBookingId(Long standardScreenBookingId) {
-        this.standardScreenBookingId = standardScreenBookingId;
     }
 
     public Double getStandardScreenScreeningTime() {
@@ -77,8 +57,6 @@ public class StandardScreenDTO {
     public String toString() {
         return "StandardScreenDTO{" +
                 "standardScreeningId=" + standardScreeningId +
-                ", standardScreenFilmId=" + standardScreenFilmId +
-                ", standardScreenBookingId=" + standardScreenBookingId +
                 ", standardScreenScreeningTime=" + standardScreenScreeningTime +
                 ", standardScreenSeatsBooked='" + standardScreenSeatsBooked + '\'' +
                 ", bookings=" + bookings +
@@ -91,8 +69,6 @@ public class StandardScreenDTO {
         if (!(o instanceof StandardScreenDTO)) return false;
         StandardScreenDTO that = (StandardScreenDTO) o;
         return Objects.equals(getStandardScreeningId(), that.getStandardScreeningId()) &&
-                Objects.equals(getStandardScreenFilmId(), that.getStandardScreenFilmId()) &&
-                Objects.equals(getStandardScreenBookingId(), that.getStandardScreenBookingId()) &&
                 Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
                 Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked()) &&
                 Objects.equals(getBookings(), that.getBookings());
@@ -100,6 +76,6 @@ public class StandardScreenDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStandardScreeningId(), getStandardScreenFilmId(), getStandardScreenBookingId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookings());
+        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookings());
     }
 }
