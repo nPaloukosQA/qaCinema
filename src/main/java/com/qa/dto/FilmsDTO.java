@@ -1,40 +1,37 @@
-package com.qa.domain;
+package com.qa.dto;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity
-public class Films {
+public class
+FilmsDTO {
 
-    @Id
-    @GeneratedValue
-    private Long filmsID;
+    private Long FilmsID;
     private String filmsTitle;
     private String filmsClassification;
 
-    @OneToMany(mappedBy = "films", fetch = FetchType.LAZY)
-    private List<StandardScreen> standardScreen = new ArrayList<>();
+    private List<StandardScreenDTO> standardScreen;
+    private List<DeluxeScreenDTO> deluxeScreen;
 
-    @OneToMany(mappedBy = "films", fetch = FetchType.LAZY)
-    private List<DeluxeScreen> deluxeScreen = new ArrayList<>();
+    public FilmsDTO() {
 
-    public Films () {
     }
 
-    public Films (String filmsTitle, String filmsClassification) {
+    public FilmsDTO(String filmsTitle, String filmsClassification, List<StandardScreenDTO> standardScreen, List<DeluxeScreenDTO> deluxeScreen) {
 
         this.filmsTitle = filmsTitle;
         this.filmsClassification = filmsClassification;
+        this.standardScreen = standardScreen;
+        this.deluxeScreen = deluxeScreen;
+
     }
 
     public Long getFilmsID() {
-        return filmsID;
+        return FilmsID;
     }
 
     public void setFilmsID(Long filmsID) {
-        this.filmsID = filmsID;
+        FilmsID = filmsID;
     }
 
     public String getFilmsTitle() {
@@ -53,26 +50,26 @@ public class Films {
         this.filmsClassification = filmsClassification;
     }
 
-    public List<StandardScreen> getStandardScreen() {
+    public List<StandardScreenDTO> getStandardScreen() {
         return standardScreen;
     }
 
-    public void setStandardScreen(List<StandardScreen> standardScreen) {
+    public void setStandardScreen(List<StandardScreenDTO> standardScreen) {
         this.standardScreen = standardScreen;
     }
 
-    public List<DeluxeScreen> getDeluxeScreen() {
+    public List<DeluxeScreenDTO> getDeluxeScreen() {
         return deluxeScreen;
     }
 
-    public void setDeluxeScreen(List<DeluxeScreen> deluxeScreen) {
+    public void setDeluxeScreen(List<DeluxeScreenDTO> deluxeScreen) {
         this.deluxeScreen = deluxeScreen;
     }
 
     @Override
     public String toString() {
-        return "Films{" +
-                "filmsID=" + filmsID +
+        return "FilmsDTO{" +
+                "FilmsID=" + FilmsID +
                 ", filmsTitle='" + filmsTitle + '\'' +
                 ", filmsClassification='" + filmsClassification + '\'' +
                 ", standardScreen=" + standardScreen +
@@ -84,16 +81,16 @@ public class Films {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Films films = (Films) o;
-        return Objects.equals(filmsID, films.filmsID) &&
-                Objects.equals(filmsTitle, films.filmsTitle) &&
-                Objects.equals(filmsClassification, films.filmsClassification) &&
-                Objects.equals(standardScreen, films.standardScreen) &&
-                Objects.equals(deluxeScreen, films.deluxeScreen);
+        FilmsDTO filmsDTO = (FilmsDTO) o;
+        return Objects.equals(FilmsID, filmsDTO.FilmsID) &&
+                Objects.equals(filmsTitle, filmsDTO.filmsTitle) &&
+                Objects.equals(filmsClassification, filmsDTO.filmsClassification) &&
+                Objects.equals(standardScreen, filmsDTO.standardScreen) &&
+                Objects.equals(deluxeScreen, filmsDTO.deluxeScreen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(filmsID, filmsTitle, filmsClassification, standardScreen, deluxeScreen);
+        return Objects.hash(FilmsID, filmsTitle, filmsClassification, standardScreen, deluxeScreen);
     }
 }

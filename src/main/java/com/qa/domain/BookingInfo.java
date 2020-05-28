@@ -10,7 +10,7 @@ public class BookingInfo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookingInfoId;
     private Long standardScreeningId;
-    private Long deluxScreeningId;
+    private Long deluxeScreeningId;
     private String firstName;
     private String surname;
     private String dateOfBirth;
@@ -30,9 +30,9 @@ public class BookingInfo {
 
     }
 
-    public BookingInfo(Long standardScreeningId, Long deluxScreeningId, String firstName, String surname, String dateOfBirth, String email, String phoneNumber, String address, String postCode) {
+    public BookingInfo(Long standardScreeningId, Long deluxeScreeningId, String firstName, String surname, String dateOfBirth, String email, String phoneNumber, String address, String postCode) {
         this.standardScreeningId = standardScreeningId;
-        this.deluxScreeningId = deluxScreeningId;
+        this.deluxeScreeningId = deluxeScreeningId;
         this.firstName = firstName;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
@@ -42,10 +42,10 @@ public class BookingInfo {
         this.postCode = postCode;
     }
 
-    public BookingInfo(Long bookingInfoId, Long standardScreeningId, Long deluxScreeningId, String firstName, String surname, String dateOfBirth, String email, String phoneNumber, String address, String postCode) {
+    public BookingInfo(Long bookingInfoId, Long standardScreeningId, Long deluxeScreeningId, String firstName, String surname, String dateOfBirth, String email, String phoneNumber, String address, String postCode) {
         this.bookingInfoId = bookingInfoId;
         this.standardScreeningId = standardScreeningId;
-        this.deluxScreeningId = deluxScreeningId;
+        this.deluxeScreeningId = deluxeScreeningId;
         this.firstName = firstName;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
@@ -71,12 +71,12 @@ public class BookingInfo {
         this.standardScreeningId = standardScreeningId;
     }
 
-    public Long getDeluxScreeningId() {
-        return deluxScreeningId;
+    public Long getDeluxeScreeningId() {
+        return deluxeScreeningId;
     }
 
-    public void setDeluxScreeningId(Long deluxScreeningId) {
-        this.deluxScreeningId = deluxScreeningId;
+    public void setDeluxeScreeningId(Long deluxeScreeningId) {
+        this.deluxeScreeningId = deluxeScreeningId;
     }
 
     public String getFirstName() {
@@ -147,8 +147,8 @@ public class BookingInfo {
         return deluxeScreen;
     }
 
-    public void setDeluxeScreen(DeluxeScreen deluxScreen) {
-        this.deluxeScreen = deluxScreen;
+    public void setDeluxeScreen(DeluxeScreen deluxeScreen) {
+        this.deluxeScreen = deluxeScreen;
     }
 
     @Override
@@ -156,7 +156,7 @@ public class BookingInfo {
         return "BookingInfo{" +
                 "bookingInfoId=" + bookingInfoId +
                 ", standardScreeningId=" + standardScreeningId +
-                ", deluxScreeningId=" + deluxScreeningId +
+                ", deluxeScreeningId=" + deluxeScreeningId +
                 ", firstName='" + firstName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
@@ -165,7 +165,7 @@ public class BookingInfo {
                 ", address='" + address + '\'' +
                 ", postCode='" + postCode + '\'' +
                 ", standardScreen=" + standardScreen +
-                ", deluxScreen=" + deluxeScreen +
+                ", deluxeScreen=" + deluxeScreen +
                 '}';
     }
 
@@ -176,7 +176,7 @@ public class BookingInfo {
         BookingInfo that = (BookingInfo) o;
         return Objects.equals(getBookingInfoId(), that.getBookingInfoId()) &&
                 Objects.equals(getStandardScreeningId(), that.getStandardScreeningId()) &&
-                Objects.equals(getDeluxScreeningId(), that.getDeluxScreeningId()) &&
+                Objects.equals(getDeluxeScreeningId(), that.getDeluxeScreeningId()) &&
                 Objects.equals(getFirstName(), that.getFirstName()) &&
                 Objects.equals(getSurname(), that.getSurname()) &&
                 Objects.equals(getDateOfBirth(), that.getDateOfBirth()) &&
@@ -190,6 +190,6 @@ public class BookingInfo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getBookingInfoId(), getStandardScreeningId(), getDeluxScreeningId(), getFirstName(), getSurname(), getDateOfBirth(), getEmail(), getPhoneNumber(), getAddress(), getPostCode(), getStandardScreen(), getDeluxeScreen());
+        return Objects.hash(getBookingInfoId(), getStandardScreeningId(), getDeluxeScreeningId(), getFirstName(), getSurname(), getDateOfBirth(), getEmail(), getPhoneNumber(), getAddress(), getPostCode(), getStandardScreen(), getDeluxeScreen());
     }
 }
