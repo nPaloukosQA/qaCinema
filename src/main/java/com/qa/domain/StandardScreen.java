@@ -12,8 +12,6 @@ public class StandardScreen {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long standardScreeningId;
-    private Long standardScreenFilmId;
-    private Long standardScreenBookingId;
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
 

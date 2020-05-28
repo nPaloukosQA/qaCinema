@@ -13,6 +13,8 @@ public class Films {
     private Long filmsID;
     private String filmsTitle;
     private String filmsClassification;
+    private Long standardScreeningID;
+    private Long DeluxeScreeningID;
 
     @OneToMany(mappedBy = "films", fetch = FetchType.LAZY)
     private List<StandardScreen> standardScreen = new ArrayList<>();
@@ -23,10 +25,12 @@ public class Films {
     public Films () {
     }
 
-    public Films (String filmsTitle, String filmsClassification) {
+    public Films (String filmsTitle, String filmsClassification, List<StandardScreen> standardScreen, List<DeluxeScreen> deluxeScreen) {
 
         this.filmsTitle = filmsTitle;
         this.filmsClassification = filmsClassification;
+        this.standardScreen = standardScreen;
+        this.standardScreen = standardScreen;
     }
 
     public Long getFilmsID() {
