@@ -90,4 +90,17 @@ public class FilmsControllerUnitTest {
         verify(service, times(1)).getFilmsById(testID);
     }
 
+    @Test
+    public void deleteFilmsTestFalse() {
+        this.filmsController.deleteFilms(testID);
+        verify(service, times(1)).deleteFilms(testID);
+    }
+
+    @Test
+    public void deleteFilmsTestTrue() {
+        when(service.deleteFilms(3L)).thenReturn(true);
+        this.filmsController.deleteFilms(3L);
+        verify(service, times(1)).deleteFilms(3L);
+    }
+
 }
