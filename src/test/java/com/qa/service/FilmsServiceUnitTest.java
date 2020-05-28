@@ -84,4 +84,12 @@ public class FilmsServiceUnitTest {
         verify(repo, times(1)).save(this.testFilms);
     }
 
+    @Test
+    public void findFilmsByIDTest() {
+        when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
+        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
+        assertEquals(this.service.getFilmsById(this.testID), filmsDTO);
+        verify(repo, times(1)).findById(testID);
+    }
+
 }
