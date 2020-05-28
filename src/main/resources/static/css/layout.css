@@ -17,7 +17,25 @@ body{
     position: absolute;
     bottom: 0;
     width: 100%;
+    height: 10rem;
 }
 .text-grey {
     color: gray;
+}
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+.content-wrap {
+padding-bottom: 10rem;    /* Footer height */
+}
+.carousel-item {
+    width: 100%;
+    height: 600px; /* example */
+}
+
+.carousel-item img {
+width: 100%;
+height: 100%;
+object-fit: contain;
 }
