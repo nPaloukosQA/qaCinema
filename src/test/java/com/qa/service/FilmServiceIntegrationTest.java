@@ -76,10 +76,11 @@ public class FilmServiceIntegrationTest {
         assertThat(this.service.getFilmsById(this.testFilmsWithID.getFilmsID())).isEqualTo(this.mapToDTO(this.testFilmsWithID));
     }
 
-    /*@Test
+    @Test
     public void getFilmsStandardScreeningsTest() {
-        assertThat(this.service.getFilmsStandardScreenings(this.testFilmsWithID.getFilmsID())).isEqualTo(this.mapToDTO(this.testFilmsWithID.getStandardScreen()));
-    }*/
+        assertThat(this.service.getFilmsStandardScreenings(this.testFilmsWithID.getFilmsID())).isEqualTo
+                (this.mapToDTO(this.testFilmsWithID).getStandardScreen());
+    }
 
     @Test
     public void deleteFilmsTest() {

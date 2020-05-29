@@ -35,6 +35,8 @@ public class FilmsServiceUnitTest {
     @Mock
     private ModelMapper mapper;
 
+    private ModelMapper testMapper = new ModelMapper();
+
     private List<Films> filmsList;
 
     private Films testFilms;
@@ -58,7 +60,7 @@ public class FilmsServiceUnitTest {
     private DeluxeScreen testDscreen;
 
     private FilmsDTO mapToDTO(Films films) {
-        return this.mapper.map(films, FilmsDTO.class);
+        return this.testMapper.map(films, FilmsDTO.class);
     }
 
     @Before
@@ -105,13 +107,13 @@ public class FilmsServiceUnitTest {
         verify(repo, times(1)).findById(testID);
     }
 
-    /*@Test
+    @Test
     public void getFilmsStandardScreeningsTest() {
         when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
         when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
         assertEquals(this.service.getFilmsStandardScreenings(this.testID), filmsDTO.getStandardScreen());
         verify(repo, times(1)).findById(testID);
-    }*/
+    }
 
     @Test
     public void deleteUserByExistingID() {

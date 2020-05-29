@@ -45,17 +45,11 @@ public class FilmsService {
     }
 
     public List<StandardScreenDTO> getFilmsStandardScreenings(Long filmsID) {
-        if(!this.repo.existsById(filmsID)){
-            throw new FilmsNotFoundException();
-        }
         Films tempFilms = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
         return this.mapToDTO(tempFilms).getStandardScreen();
     }
 
     public List<DeluxeScreenDTO> getFilmsDeluxeScreenings(Long filmsID) {
-        if(!this.repo.existsById(filmsID)){
-            throw new FilmsNotFoundException();
-        }
         Films tempFilms = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
         return this.mapToDTO(tempFilms).getDeluxeScreen();
     }
