@@ -30,7 +30,7 @@ body{
     min-height: 100vh;
 }
 .content-wrap {
-padding-bottom: 10rem;    /* Footer height */
+    padding-bottom: 10rem;    /* Footer height */
 }
 .carousel-item {
     width: 100%;
@@ -41,29 +41,15 @@ width: 100%;
 height: 100%;
 object-fit: contain;
 }
-.carousel {
-    overflow: hidden;
+.logo-frame {
+    width: 30%;
+    height: 7rem;
 }
-.carousel-inner {
-    width: 150%;
-    left: -25%;
+.logo-format {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
-.carousel-inner > .item.next, 
-.carousel-inner > .item.active.right {
-    -webkit-transform: translate3d(33%, 0, 0);
-    transform: translate3d(33%, 0, 0);
-}
-.carousel-inner > .item.prev, 
-.carousel-inner > .item.active.left {
-    -webkit-transform: translate3d(-33%, 0, 0);
-    transform: translate3d(-33%, 0, 0);
-}
-.carousel-control.left, 
-.carousel-control.right {
-    background: rgba(255, 255, 255, 0.3);
-    width: 25%;
-}
-
 .imgContainer {
     margin-left: auto;
     margin-right: auto;
