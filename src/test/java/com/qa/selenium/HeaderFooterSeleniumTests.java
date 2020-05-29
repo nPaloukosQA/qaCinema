@@ -42,7 +42,7 @@ public class HeaderFooterSeleniumTests {
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
         driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
-        test.log(LogStatus.INFO, "Navigated to the stock website");
+        test.log(LogStatus.INFO, "Navigated to the Cinema website");
         sleep(2000);
         test.log(LogStatus.INFO, "Attempting to access burger menu link for films page link...");
         WebElement burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
@@ -73,6 +73,29 @@ public class HeaderFooterSeleniumTests {
         headerAboutLink.click();
         sleep(3000);
         test.log(LogStatus.INFO, "Burger Menu Link to About Us page Succeeded");
+
+        test.log(LogStatus.INFO, "Header Selenium Tests Complete");
+    }
+
+    @Test
+    public void SeleniumFooterTest() throws InterruptedException {
+        test = report.startTest("Testing Webpage Footer");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
+        driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
+        test.log(LogStatus.INFO, "Navigated to the Cinema website");
+        sleep(2000);
+        test.log(LogStatus.INFO, "Attempting to use footer About Us Link...");
+        WebElement footerAboutUsLink = driver.findElement(By.id("footerLinkInformation"));
+        footerAboutUsLink.click();
+        sleep(3000);
+        test.log(LogStatus.INFO, "Footer About Us Link to About Us Page Succeeded");
+        sleep(2000);
+        test.log(LogStatus.INFO, "Attempting to use footer Logo for homepage link...");
+        WebElement footerLogoLink = driver.findElement(By.id("footerLinkLogo"));
+        footerLogoLink.click();
+        sleep(3000);
+        test.log(LogStatus.INFO, "Footer Logo Link to Home page Succeeded");
     }
     
     @AfterMethod
