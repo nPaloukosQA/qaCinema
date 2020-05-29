@@ -26,7 +26,7 @@ public class HeaderFooterSeleniumTests {
     public static void startReport() {
         report = new ExtentReports(System.getProperty("user.dir") + "/test-output/Report.html", true);
         report.addSystemInfo("Host Name", "QA").addSystemInfo("Tester", "Luke");
-        report.loadConfig(new File(System.getProperty("user.dir" + "\\extent-report.xml")));
+        report.loadConfig(new File(System.getProperty("user.dir") + "\\extent-report.xml"));
     }
     
     @BeforeMethod
@@ -39,7 +39,7 @@ public class HeaderFooterSeleniumTests {
         test = report.startTest("Testing Webpage Header");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
-        driver.get("http://127.0.0.1:5500/qaCinema/src/main/resources/static/homepage.html");
+        driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
         sleep(2000);
     }
     
