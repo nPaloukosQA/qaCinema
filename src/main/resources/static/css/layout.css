@@ -63,3 +63,8 @@ object-fit: contain;
     background: rgba(255, 255, 255, 0.3);
     width: 25%;
 }
+
+.imgContainer {
+    margin-left: auto;
+    margin-right: auto;
+}
