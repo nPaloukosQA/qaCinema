@@ -36,7 +36,7 @@ public class Films {
         this.filmsIsFeature = filmsIsFeature;
         this.filmsOMDBID = filmsOMDBID;
         this.standardScreen = standardScreen;
-        this.standardScreen = standardScreen;
+        this.deluxeScreen = deluxeScreen;
     }
 
     public Long getFilmsID() {

@@ -4,7 +4,9 @@ package com.qa.service;
 import com.qa.domain.DeluxeScreen;
 import com.qa.domain.Films;
 import com.qa.domain.StandardScreen;
+import com.qa.dto.DeluxeScreenDTO;
 import com.qa.dto.FilmsDTO;
+import com.qa.dto.StandardScreenDTO;
 import com.qa.exceptions.FilmsNotFoundException;
 import com.qa.repo.FilmsRepository;
 import org.junit.Before;
@@ -47,6 +49,14 @@ public class FilmsServiceUnitTest {
 
     private List<DeluxeScreen> deluxeScreen;
 
+    private StandardScreenDTO testStandardScreenDTO;
+
+    private DeluxeScreenDTO testDeluxeScreenDTO;
+
+    private StandardScreen testSScreen;
+
+    private DeluxeScreen testDscreen;
+
     private FilmsDTO mapToDTO(Films films) {
         return this.mapper.map(films, FilmsDTO.class);
     }
@@ -54,8 +64,14 @@ public class FilmsServiceUnitTest {
     @Before
     public void setUpForTests() {
         this.filmsList = new ArrayList<>();
+        this.testSScreen = new StandardScreen();
+        this.testDscreen = new DeluxeScreen();
+        this.testStandardScreenDTO = new StandardScreenDTO();
+        this.testDeluxeScreenDTO = new DeluxeScreenDTO();
         this.standardScreen = new ArrayList<>();
+        this.standardScreen.add(testSScreen);
         this.deluxeScreen = new ArrayList<>();
+        this.deluxeScreen.add(testDscreen);
         this.testFilms = new Films("Title", "classification", true,
                 "AAA", standardScreen, deluxeScreen);
         this.filmsList.add(testFilms);
@@ -88,6 +104,14 @@ public class FilmsServiceUnitTest {
         assertEquals(this.service.getFilmsById(this.testID), filmsDTO);
         verify(repo, times(1)).findById(testID);
     }
+
+    /*@Test
+    public void getFilmsStandardScreeningsTest() {
+        when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
+        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
+        assertEquals(this.service.getFilmsStandardScreenings(this.testID), filmsDTO.getStandardScreen());
+        verify(repo, times(1)).findById(testID);
+    }*/
 
     @Test
     public void deleteUserByExistingID() {
