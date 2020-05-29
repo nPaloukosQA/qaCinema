@@ -5,6 +5,7 @@ import com.qa.domain.DeluxeScreen;
 import com.qa.domain.Films;
 import com.qa.domain.StandardScreen;
 import com.qa.dto.FilmsDTO;
+import com.qa.exceptions.FilmsNotFoundException;
 import com.qa.repo.FilmsRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,10 +47,6 @@ public class FilmsServiceUnitTest {
 
     private List<DeluxeScreen> deluxeScreen;
 
-    private StandardScreen testStandardScreen;
-
-    private DeluxeScreen testDeluxeScreen;
-
     private FilmsDTO mapToDTO(Films films) {
         return this.mapper.map(films, FilmsDTO.class);
     }
@@ -57,10 +54,8 @@ public class FilmsServiceUnitTest {
     @Before
     public void setUpForTests() {
         this.filmsList = new ArrayList<>();
-        this.testStandardScreen = new StandardScreen();
-        this.standardScreen.add(testStandardScreen);
-        this.testDeluxeScreen = new DeluxeScreen();
-        this.deluxeScreen.add(testDeluxeScreen);
+        this.standardScreen = new ArrayList<>();
+        this.deluxeScreen = new ArrayList<>();
         this.testFilms = new Films("Title", "classification", true,
                 "AAA", standardScreen, deluxeScreen);
         this.filmsList.add(testFilms);
@@ -74,8 +69,59 @@ public class FilmsServiceUnitTest {
     public void getAllFilmsTest() {
         when(repo.findAll()).thenReturn(this.filmsList);
         when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
-        assertFalse("Service returned no Users", this.service.readFilms().isEmpty());
+        assertFalse("Service returned no films", this.service.readFilms().isEmpty());
         verify(repo, times(1)).findAll();
     }
+
+    @Test
+    public void createFilmsTest() {
+        when(repo.save(testFilms)).thenReturn(testFilmsWithID);
+        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
+        assertEquals(this.service.createFilms(testFilms), this.filmsDTO);
+        verify(repo, times(1)).save(this.testFilms);
+    }
+
+    @Test
+    public void findFilmsByIDTest() {
+        when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
+        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
+        assertEquals(this.service.getFilmsById(this.testID), filmsDTO);
+        verify(repo, times(1)).findById(testID);
+    }
+
+    @Test
+    public void deleteUserByExistingID() {
+        when(this.repo.existsById(testID)).thenReturn(true, false);
+        assertFalse(service.deleteFilms(testID));
+        verify(repo, times(1)).deleteById(testID);
+        verify(repo, times(2)).existsById(testID);
+    }
+
+    @Test(expected = FilmsNotFoundException.class)
+    public void deleteUserByNonExistingID() {
+        when(this.repo.existsById(testID)).thenReturn(false);
+        service.deleteFilms(testID);
+        verify(repo, times(1)).existsById(testID);
+    }
+
+/*    @Test
+    public void updateFilmsTest() {
+        Films newFilms = new Films("NewTitle", "Newclassification", true,
+                "BBB", standardScreen, deluxeScreen);
+        Films updateFilms = new Films(newFilms.getFilmsTitle(), newFilms.getFilmsClassification(), newFilms.getFilmsIsFeature(),
+                newFilms.getFilmsOMDBID(), newFilms.getStandardScreen(), newFilms.getDeluxeScreen());
+        updateFilms.setFilmsID(testID);
+
+        FilmsDTO updateFilmsDTO = new ModelMapper().map(updateFilms, FilmsDTO.class);
+
+        when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
+        when(this.repo.save(updateFilms)).thenReturn(updateFilms);
+        when(this.mapper.map(updateFilms, FilmsDTO.class)).thenReturn(updateFilmsDTO);
+
+        assertEquals(updateFilmsDTO, this.service.updateFilms(testID, newFilms));
+        verify(this.repo, times(1)).findById(testID);
+        verify(this.repo, times(1)).save(updateFilms);
+    }*/
+
 
 }

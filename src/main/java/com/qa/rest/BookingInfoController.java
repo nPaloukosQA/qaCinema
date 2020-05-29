@@ -44,6 +44,6 @@ public class BookingInfoController {
     public ResponseEntity<?> deleteBookingInfo(@PathVariable Long bookingInfoId){
         return this.service.deleteBookingInfo(bookingInfoId)
                 ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
-                : ResponseEntity.ok(this.service.getBookingInfoById(bookingInfoId));
+                : ResponseEntity.noContent().build();
     }
 }
