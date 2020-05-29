@@ -1,5 +1,8 @@
 package com.qa.domain;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +19,10 @@ public class Films {
     private Boolean filmsIsFeature;
     private String filmsOMDBID;
 
-    @OneToMany(mappedBy = "films", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "films") @LazyCollection(LazyCollectionOption.FALSE)
     private List<StandardScreen> standardScreen = new ArrayList<>();
 
-    @OneToMany(mappedBy = "films", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "films") @LazyCollection(LazyCollectionOption.FALSE)
     private List<DeluxeScreen> deluxeScreen = new ArrayList<>();
 
     public Films () {

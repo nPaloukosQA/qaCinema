@@ -26,7 +26,7 @@ public class FilmsController {
     }
 
     @GetMapping("/getAllFilms")
-    public ResponseEntity<List<FilmsDTO>> getAllStandardScreens() {
+    public ResponseEntity<List<FilmsDTO>> getAllFilms() {
         return ResponseEntity.ok(this.service.readFilms());
     }
 
@@ -44,6 +44,6 @@ public class FilmsController {
     public ResponseEntity<?> deleteFilms(@PathVariable Long filmsID){
         return this.service.deleteFilms(filmsID)
                 ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
-                : ResponseEntity.ok(this.service.getFilmsById(filmsID));
+                : ResponseEntity.noContent().build();
     }
 }
