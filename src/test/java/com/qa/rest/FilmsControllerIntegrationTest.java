@@ -6,7 +6,6 @@ import com.qa.domain.Films;
 import com.qa.domain.StandardScreen;
 import com.qa.dto.FilmsDTO;
 import com.qa.repo.FilmsRepository;
-import com.qa.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -75,9 +74,32 @@ public class FilmsControllerIntegrationTest {
     public void getAllFilmsTest() throws Exception {
         List<FilmsDTO> filmsDTOList = new ArrayList<>();
         filmsDTOList.add(filmsDTO);
-        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getAllUsers")
+        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getAllFilms")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
                 .getContentAsString();
         assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTOList));
+    }
+
+    @Test
+    public void createFilmsTest() throws Exception {
+        String result = this.mock.perform(request(HttpMethod.POST, "/createFilms").contentType(
+                MediaType.APPLICATION_JSON).content(this.objectMapper.writeValueAsString(testFilms))
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isCreated()).andReturn().getResponse()
+                .getContentAsString();
+        assertEquals(result, this.objectMapper.writeValueAsString(filmsDTO));
+    }
+
+    @Test
+    public void getFilmsByIDTest() throws Exception {
+        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsById/" + this.testID)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString();
+        assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO));
+    }
+
+    @Test
+    public void deleteFilmsTest() throws Exception {
+        this.mock.perform(request(HttpMethod.DELETE, "/deleteFilms/" + this.testID))
+                .andExpect(status().isNoContent());
     }
 }
