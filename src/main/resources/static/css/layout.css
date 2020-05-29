@@ -1,0 +1,65 @@
+.fa-1x {
+    font-size: 1.5rem;
+}
+.navbar-toggler.toggler-example {
+    cursor: pointer;
+}
+.bg-main1 {
+    background-color:#3F4045;
+}
+.bg-main2 {
+    background-color:#413F54;
+}
+body{
+    background:#30292F;
+}
+.font-header1 {
+    font-size: large;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;
+}
+.text-grey {
+    color: gray;
+}
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+.content-wrap {
+padding-bottom: 10rem;    /* Footer height */
+}
+.carousel-item {
+    width: 100%;
+    height: 600px; /* example */
+}
+.carousel-item img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+.carousel {
+    overflow: hidden;
+}
+.carousel-inner {
+    width: 150%;
+    left: -25%;
+}
+.carousel-inner > .item.next, 
+.carousel-inner > .item.active.right {
+    -webkit-transform: translate3d(33%, 0, 0);
+    transform: translate3d(33%, 0, 0);
+}
+.carousel-inner > .item.prev, 
+.carousel-inner > .item.active.left {
+    -webkit-transform: translate3d(-33%, 0, 0);
+    transform: translate3d(-33%, 0, 0);
+}
+.carousel-control.left, 
+.carousel-control.right {
+    background: rgba(255, 255, 255, 0.3);
+    width: 25%;
+}
