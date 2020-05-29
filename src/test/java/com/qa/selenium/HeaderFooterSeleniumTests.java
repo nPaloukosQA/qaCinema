@@ -2,8 +2,10 @@ package com.qa.selenium;
 
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static java.lang.Thread.*;
 
@@ -13,15 +15,16 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+@RunWith(SpringRunner.class)
 public class HeaderFooterSeleniumTests {
     
-    WebDriver driver;
-    ExtentReports report;
-    ExtentTest test;
+    static WebDriver driver;
+    static ExtentReports report;
+    static ExtentTest test;
 
     @BeforeTest
-    public void startReport() {
-        report = new ExtentReports(System.getProperty("user.dir" + "/test-output/Report.html"), true);
+    public static void startReport() {
+        report = new ExtentReports(System.getProperty("user.dir") + "/test-output/Report.html", true);
         report.addSystemInfo("Host Name", "QA").addSystemInfo("Tester", "Luke");
         report.loadConfig(new File(System.getProperty("user.dir" + "\\extent-report.xml")));
     }
@@ -54,7 +57,7 @@ public class HeaderFooterSeleniumTests {
 
     
     @AfterTest
-    public void endReport(){
+    public static void endReport(){
         report.flush();
         report.close();
     }
