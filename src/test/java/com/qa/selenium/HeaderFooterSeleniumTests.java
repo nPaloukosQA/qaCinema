@@ -3,7 +3,9 @@ package com.qa.selenium;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -40,7 +42,37 @@ public class HeaderFooterSeleniumTests {
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
         driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
+        test.log(LogStatus.INFO, "Navigated to the stock website");
         sleep(2000);
+        test.log(LogStatus.INFO, "Attempting to access burger menu link for films page link...");
+        WebElement burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
+        burgerMenu.click();
+        sleep(2000);
+        WebElement headerFilmsLink = driver.findElement(By.id("headerLinkFilms"));
+        headerFilmsLink.click();
+        sleep(3000);
+        test.log(LogStatus.INFO, "Header Burger menu Link to Films page Succeeded");
+        test.log(LogStatus.INFO, "Attempting to use Header Logo for homepage link...");
+        WebElement headerLogoLink = driver.findElement(By.id("headerLogoLink"));
+        headerLogoLink.click();
+        sleep(3000);
+        test.log(LogStatus.INFO, "Header Logo Link to Home page Succeeded");
+        test.log(LogStatus.INFO, "Attempting to use burger menu for Screens page link...");
+        burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
+        burgerMenu.click();
+        sleep(2000);
+        WebElement headerScreensLink = driver.findElement(By.id("headerLinkScreen"));
+        headerScreensLink.click();
+        sleep(3000);
+        test.log(LogStatus.INFO, "Burger Menu Link to Screens page Succeeded");
+        test.log(LogStatus.INFO, "Attempting to use burger menu for About Us page link...");
+        burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
+        burgerMenu.click();
+        sleep(2000);
+        WebElement headerAboutLink = driver.findElement(By.id("headerLinkAbout"));
+        headerAboutLink.click();
+        sleep(3000);
+        test.log(LogStatus.INFO, "Burger Menu Link to About Us page Succeeded");
     }
     
     @AfterMethod
@@ -55,7 +87,6 @@ public class HeaderFooterSeleniumTests {
         report.endTest(test);
     }
 
-    
     @AfterTest
     public static void endReport(){
         report.flush();
