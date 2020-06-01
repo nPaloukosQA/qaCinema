@@ -1,10 +1,17 @@
+import axiosConfig from './axiosConfig.js';
 
-function OnStart(){
+function OnStartUp() {
 
-    console.log("Hello Starter!");
+    console.log("Start Up loaded");
 
-    axios
+    axiosConfig.get('/getAllFilms')
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
 
 }
 
-Object.onStart = OnStart();
+window.onload = OnStartUp();
