@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Films {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long filmsID;
     private String filmsTitle;
     private String filmsClassification;

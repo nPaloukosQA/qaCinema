@@ -7,6 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static java.lang.Thread.*;
@@ -18,8 +21,12 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 @RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class HeaderFooterSeleniumTests {
     
+    @LocalServerPort
+    static String port;
+
     static WebDriver driver;
     static ExtentReports report;
     static ExtentTest test;
@@ -41,7 +48,7 @@ public class HeaderFooterSeleniumTests {
         test = report.startTest("Testing Webpage Header");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
-        driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
+        driver.get("http://127.0.0.1:"+ port +"/src/main/resources/static/homepage.html");
         test.log(LogStatus.INFO, "Navigated to the Cinema website");
         sleep(2000);
         test.log(LogStatus.INFO, "Attempting to access burger menu link for films page link...");
