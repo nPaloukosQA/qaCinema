@@ -4,13 +4,10 @@ const featureFilms = [];
 function getFilmPosters(){
 
     console.log("Started OMDB API");
-    // document.getElementById('featuredFilm1').src='http://img.omdbapi.com/?i=' + featureFilms[0] + '&h=600&apikey=f20b5cf1'
-    // document.getElementById('featuredFilm2').src='http://img.omdbapi.com/?i=' + featureFilms[1] + '&h=600&apikey=f20b5cf1'
-    // document.getElementById('featuredFilm3').src='http://img.omdbapi.com/?i=' + featureFilms[2] + '&h=600&apikey=f20b5cf1'
-    // document.getElementById('featuredFilm4').src='http://img.omdbapi.com/?i=' + featureFilms[3] + '&h=600&apikey=f20b5cf1'
-    
+
     var elementCarouselIndicators = document.getElementById("carouselIndicators");
     var elementCarouselSection = document.getElementById("carouselSection");
+
 
     for(let i = 0; i < featureFilms.length; i++) {
 
