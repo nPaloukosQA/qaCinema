@@ -3,7 +3,9 @@ package com.qa.rest;
 import com.qa.domain.DeluxeScreen;
 import com.qa.domain.Films;
 import com.qa.domain.StandardScreen;
+import com.qa.dto.DeluxeScreenDTO;
 import com.qa.dto.FilmsDTO;
+import com.qa.dto.StandardScreenDTO;
 import com.qa.service.FilmsService;
 import org.junit.Before;
 import org.junit.Test;
@@ -88,6 +90,22 @@ public class FilmsControllerUnitTest {
         assertEquals(this.filmsController.getFilmsById(testID), new ResponseEntity<FilmsDTO>(
                 this.filmsDTO, HttpStatus.OK));
         verify(service, times(1)).getFilmsById(testID);
+    }
+
+    @Test
+    public void getFilmsStandardScreeningsTest() {
+        when(this.service.getFilmsStandardScreenings(testID)).thenReturn(this.filmsDTO.getStandardScreen());
+        assertEquals(this.filmsController.getFilmsStandardScreenings(testID), new ResponseEntity<List<StandardScreenDTO>>(
+                this.filmsDTO.getStandardScreen(), HttpStatus.OK));
+        verify(service, times(1)).getFilmsStandardScreenings(testID);
+    }
+
+    @Test
+    public void getFilmsDeluxeScreeningsTest() {
+        when(this.service.getFilmsDeluxeScreenings(testID)).thenReturn(this.filmsDTO.getDeluxeScreen());
+        assertEquals(this.filmsController.getFilmsDeluxeScreenings(testID), new ResponseEntity<List<DeluxeScreenDTO>>(
+                this.filmsDTO.getDeluxeScreen(), HttpStatus.OK));
+        verify(service, times(1)).getFilmsDeluxeScreenings(testID);
     }
 
     @Test

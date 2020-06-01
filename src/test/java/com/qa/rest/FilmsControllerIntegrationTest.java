@@ -98,6 +98,22 @@ public class FilmsControllerIntegrationTest {
     }
 
     @Test
+    public void getFilmsStandardScreenings() throws  Exception {
+        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsStandardScreenings/" + this.testID)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString();
+        assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getStandardScreen()));
+    }
+
+    @Test
+    public void getFilmsDeluxeScreenings() throws  Exception {
+        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsDeluxeScreenings/" + this.testID)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString();
+        assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getDeluxeScreen()));
+    }
+
+    @Test
     public void deleteFilmsTest() throws Exception {
         this.mock.perform(request(HttpMethod.DELETE, "/deleteFilms/" + this.testID))
                 .andExpect(status().isNoContent());
