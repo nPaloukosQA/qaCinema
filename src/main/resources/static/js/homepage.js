@@ -4,27 +4,42 @@ const featureFilms = [];
 function getFilmPosters(){
 
     console.log("Started OMDB API");
-    document.getElementById('featuredFilm1').src='http://img.omdbapi.com/?i=' + featureFilms[0] + '&h=600&apikey=f20b5cf1'
-    document.getElementById('featuredFilm2').src='http://img.omdbapi.com/?i=' + featureFilms[1] + '&h=600&apikey=f20b5cf1'
-    document.getElementById('featuredFilm3').src='http://img.omdbapi.com/?i=' + featureFilms[2] + '&h=600&apikey=f20b5cf1'
-    document.getElementById('featuredFilm4').src='http://img.omdbapi.com/?i=' + featureFilms[3] + '&h=600&apikey=f20b5cf1'
+    // document.getElementById('featuredFilm1').src='http://img.omdbapi.com/?i=' + featureFilms[0] + '&h=600&apikey=f20b5cf1'
+    // document.getElementById('featuredFilm2').src='http://img.omdbapi.com/?i=' + featureFilms[1] + '&h=600&apikey=f20b5cf1'
+    // document.getElementById('featuredFilm3').src='http://img.omdbapi.com/?i=' + featureFilms[2] + '&h=600&apikey=f20b5cf1'
+    // document.getElementById('featuredFilm4').src='http://img.omdbapi.com/?i=' + featureFilms[3] + '&h=600&apikey=f20b5cf1'
+    
+    var elementCarouselIndicators = document.getElementById("carouselIndicators");
+    var elementCarouselSection = document.getElementById("carouselSection");
 
-    // var li1 = document.createElement("li");
-    // li1.attributes("data-target","#carouselExampleIndicators");
-    // li1.attributes("data-slide-to","4");
-    // var element2 = document.getElementById("carouselIndicators");
-    // element2.appendChild(li1);
+    for(let i = 0; i < featureFilms.length; i++) {
 
-    var div1 = document.createElement("div");
-    div1.className="carousel-item";
-    var a1 = document.createElement("a");
-    a1.href = "#";
-    var img1 = document.createElement("img");
-    img1.src = 'http://img.omdbapi.com/?i=' + featureFilms[3] + '&h=600&apikey=f20b5cf1';
-    a1.appendChild(img1);
-    div1.appendChild(a1);
-    var element = document.getElementById("carouselSection");
-    element.appendChild(div1);
+        var li1 = document.createElement("li");
+        li1.setAttribute("id", "carouselIndicator" + i);
+        li1.setAttribute("data-target","#carouselIndicator");
+        li1.setAttribute("data-slide-to", i + 1);
+        if (i == 0){
+            li1.className = "active";
+        }
+        elementCarouselIndicators.appendChild(li1);
+    
+        var div1 = document.createElement("div");
+        if (i == 0) {
+            div1.className="carousel-item active";
+        } else {
+            div1.className="carousel-item";
+        }
+        var a1 = document.createElement("a");
+        a1.href = "#";
+        var img1 = document.createElement("img");
+        img1.setAttribute("id", "carouselImage" + i);
+        img1.src = 'http://img.omdbapi.com/?i=' + featureFilms[i] + '&h=600&apikey=f20b5cf1';
+        a1.appendChild(img1);
+        div1.appendChild(a1);
+        elementCarouselSection.appendChild(div1);
+
+    }
+
 
 }
 
