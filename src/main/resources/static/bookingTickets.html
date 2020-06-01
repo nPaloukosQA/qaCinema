@@ -16,6 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="./js/bookingTickets.js"></script>
     <script src="./js/homepage.js" defer></script>
     <script>
         $(function(){
@@ -33,14 +34,14 @@
                     <div class="container mt-4 mb-4">
                         <h1 class="mx-auto text-white" align="center"> Ticket Booking </h1>
                     </div>
-
-                    <!-- Insert Page Body Here -->
                     <form>
                         <td>FIRST NAME:</td>
                         <input type="text" class="input-field" placeholder="First Name" id="fname">
 
-                        <td>FILMS:</td>
-                        <input type="radio" name="film" id="films">
+                        <div>
+                            <td>FILMS:</td>
+                            <input type="radio" name="film" id="films">
+                        </div>
 
                         <p>SCREEN:
                         <label>
@@ -61,56 +62,18 @@
 
                         <div class="select">
                             <p>NUMBER OF ADULTS</p>
-                            <select name="numOfAdults">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
+                            <input type="number" name="numOfAdults" min="0" max="12" step="1" placeholder="1">
 
                             <p>NUMBER OF CHILDREN</p>
-                            <select name="numOfAdults">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
+                            <input type="number" name="numOfAdults" min="0" max="12" step="1" placeholder="0">
 
                             <p>NUMBER OF CONCENSSION</p>
-                            <select name="numOfAdults">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
+                            <input type="number" name="numOfAdults" min="0" max="12" step="1" placeholder="0">
+
                         </div>
 
 
-                        <button type="button" id="submit">SUBMIT</button>
+                        <button type="button" id="submitBtn">SUBMIT</button>
                     </form>
                 </div>
 
