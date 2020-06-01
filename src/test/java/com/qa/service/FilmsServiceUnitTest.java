@@ -116,6 +116,14 @@ public class FilmsServiceUnitTest {
     }
 
     @Test
+    public void getFilmsDeluxeScreeningsTest() {
+        when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
+        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
+        assertEquals(this.service.getFilmsDeluxeScreenings(this.testID), filmsDTO.getDeluxeScreen());
+        verify(repo, times(1)).findById(testID);
+    }
+
+    @Test
     public void deleteUserByExistingID() {
         when(this.repo.existsById(testID)).thenReturn(true, false);
         assertFalse(service.deleteFilms(testID));

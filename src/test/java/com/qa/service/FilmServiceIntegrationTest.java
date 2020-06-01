@@ -83,6 +83,12 @@ public class FilmServiceIntegrationTest {
     }
 
     @Test
+    public void getFilmsDeluxeScreeningsTest() {
+        assertThat(this.service.getFilmsDeluxeScreenings(this.testFilmsWithID.getFilmsID())).isEqualTo
+                (this.mapToDTO(this.testFilmsWithID).getDeluxeScreen());
+    }
+
+    @Test
     public void deleteFilmsTest() {
         assertThat(this.service.deleteFilms(this.testFilmsWithID.getFilmsID())).isFalse();
     }
