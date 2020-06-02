@@ -16,6 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script type="module" src="./js/bookingTickets.js"></script>
     <script src="./js/paymentCalc.js"></script>
     <script>
         $(function(){
@@ -46,30 +47,38 @@
                         <h1 class="mx-auto text-white" align="center"> Ticket Booking </h1>
                     </div>
                     <form>
-                        <td>FIRST NAME:</td>
-                        <input type="text" class="input-field" placeholder="First Name" id="fname">
-
+                        <div align="center">
                         <div>
-                            <td>FILMS:</td>
-                            <input type="radio" name="film" id="films">
-                        </div>
+                        <p style="color:white">FIRST NAME:</p>
+                        <input type="text" class="input-field" placeholder="First Name" id="fname">
+                    </div>
 
                         <p>SCREEN:
                         <label>
                             <input type="radio" name="screen" value="Standard" id="std">
                             <span class="standard">Standard</span>
                         </label>
-                        <label>
-                            <input type="radio" name="screen" value="Deluxe" id="dlx">
-                            <span class="deluxe">Deluxe</span>
-                        </label>
+
+                            <label>
+                                <input type="radio" name="screen" value="Deluxe" id="dlx">
+                                <span class="deluxe">Deluxe</span>
+                            </label>
+
+                        <div>
+                            <td>FILMS:</td>
+                            <select name="film" id="films"></select>
+                        </div>
+
+                        <div>
                         </p>
                             <label>DATE:</label>
-                            <input type="date" id="dt"><br>
+                            <select type="date" id="dt"></select>
+                        </div>
 
+                        <div>
                             <label>TIME:</label>
-                            <input type="time" id="tm">
-
+                            <select type="time" id="tm"></select>
+                        </div>
 
                         <div class="select">
                             <p>NUMBER OF ADULTS</p>
@@ -133,6 +142,7 @@
                         </script>
                 <!-- PayPal-Button -->
                         <button type="button" id="submitBtn">SUBMIT</button>
+                        </div>
                     </form>
                 </div>
 
