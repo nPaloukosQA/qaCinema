@@ -38,6 +38,11 @@ public class FilmsController {
         return ResponseEntity.ok(this.service.getFilmsById(filmsID));
     }
 
+    @GetMapping("/getFilmsByTitle/{filmsTitle}")
+    public ResponseEntity<FilmsDTO> getFilmsByTitle(@PathVariable String filmsTitle) {
+        return ResponseEntity.ok(this.service.getFilmsByTitle(filmsTitle));
+    }
+
     @GetMapping("/getFilmsStandardScreenings/{filmsID}")
     public ResponseEntity<List<StandardScreenDTO>> getFilmsStandardScreenings(@PathVariable Long filmsID) {
         return ResponseEntity.ok(this.service.getFilmsStandardScreenings(filmsID));
