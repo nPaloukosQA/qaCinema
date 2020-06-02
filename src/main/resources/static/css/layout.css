@@ -28,6 +28,8 @@ body{
 .page-container {
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 .content-wrap {
     padding-bottom: 10rem;    /* Footer height */
