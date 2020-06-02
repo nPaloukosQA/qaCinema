@@ -11,6 +11,7 @@ FilmsDTO {
     private String filmsClassification;
     private Boolean filmsIsFeature;
     private String filmsOMDBID;
+    private Boolean filmsCurrentlyReleased;
 
     private List<StandardScreenDTO> standardScreen;
     private List<DeluxeScreenDTO> deluxeScreen;
@@ -19,12 +20,15 @@ FilmsDTO {
 
     }
 
-    public FilmsDTO(String filmsTitle, String filmsClassification, Boolean filmsIsFeature, String filmsOMDBID, List<StandardScreenDTO> standardScreen, List<DeluxeScreenDTO> deluxeScreen) {
+    public FilmsDTO(String filmsTitle, String filmsClassification, Boolean filmsIsFeature,
+                    String filmsOMDBID, Boolean filmsCurrentlyReleased, List<StandardScreenDTO> standardScreen,
+                    List<DeluxeScreenDTO> deluxeScreen) {
 
         this.filmsTitle = filmsTitle;
         this.filmsClassification = filmsClassification;
         this.filmsIsFeature = filmsIsFeature;
         this.filmsOMDBID = filmsOMDBID;
+        this.filmsCurrentlyReleased = filmsCurrentlyReleased;
         this.standardScreen = standardScreen;
         this.deluxeScreen = deluxeScreen;
 
@@ -70,6 +74,14 @@ FilmsDTO {
         this.filmsOMDBID = filmsOMDBID;
     }
 
+    public Boolean getFilmsCurrentlyReleased() {
+        return filmsCurrentlyReleased;
+    }
+
+    public void setFilmsCurrentlyReleased(Boolean filmsCurrentlyReleased) {
+        this.filmsCurrentlyReleased = filmsCurrentlyReleased;
+    }
+
     public List<StandardScreenDTO> getStandardScreen() {
         return standardScreen;
     }
@@ -94,6 +106,7 @@ FilmsDTO {
                 ", filmsClassification='" + filmsClassification + '\'' +
                 ", filmsIsFeature=" + filmsIsFeature +
                 ", filmsOMDBID='" + filmsOMDBID + '\'' +
+                ", filmsCurrentlyReleased=" + filmsCurrentlyReleased +
                 ", standardScreen=" + standardScreen +
                 ", deluxeScreen=" + deluxeScreen +
                 '}';
@@ -109,12 +122,13 @@ FilmsDTO {
                 Objects.equals(filmsClassification, filmsDTO.filmsClassification) &&
                 Objects.equals(filmsIsFeature, filmsDTO.filmsIsFeature) &&
                 Objects.equals(filmsOMDBID, filmsDTO.filmsOMDBID) &&
+                Objects.equals(filmsCurrentlyReleased, filmsDTO.filmsCurrentlyReleased) &&
                 Objects.equals(standardScreen, filmsDTO.standardScreen) &&
                 Objects.equals(deluxeScreen, filmsDTO.deluxeScreen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(FilmsID, filmsTitle, filmsClassification, filmsIsFeature, filmsOMDBID, standardScreen, deluxeScreen);
+        return Objects.hash(FilmsID, filmsTitle, filmsClassification, filmsIsFeature, filmsOMDBID, filmsCurrentlyReleased, standardScreen, deluxeScreen);
     }
 }

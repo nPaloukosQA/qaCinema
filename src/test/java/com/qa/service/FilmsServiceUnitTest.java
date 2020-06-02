@@ -75,10 +75,10 @@ public class FilmsServiceUnitTest {
         this.deluxeScreen = new ArrayList<>();
         this.deluxeScreen.add(testDscreen);
         this.testFilms = new Films("Title", "classification", true,
-                "AAA", standardScreen, deluxeScreen);
+                "AAA", true, standardScreen, deluxeScreen);
         this.filmsList.add(testFilms);
         this.testFilmsWithID = new Films(testFilms.getFilmsTitle(), testFilms.getFilmsClassification(), testFilms.getFilmsIsFeature(),
-                testFilms.getFilmsOMDBID(), testFilms.getStandardScreen(), testFilms.getDeluxeScreen());
+                testFilms.getFilmsOMDBID(), testFilms.getFilmsCurrentlyReleased(), testFilms.getStandardScreen(), testFilms.getDeluxeScreen());
         this.testFilmsWithID.setFilmsID(testID);
         this.filmsDTO = this.mapToDTO(testFilmsWithID);
     }
