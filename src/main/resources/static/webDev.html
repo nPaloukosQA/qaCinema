@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Website Developers </title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="./css/layout.css" rel="stylesheet"/>
+   
+    <!--Scripts import-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script type="module" src="./js/homepage.js" defer></script>
+    <script>
+        $(function(){
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
+    </script>
+</head>
+<body>
+    <div class="page-container">
+        <div id="header"></div>
+            <div class="content-wrap">
+
+                <div class="container mt-4 mb-4 p-1 bg-main2">
+                    <div class="container mt-4 mb-4">
+                        <h1 class="mx-auto text-white"> Website Developers </h1>
+                    </div>
+
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+
+                        <!-- Indicators -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                            <li data-target="#demo" data-slide-to="3"></li>
+                        </ul>
+
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a href="https://www.linkedin.com/login" target="_blank">
+                                <img src="./assets/placeholderImg.png" alt="placeholder">
+                                    <div class="carousel-caption">
+                                        <h3>Luke Conway</h3>
+                                        <p>This is Developer One</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                            <a href="https://www.linkedin.com/login" target="_blank">
+                                <img src="./assets/placeholderImg.png" alt="placeholder">
+                                <div class="carousel-caption">
+                                    <h3>Matthew Dunnage</h3>
+                                    <p>This is Developer Two</p>
+                                </div>
+                            </a>
+                        </div>
+                            <div class="carousel-item">
+                                <a href="https://www.linkedin.com/login" target="_blank">
+                                    <img src="./assets/placeholderImg.png" alt="placeholder">
+                                    <div class="carousel-caption">
+                                        <h3>Nikolaos Paloukos</h3>
+                                        <p>This is Developer Three</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://www.linkedin.com/login" target="_blank">
+                                    <img src="./assets/placeholderImg.png" alt="placeholder">
+                                    <div class="carousel-caption">
+                                        <h3>Dan Reed</h3>
+                                        <p>This is Developer Four</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>
