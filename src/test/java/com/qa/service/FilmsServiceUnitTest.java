@@ -109,13 +109,6 @@ public class FilmsServiceUnitTest {
         verify(repo, times(1)).findById(testID);
     }
 
-    @Test
-    public void findFilmsByTitleTest() {
-        when(this.repo.findFilmsByTitle(testFilmsWithID.getFilmsTitle())).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
-        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
-        assertEquals(this.service.getFilmsByTitle(this.testFilmsTitle), filmsDTO);
-        verify(repo, times(1)).findFilmsByTitle(testFilmsTitle);
-    }
 
     @Test
     public void getFilmsStandardScreeningsTest() {
