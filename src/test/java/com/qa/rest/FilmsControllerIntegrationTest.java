@@ -64,7 +64,7 @@ public class FilmsControllerIntegrationTest {
         this.standardScreen = new ArrayList<>();
         this.deluxeScreen = new ArrayList<>();
         this.testFilms = new Films("Title", "classification", true,
-                "AAA", standardScreen, deluxeScreen);
+                "AAA", true, standardScreen, deluxeScreen);
         this.testFilmsWithID = this.repository.save(testFilms);
         this.testID = testFilmsWithID.getFilmsID();
         this.filmsDTO = this.mapToDTO(testFilmsWithID);

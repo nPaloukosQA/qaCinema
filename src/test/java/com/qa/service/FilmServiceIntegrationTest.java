@@ -55,7 +55,7 @@ public class FilmServiceIntegrationTest {
         this.standardScreen = new ArrayList<>();
         this.deluxeScreen = new ArrayList<>();
         this.testFilms = new Films("Title", "classification", true,
-                "AAA", standardScreen, deluxeScreen);
+                "AAA", true, standardScreen, deluxeScreen);
         this.repo.deleteAll();
         this.testFilmsWithID = this.repo.save(this.testFilms);
     }
