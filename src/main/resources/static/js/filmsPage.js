@@ -27,7 +27,7 @@ function getFilmPosters(){
             div1.className="carousel-item";
         }
         var a1 = document.createElement("a");
-        a1.href = "#";
+        a1.href = "./filmInfoPage.html?id=" + allCurrentFilms[i];
         var img1 = document.createElement("img");
         img1.setAttribute("id", "carouselImage" + i);
         img1.src = 'http://img.omdbapi.com/?i=' + allCurrentFilms[i] + '&h=600&apikey=f20b5cf1';
