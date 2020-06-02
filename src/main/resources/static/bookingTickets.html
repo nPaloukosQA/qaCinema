@@ -125,6 +125,7 @@
                                     return actions.payment.execute().then(function() {
                                         // Show a confirmation message to the buyer
                                         window.alert('Thank you for your purchase!');
+                                        location.href = "./homepage.html"
                                     });
                                 }
                             }, '#paypal-button');
