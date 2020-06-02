@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Tickets</title>
+    <title>Book Tickets</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
@@ -76,12 +76,15 @@
                         <div class="select">
                             <p>NUMBER OF ADULTS</p>
                             <input type="number" name="numOfAdults" min="0" max="12" step="1" value="1" id="inputOfAdults">
+                            <h5 class="mx-auto text-white">£12 per Ticket</h5>
 
                             <p>NUMBER OF CHILDREN</p>
                             <input type="number" name="numOfChildren" min="0" max="12" step="1" value="0" id="inputOfChildren">
+                            <h5 class="mx-auto text-white">£8 per Ticket</h5>
 
                             <p>NUMBER OF CONCENSSION</p>
                             <input type="number" name="numOfConcenssion" min="0" max="12" step="1" value="0" id="inputOfConcession">
+                            <h5 class="mx-auto text-white">£9 per Ticket</h5>
 
                         </div>
 
@@ -123,8 +126,9 @@
                                 // Execute the payment
                                 onAuthorize: function(data, actions) {
                                     return actions.payment.execute().then(function() {
-                                        // Show a confirmation message to the buyer
+                                        // Show a confirmation message to the buyer & load new page
                                         window.alert('Thank you for your purchase!');
+                                        location.href = "./homepage.html"
                                     });
                                 }
                             }, '#paypal-button');
