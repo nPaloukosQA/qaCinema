@@ -64,7 +64,7 @@ public class FilmsControllerIntegrationTest {
         this.standardScreen = new ArrayList<>();
         this.deluxeScreen = new ArrayList<>();
         this.testFilms = new Films("Title", "classification", true,
-                "AAA", standardScreen, deluxeScreen);
+                "AAA", true, standardScreen, deluxeScreen);
         this.testFilmsWithID = this.repository.save(testFilms);
         this.testID = testFilmsWithID.getFilmsID();
         this.filmsDTO = this.mapToDTO(testFilmsWithID);
@@ -95,6 +95,22 @@ public class FilmsControllerIntegrationTest {
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
                 .getContentAsString();
         assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO));
+    }
+
+    @Test
+    public void getFilmsStandardScreenings() throws  Exception {
+        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsStandardScreenings/" + this.testID)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString();
+        assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getStandardScreen()));
+    }
+
+    @Test
+    public void getFilmsDeluxeScreenings() throws  Exception {
+        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsDeluxeScreenings/" + this.testID)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString();
+        assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getDeluxeScreen()));
     }
 
     @Test

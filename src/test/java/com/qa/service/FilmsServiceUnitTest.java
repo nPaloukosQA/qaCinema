@@ -43,6 +43,8 @@ public class FilmsServiceUnitTest {
 
     private Long testID = 1l;
 
+    private String testFilmsTitle = "Title";
+
     private Films testFilmsWithID;
 
     private FilmsDTO filmsDTO;
@@ -75,10 +77,10 @@ public class FilmsServiceUnitTest {
         this.deluxeScreen = new ArrayList<>();
         this.deluxeScreen.add(testDscreen);
         this.testFilms = new Films("Title", "classification", true,
-                "AAA", standardScreen, deluxeScreen);
+                "AAA", true, standardScreen, deluxeScreen);
         this.filmsList.add(testFilms);
         this.testFilmsWithID = new Films(testFilms.getFilmsTitle(), testFilms.getFilmsClassification(), testFilms.getFilmsIsFeature(),
-                testFilms.getFilmsOMDBID(), testFilms.getStandardScreen(), testFilms.getDeluxeScreen());
+                testFilms.getFilmsOMDBID(), testFilms.getFilmsCurrentlyReleased(), testFilms.getStandardScreen(), testFilms.getDeluxeScreen());
         this.testFilmsWithID.setFilmsID(testID);
         this.filmsDTO = this.mapToDTO(testFilmsWithID);
     }
@@ -112,6 +114,14 @@ public class FilmsServiceUnitTest {
         when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
         when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
         assertEquals(this.service.getFilmsStandardScreenings(this.testID), filmsDTO.getStandardScreen());
+        verify(repo, times(1)).findById(testID);
+    }
+
+    @Test
+    public void getFilmsDeluxeScreeningsTest() {
+        when(this.repo.findById(testID)).thenReturn(java.util.Optional.ofNullable(testFilmsWithID));
+        when(this.mapper.map(testFilmsWithID, FilmsDTO.class)).thenReturn(filmsDTO);
+        assertEquals(this.service.getFilmsDeluxeScreenings(this.testID), filmsDTO.getDeluxeScreen());
         verify(repo, times(1)).findById(testID);
     }
 

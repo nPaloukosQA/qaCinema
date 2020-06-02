@@ -58,6 +58,8 @@ public class FilmsService {
         Films update = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
         update.setFilmsTitle(films.getFilmsTitle());
         update.setFilmsClassification(films.getFilmsClassification());
+        update.setFilmsIsFeature(films.getFilmsIsFeature());
+        update.setFilmsCurrentlyReleased(films.getFilmsCurrentlyReleased());
         update.setStandardScreen(films.getStandardScreen());
         update.setDeluxeScreen(films.getDeluxeScreen());
         Films tempFilms = this.repo.save(update);

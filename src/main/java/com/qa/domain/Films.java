@@ -12,12 +12,14 @@ import java.util.Objects;
 public class Films {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long filmsID;
     private String filmsTitle;
     private String filmsClassification;
     private Boolean filmsIsFeature;
     private String filmsOMDBID;
+    @Column(name="films_currently_released")
+    private Boolean filmsCurrentlyReleased;
 
     @OneToMany(mappedBy = "films") @LazyCollection(LazyCollectionOption.FALSE)
     private List<StandardScreen> standardScreen = new ArrayList<>();
@@ -29,12 +31,14 @@ public class Films {
     }
 
     public Films (String filmsTitle, String filmsClassification, Boolean filmsIsFeature,
-                  String filmsOMDBID, List<StandardScreen> standardScreen, List<DeluxeScreen> deluxeScreen) {
+                  String filmsOMDBID, Boolean filmsCurrentlyReleased, List<StandardScreen> standardScreen,
+                  List<DeluxeScreen> deluxeScreen) {
 
         this.filmsTitle = filmsTitle;
         this.filmsClassification = filmsClassification;
         this.filmsIsFeature = filmsIsFeature;
         this.filmsOMDBID = filmsOMDBID;
+        this.filmsCurrentlyReleased = filmsCurrentlyReleased;
         this.standardScreen = standardScreen;
         this.deluxeScreen = deluxeScreen;
     }
@@ -79,6 +83,14 @@ public class Films {
         this.filmsOMDBID = filmsOMDBID;
     }
 
+    public Boolean getFilmsCurrentlyReleased() {
+        return filmsCurrentlyReleased;
+    }
+
+    public void setFilmsCurrentlyReleased(Boolean filmsCurrentlyReleased) {
+        this.filmsCurrentlyReleased = filmsCurrentlyReleased;
+    }
+
     public List<StandardScreen> getStandardScreen() {
         return standardScreen;
     }
@@ -103,6 +115,7 @@ public class Films {
                 ", filmsClassification='" + filmsClassification + '\'' +
                 ", filmsIsFeature=" + filmsIsFeature +
                 ", filmsOMDBID='" + filmsOMDBID + '\'' +
+                ", filmsCurrentlyReleased=" + filmsCurrentlyReleased +
                 ", standardScreen=" + standardScreen +
                 ", deluxeScreen=" + deluxeScreen +
                 '}';
@@ -118,12 +131,13 @@ public class Films {
                 Objects.equals(filmsClassification, films.filmsClassification) &&
                 Objects.equals(filmsIsFeature, films.filmsIsFeature) &&
                 Objects.equals(filmsOMDBID, films.filmsOMDBID) &&
+                Objects.equals(filmsCurrentlyReleased, films.filmsCurrentlyReleased) &&
                 Objects.equals(standardScreen, films.standardScreen) &&
                 Objects.equals(deluxeScreen, films.deluxeScreen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(filmsID, filmsTitle, filmsClassification, filmsIsFeature, filmsOMDBID, standardScreen, deluxeScreen);
+        return Objects.hash(filmsID, filmsTitle, filmsClassification, filmsIsFeature, filmsOMDBID, filmsCurrentlyReleased, standardScreen, deluxeScreen);
     }
 }

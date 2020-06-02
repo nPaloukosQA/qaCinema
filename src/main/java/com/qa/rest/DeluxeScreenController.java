@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class DeluxeScreenController {
 
     private final DeluxeScreenService service;
@@ -45,6 +46,6 @@ public class DeluxeScreenController {
     public ResponseEntity<?> deleteDeluxeScreen(@PathVariable Long deluxeScreenId) {
         return this.service.deleteDeluxeScreen(deluxeScreenId)
                 ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
-                : ResponseEntity.ok(this.service.getDeluxeScreenById(deluxeScreenId));
+                : ResponseEntity.noContent().build();
     }
 }
