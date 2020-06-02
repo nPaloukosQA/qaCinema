@@ -38,8 +38,6 @@ public class BookingInfoService {
 
     public BookingInfoDTO updateBookingInfo(Long bookingInfoId, BookingInfo bookingInfo) {
         BookingInfo update = this.repo.findById(bookingInfoId).orElseThrow(BookingInfoNotFoundException::new);
-        update.setStandardScreeningId(bookingInfo.getStandardScreeningId());
-        update.setDeluxeScreeningId(bookingInfo.getDeluxeScreeningId());
         update.setFirstName(bookingInfo.getFirstName());
         update.setSurname(bookingInfo.getSurname());
         update.setDateOfBirth(bookingInfo.getDateOfBirth());
