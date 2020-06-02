@@ -3,7 +3,7 @@ template.html<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinema Location Info</title>
+    <title>Cinema Location</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
@@ -27,84 +27,65 @@ template.html<!DOCTYPE html>
 <body>
     <div class="page-container">
         <div id="header"></div>
+            <div class="content-wrap">
 
-                <div class="content-wrap">
+                <div class="container mt-4 mb-4 p-1 bg-main2">
+                    <div class="container mt-4 mb-4">
+                       <h1 class="mx-auto text-white"> Our Location:</h1>
+                    </div>
+                </div>
 
-
-
-                    <div class="container mt-4 mb-4 p-1 bg-main2">
-                        <div class="container mt-4 mb-4">
-                           <h1 class="mx-auto text-white"> Our Location:</h1>
-                       </div>
-
-                <div class="container mt-4 mb-4">
+        
+                <div class="container mt-4 mb-4 p-1">
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col">
                             <img id="qaCinemaLocationImage" class="d-block w-100" src="./assets/qaCinemaLocation.jpg">
                         </div>
 
                         <div class = "col">
-                            <h3 style="text-align: left;" class="mx-auto text-white"> Anchorage 1, Anchorage Quay, Salford, The Quays, </h3>
+                            <h3 style="text-align: left;" class="mx-auto text-white"> Anchorage 1, Anchorage Quay</h3>
+                            <h3 style="text-align: left;" class="mx-auto text-white">  Salford, The Quays  </h3>
                             <h3 style="text-align: left;" class="mx-auto text-white">  Manchester, M50 3YJ  </h3>
-
                         </div>
                     </div>
                 </div>
 
                 <div class="container mt-4 mb-4 p-1 bg-main2">
                     <div class="container mt-4 mb-4">
-                       <h1 class="mx-auto text-white"> Surrounding Area:</h1>
+                        <h1 class="mx-auto text-white"> Surrounding Area:</h1>
+                    </div>
 
-                   </div>
-   
-                   <div class="container mt-4 mb-4">
-                       <div class="row">
-                           <div class="col-7">
-                               <img id="qaCinemaLocationImage" class="d-block w-100" src="./assets/qaCinemaLocation.jpg">
-                           </div>
-                           <div class = "col">
-                               <h3 style="text-align: left;" class="mx-auto text-white"> Anchorage 1, Anchorage Quay, Salford, The Quays, </h3>
-                               <h3 style="text-align: left;" class="mx-auto text-white">  Manchester, M50 3YJ  </h3>
-                           </div>
-                       </div>
-                   </div>
-   
-                   <div class="container mt-4 mb-4 p-1 bg-main2">
-                       <div class="container mt-4 mb-4">
-                          <h1 class="mx-auto text-white"> Surrounding Area:</h1>
-                      </div>
-                  </div>
-   
-   
-                  <div class="container mt-4 mb-4"></div>
-                       <div class ="row">
-                           <div class ="col-2 mx-auto">
-                               <img id="oldTraffordImage" style="align-items: center;" class="d-block w-100" src="./assets/oldTrafford.jpg">
-                               <p class="mx-auto text-white">Old Trafford:</p>
-                               <p class="mx-auto text-white">Sir Matt Busby Way, Trafford Park, Stretford</p>
-                               <p class="mx-auto text-white">Manchester, M16 0RA</p>
-                               <p class="mx-auto text-white">Distance from QA Cinema: 1.2 miles</p>
-                               <a id="oldTraffordLink" href="https://www.manutd.com/en/visit-old-trafford">More info</a>
-   
-                           </div>
-   
-                           <div class ="col-2 mx-auto">
-                               <img id="iWMNorthImage" style="align-items: center;" class="d-block w-100" src="./assets/iWMNorth.jpg">
-                               <p class="mx-auto text-white">Imperial War Museum North:</p>
-                               <p class="mx-auto text-white">Trafford Wharf Rd, Trafford Park, Stretford</p>
-                               <p class="mx-auto text-white">Manchester M17 1TZ</p>
-                               <p class="mx-auto text-white">Distance from QA Cinema: 0.8 miles</p>
-                               <a id="iWMNorthLink" href="https://www.iwm.org.uk/visits/iwm-north">More info</a>
-                           </div>
-   
-                           <div class ="col-2 mx-auto">
-                               <img id="ordsallParkImage" style="align-items: center;" class="d-block w-100" src="./assets/ordsallPark.jpg">
-                               <p class="mx-auto text-white">ordsallPark:</p>
-                               <p class="mx-auto text-white">Trafford Rd, Ordsall, Manchester, M5 3AD</p>
-                               <p class="mx-auto text-white">Distance from QA Cinema: 0.6 miles</p>
-                               <a id="ordsallParkLink" href="https://www.salford.gov.uk/parks-and-open-spaces/salford-parks/ordsall-park/">More info</a>
-                           </div>
-                       </div>
+                </div>
+
+              
+                <div class ="row">
+                    <div class ="col-2 mx-auto">
+                        <img id="oldTraffordImage" style="align-items: center;" class="d-block w-100" src="./assets/oldTrafford.jpg">
+                        <p class="mx-auto text-white">Old Trafford:</p>
+                        <p class="mx-auto text-white">Sir Matt Busby Way, Trafford Park, Stretford</p>
+                        <p class="mx-auto text-white">Manchester, M16 0RA</p>
+                        <p class="mx-auto text-white">Distance from QA Cinema: 1.2 miles</p>
+                        <a id="oldTraffordLink" href="https://www.manutd.com/en/visit-old-trafford">More info</a>
+
+                    </div>
+
+                    <div class ="col-2 mx-auto">
+                        <img id="iWMNorthImage" style="align-items: center;" class="d-block w-100" src="./assets/iWMNorth.jpg">
+                        <p class="mx-auto text-white">Imperial War Museum North:</p>
+                        <p class="mx-auto text-white">Trafford Wharf Rd, Trafford Park, Stretford</p>
+                        <p class="mx-auto text-white">Manchester M17 1TZ</p>
+                        <p class="mx-auto text-white">Distance from QA Cinema: 0.8 miles</p>
+                        <a id="iWMNorthLink" href="https://www.iwm.org.uk/visits/iwm-north">More info</a>
+                    </div>
+
+                    <div class ="col-2 mx-auto">
+                        <img id="ordsallParkImage" style="align-items: center;" class="d-block w-100" src="./assets/ordsallPark.jpg">
+                        <p class="mx-auto text-white">ordsallPark:</p>
+                        <p class="mx-auto text-white">Trafford Rd, Ordsall, Manchester, M5 3AD</p>
+                        <p class="mx-auto text-white">Distance from QA Cinema: 0.6 miles</p>
+                        <a id="ordsallParkLink" href="https://www.salford.gov.uk/parks-and-open-spaces/salford-parks/ordsall-park/">More info</a>
+                    </div>
+                </div>
 
             </div>
         <div id="footer"></div>

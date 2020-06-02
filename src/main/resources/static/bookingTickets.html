@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Tickets</title>
+    <title>Book Tickets</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
@@ -16,8 +16,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <script src="./js/bookingTickets.js"></script>
-    <script src="./js/homepage.js" defer></script>
     <script src="./js/paymentCalc.js"></script>
     <script>
         $(function(){
@@ -38,7 +36,7 @@
                     <tr>
                         <td align="center">
                             <a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/bdg_now_accepting_pp_2line_w.png" border="0" alt="Now Accepting PayPal"></a>
-                            <div style="text-align:center"><a href="https://www.paypal.com/webapps/mpp/how-paypal-works"><font size="2" face="Arial" color="#0079CD">How PayPal Works</font></a></div>
+                            <div style="text-align:center"><a href="https://www.paypal.com/webapps/mpp/how-paypal-works" target="_blank"><font size="2" face="Arial" color="#0079CD">How PayPal Works</font></a></div>
                         </td>
                     </tr>
                 </table>
@@ -58,30 +56,33 @@
 
                         <p>SCREEN:
                         <label>
-                            <input type="radio" name="screen" value="Standard">
+                            <input type="radio" name="screen" value="Standard" id="std">
                             <span class="standard">Standard</span>
                         </label>
                         <label>
-                            <input type="radio" name="screen" value="Deluxe">
+                            <input type="radio" name="screen" value="Deluxe" id="dlx">
                             <span class="deluxe">Deluxe</span>
                         </label>
                         </p>
                             <label>DATE:</label>
-                            <input type="date"><br>
+                            <input type="date" id="dt"><br>
 
                             <label>TIME:</label>
-                            <input type="time">
+                            <input type="time" id="tm">
 
 
                         <div class="select">
                             <p>NUMBER OF ADULTS</p>
                             <input type="number" name="numOfAdults" min="0" max="12" step="1" value="1" id="inputOfAdults">
+                            <h5 class="mx-auto text-white">£12 per Ticket</h5>
 
                             <p>NUMBER OF CHILDREN</p>
                             <input type="number" name="numOfChildren" min="0" max="12" step="1" value="0" id="inputOfChildren">
+                            <h5 class="mx-auto text-white">£8 per Ticket</h5>
 
                             <p>NUMBER OF CONCENSSION</p>
                             <input type="number" name="numOfConcenssion" min="0" max="12" step="1" value="0" id="inputOfConcession">
+                            <h5 class="mx-auto text-white">£9 per Ticket</h5>
 
                         </div>
 
@@ -123,13 +124,15 @@
                                 // Execute the payment
                                 onAuthorize: function(data, actions) {
                                     return actions.payment.execute().then(function() {
-                                        // Show a confirmation message to the buyer
+                                        // Show a confirmation message to the buyer & load new page
                                         window.alert('Thank you for your purchase!');
+                                        location.href = "./homepage.html"
                                     });
                                 }
                             }, '#paypal-button');
                         </script>
                 <!-- PayPal-Button -->
+                        <button type="button" id="submitBtn">SUBMIT</button>
                     </form>
                 </div>
 
