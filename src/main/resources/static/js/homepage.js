@@ -1,5 +1,6 @@
 import axiosConfig from './axiosConfig.js';
 const featureFilms = [];
+const filmIDs = [];
 
 function getFilmPosters(){
 
@@ -27,7 +28,7 @@ function getFilmPosters(){
             div1.className="carousel-item";
         }
         var a1 = document.createElement("a");
-        a1.href = "#";
+        a1.href = "./filmInfoPage.html?omdbid=" + featureFilms[i] + "&id=" + filmIDs[i];
         var img1 = document.createElement("img");
         img1.setAttribute("id", "carouselImage" + i);
         img1.src = 'http://img.omdbapi.com/?i=' + featureFilms[i] + '&h=600&apikey=f20b5cf1';
@@ -52,8 +53,10 @@ function OnStartUp() {
                 console.log(response.data[i].filmsOMDBID)
                 if (response.data[i].filmsIsFeature) {
                     featureFilms.push(response.data[i].filmsOMDBID);
+                    filmIDs.push(response.data[i].filmsID);
                 }
                 console.log(featureFilms);
+                console.log(filmIDs);
             }
             getFilmPosters();
         })

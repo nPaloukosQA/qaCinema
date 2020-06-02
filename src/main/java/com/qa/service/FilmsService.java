@@ -44,6 +44,10 @@ public class FilmsService {
         return this.mapToDTO(this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new));
     }
 
+    public FilmsDTO getFilmsByTitle(String filmsTitle) {
+        return this.mapToDTO(this.repo.findFilmsByTitle(filmsTitle).orElseThrow(FilmsNotFoundException::new));
+    }
+
     public List<StandardScreenDTO> getFilmsStandardScreenings(Long filmsID) {
         Films tempFilms = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
         return this.mapToDTO(tempFilms).getStandardScreen();
