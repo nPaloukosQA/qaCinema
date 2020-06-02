@@ -16,8 +16,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <script src="./js/bookingTickets.js"></script>
-    <script src="./js/homepage.js" defer></script>
     <script src="./js/paymentCalc.js"></script>
     <script>
         $(function(){
@@ -58,19 +56,19 @@
 
                         <p>SCREEN:
                         <label>
-                            <input type="radio" name="screen" value="Standard">
+                            <input type="radio" name="screen" value="Standard" id="std">
                             <span class="standard">Standard</span>
                         </label>
                         <label>
-                            <input type="radio" name="screen" value="Deluxe">
+                            <input type="radio" name="screen" value="Deluxe" id="dlx">
                             <span class="deluxe">Deluxe</span>
                         </label>
                         </p>
                             <label>DATE:</label>
-                            <input type="date"><br>
+                            <input type="date" id="dt"><br>
 
                             <label>TIME:</label>
-                            <input type="time">
+                            <input type="time" id="tm">
 
 
                         <div class="select">
@@ -134,6 +132,7 @@
                             }, '#paypal-button');
                         </script>
                 <!-- PayPal-Button -->
+                        <button type="button" id="submitBtn">SUBMIT</button>
                     </form>
                 </div>
 
