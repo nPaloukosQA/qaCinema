@@ -19,7 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CinemaLocationSeleniumTest {
+public class CinemaLocationSeleniumTest extends JUnitTestReporter {
 
     private WebDriver driver;
 
@@ -35,7 +35,7 @@ public class CinemaLocationSeleniumTest {
     }
 
     @After
-    public void tearDown() {
+    public void driverClose() {
         driver.close();
     }
 
