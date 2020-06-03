@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DeluxeScreenRepository extends JpaRepository<DeluxeScreen, Long> {
 
-    DeluxeScreen findByDeluxeBookingId(Long deluxeScreenId);
 }
