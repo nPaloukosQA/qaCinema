@@ -23,26 +23,19 @@ public class OpeningTimesSeleniumTest {
     private WebDriver driver;
 
     @LocalServerPort
-    private int port;
+    private String port;
 
     @Before
     public void init() {
-        System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\dan\\intellij-workspace\\qaCinema\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions opts = new ChromeOptions();
-        //opts.setHeadless(true);
-        this.driver = new ChromeDriver(opts);
-    }
-
-    @After
-    public void teardown() {
-        driver.quit();
+        driver = new ChromeDriver(opts);
     }
 
     @Test
     public void testOpeningTimesPage() {
         driver.manage().window().maximize();
-        driver.get("http://localhost:" + port);
+        driver.get("http://127.0.0.1:" + port + "/src/main/resources/static/openingTimes.html");
         OpeningTimesSeleniumElements openingTimes = PageFactory.initElements(driver, OpeningTimesSeleniumElements.class);
 
         WebDriverWait wait = new WebDriverWait(driver, 2);
@@ -50,6 +43,9 @@ public class OpeningTimesSeleniumTest {
         assertFalse(openingTimes.getOpeningTimesTitle().getText().isEmpty());
     }
 
-
+    @After
+    public void driverClose() {
+        driver.close();
+    }
 
 }
