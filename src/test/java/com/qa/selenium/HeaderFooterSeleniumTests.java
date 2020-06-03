@@ -1,12 +1,16 @@
 package com.qa.selenium;
 
-import org.testng.ITestResult;
-import org.testng.annotations.*;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -14,112 +18,75 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static java.lang.Thread.*;
 
-import java.io.File;
-
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class HeaderFooterSeleniumTests {
+public class HeaderFooterSeleniumTests extends JUnitTestReporter {
     
     @LocalServerPort
     static String port;
 
     static WebDriver driver;
-    static ExtentReports report;
-    static ExtentTest test;
 
-    @BeforeTest
-    public static void startReport() {
-        report = new ExtentReports(System.getProperty("user.dir") + "/test-output/Report.html", true);
-        report.addSystemInfo("Host Name", "QA").addSystemInfo("Tester", "Luke");
-        report.loadConfig(new File(System.getProperty("user.dir") + "\\extent-report.xml"));
-    }
     
-    @BeforeMethod
-    public void setUp(){
-        driver = new ChromeDriver();
+    @Before
+    public void driverSetUp(){
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        ChromeOptions opts = new ChromeOptions();
+        driver = new ChromeDriver(opts);
+        System.out.println("heya!");
     }
 
     @Test
+	public void htmlsampleTest0() {
+		assertTrue(1 < 2);
+	}
+
+    @Test
     public void seleniumHeaderTest() throws InterruptedException {
-        test = report.startTest("Testing Webpage Header");
         driver.manage().window().maximize();
-        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
         driver.get("http://127.0.0.1:"+ port +"/src/main/resources/static/homepage.html");
-        test.log(LogStatus.INFO, "Navigated to the Cinema website");
         sleep(2000);
-        test.log(LogStatus.INFO, "Attempting to access burger menu link for films page link...");
         WebElement burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
         burgerMenu.click();
         sleep(2000);
         WebElement headerFilmsLink = driver.findElement(By.id("headerLinkFilms"));
         headerFilmsLink.click();
         sleep(3000);
-        test.log(LogStatus.INFO, "Header Burger menu Link to Films page Succeeded");
-        test.log(LogStatus.INFO, "Attempting to use Header Logo for homepage link...");
-        WebElement headerLogoLink = driver.findElement(By.id("headerLogoLink"));
-        headerLogoLink.click();
-        sleep(3000);
-        test.log(LogStatus.INFO, "Header Logo Link to Home page Succeeded");
-        test.log(LogStatus.INFO, "Attempting to use burger menu for Screens page link...");
-        burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
-        burgerMenu.click();
-        sleep(2000);
-        WebElement headerScreensLink = driver.findElement(By.id("headerLinkScreen"));
-        headerScreensLink.click();
-        sleep(3000);
-        test.log(LogStatus.INFO, "Burger Menu Link to Screens page Succeeded");
-        test.log(LogStatus.INFO, "Attempting to use burger menu for About Us page link...");
-        burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
-        burgerMenu.click();
-        sleep(2000);
-        WebElement headerAboutLink = driver.findElement(By.id("headerLinkAbout"));
-        headerAboutLink.click();
-        sleep(3000);
-        test.log(LogStatus.INFO, "Burger Menu Link to About Us page Succeeded");
-
-        test.log(LogStatus.INFO, "Header Selenium Tests Complete");
+        assertTrue(driver.getCurrentUrl().contentEquals("http:127.0.0.1:" + port + "/src/main/resources/static/filmsPage.html"));
+        // WebElement headerLogoLink = driver.findElement(By.id("headerLogoLink"));
+        // headerLogoLink.click();
+        // sleep(3000);
+        // burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
+        // burgerMenu.click();
+        // sleep(2000);
+        // WebElement headerScreensLink = driver.findElement(By.id("headerLinkScreen"));
+        // headerScreensLink.click();
+        // sleep(3000);
+        // burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
+        // burgerMenu.click();
+        // sleep(2000);
+        // WebElement headerAboutLink = driver.findElement(By.id("headerLinkAbout"));
+        // headerAboutLink.click();
+        // sleep(3000);
     }
 
-    @Test
-    public void SeleniumFooterTest() throws InterruptedException {
-        test = report.startTest("Testing Webpage Footer");
-        driver.manage().window().maximize();
-        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
-        driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
-        test.log(LogStatus.INFO, "Navigated to the Cinema website");
-        sleep(2000);
-        test.log(LogStatus.INFO, "Attempting to use footer About Us Link...");
-        WebElement footerAboutUsLink = driver.findElement(By.id("footerLinkInformation"));
-        footerAboutUsLink.click();
-        sleep(3000);
-        test.log(LogStatus.INFO, "Footer About Us Link to About Us Page Succeeded");
-        sleep(2000);
-        test.log(LogStatus.INFO, "Attempting to use footer Logo for homepage link...");
-        WebElement footerLogoLink = driver.findElement(By.id("footerLinkLogo"));
-        footerLogoLink.click();
-        sleep(3000);
-        test.log(LogStatus.INFO, "Footer Logo Link to Home page Succeeded");
-    }
+    // @Test
+    // public void SeleniumFooterTest() throws InterruptedException {
+    //     driver.manage().window().maximize();
+    //     driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
+    //     sleep(2000);
+    //     WebElement footerAboutUsLink = driver.findElement(By.id("footerLinkInformation"));
+    //     footerAboutUsLink.click();
+    //     sleep(3000);
+    //     sleep(2000);
+    //     WebElement footerLogoLink = driver.findElement(By.id("footerLinkLogo"));
+    //     footerLogoLink.click();
+    //     sleep(3000);
+    // }
     
-    @AfterMethod
-    public void getResult(ITestResult result){
+    @After
+    public void getResult(){
         driver.close();
-        if(result.getStatus() == ITestResult.FAILURE){
-            test.log(LogStatus.FAIL, "Test has failed " + result.getName());
-            test.log(LogStatus.FAIL, "Test has failed " + result.getThrowable());
-        } else if (result.getStatus() == ITestResult.SUCCESS) {
-            test.log(LogStatus.PASS, "Test has passed " + result.getName());
-        }
-        report.endTest(test);
     }
 
-    @AfterTest
-    public static void endReport(){
-        report.flush();
-        report.close();
-    }
 }
