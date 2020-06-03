@@ -1,7 +1,6 @@
 package com.qa.dto;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,17 +11,18 @@ public class StandardScreenDTO {
     private String standardScreenSeatsBooked;
     private LocalDate standardScreenDate;
 
-    private List<BookingInfoDTO> bookings;
+    private List<FilmsDTO> films;
 
     public StandardScreenDTO() {
 
     }
 
-    public StandardScreenDTO(Double standardScreenScreeningTime, String standardScreenSeatsBooked, LocalDate standardScreenDate){
+    public StandardScreenDTO(Double standardScreenScreeningTime, String standardScreenSeatsBooked, LocalDate standardScreenDate, List<FilmsDTO> films){
         super();
         this.standardScreenScreeningTime = standardScreenScreeningTime;
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
         this.standardScreenDate = standardScreenDate;
+        this.films = films;
     }
 
     public Long getStandardScreeningId() {
@@ -57,12 +57,12 @@ public class StandardScreenDTO {
         this.standardScreenDate = standardScreenDate;
     }
 
-    public List<BookingInfoDTO> getBookings() {
-        return bookings;
+    public List<FilmsDTO> getFilms() {
+        return films;
     }
 
-    public void setBookings(List<BookingInfoDTO> bookings) {
-        this.bookings = bookings;
+    public void setFilms(List<FilmsDTO> films) {
+        this.films = films;
     }
 
     @Override
@@ -74,11 +74,11 @@ public class StandardScreenDTO {
                 Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
                 Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked()) &&
                 Objects.equals(getStandardScreenDate(), that.getStandardScreenDate()) &&
-                Objects.equals(getBookings(), that.getBookings());
+                Objects.equals(getFilms(), that.getFilms());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getStandardScreenDate(), getBookings());
+        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getStandardScreenDate(), getFilms());
     }
 }
