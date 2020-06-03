@@ -36,9 +36,8 @@ function screenTimes(filmID){
         .then(response => {
             console.log(response);
             for (let i = 0; i < response.data.length; i++){
-                console.log(response.data[i]);
-                if (response.data[i].filmsID){
-
+                if (response.data[i].films.filmsID == filmID){
+                    console.log(response.data[i].films.filmsID);
                 }
             }
         })
@@ -50,20 +49,10 @@ function screenTimes(filmID){
         .then(response => {
             console.log(response);
             for (let i = 0; i < response.data.length; i++){
-                console.log(response.data[i]);
                 if (response.data[i].filmsID){
 
                 }
             }
-        })
-        .catch(error => {
-
-        })
-
-    axiosConfig.get("/getAllBookingInfos")
-        .then(response => {
-            console.log("Booking info: ", response.data);
-            
         })
         .catch(error => {
 
