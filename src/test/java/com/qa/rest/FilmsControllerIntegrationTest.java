@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -97,21 +96,21 @@ public class FilmsControllerIntegrationTest {
         assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO));
     }
 
-    @Test
-    public void getFilmsStandardScreenings() throws  Exception {
-        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsStandardScreenings/" + this.testID)
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
-                .getContentAsString();
-        assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getStandardScreen()));
-    }
+    // @Test
+    // public void getFilmsStandardScreenings() throws  Exception {
+    //     String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsStandardScreenings/" + this.testID)
+    //             .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
+    //             .getContentAsString();
+    //     assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getStandardScreen()));
+    // }
 
-    @Test
-    public void getFilmsDeluxeScreenings() throws  Exception {
-        String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsDeluxeScreenings/" + this.testID)
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
-                .getContentAsString();
-        assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getDeluxeScreen()));
-    }
+    // @Test
+    // public void getFilmsDeluxeScreenings() throws  Exception {
+    //     String jsonContent = this.mock.perform(request(HttpMethod.GET, "/getFilmsDeluxeScreenings/" + this.testID)
+    //             .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn().getResponse()
+    //             .getContentAsString();
+    //     assertEquals(jsonContent, this.objectMapper.writeValueAsString(filmsDTO.getDeluxeScreen()));
+    // }
 
     @Test
     public void deleteFilmsTest() throws Exception {

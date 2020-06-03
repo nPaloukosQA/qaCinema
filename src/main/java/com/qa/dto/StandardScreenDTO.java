@@ -1,6 +1,6 @@
 package com.qa.dto;
 
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class StandardScreenDTO {
@@ -8,17 +8,20 @@ public class StandardScreenDTO {
     private Long standardScreeningId;
     private Double standardScreenScreeningTime;
     private String standardScreenSeatsBooked;
+    private LocalDate standardScreenDate;
 
-    private List<BookingInfoDTO> bookings;
+    private FilmsDTO films;
 
     public StandardScreenDTO() {
 
     }
 
-    public StandardScreenDTO(Double standardScreenScreeningTime, String standardScreenSeatsBooked){
+    public StandardScreenDTO(Double standardScreenScreeningTime, String standardScreenSeatsBooked, LocalDate standardScreenDate, FilmsDTO films){
         super();
         this.standardScreenScreeningTime = standardScreenScreeningTime;
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
+        this.standardScreenDate = standardScreenDate;
+        this.films = films;
     }
 
     public Long getStandardScreeningId() {
@@ -45,22 +48,20 @@ public class StandardScreenDTO {
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
     }
 
-    public List<BookingInfoDTO> getBookings() {
-        return bookings;
+    public LocalDate getStandardScreenDate() {
+        return standardScreenDate;
     }
 
-    public void setBookings(List<BookingInfoDTO> bookings) {
-        this.bookings = bookings;
+    public void setStandardScreenDate(LocalDate standardScreenDate) {
+        this.standardScreenDate = standardScreenDate;
     }
 
-    @Override
-    public String toString() {
-        return "StandardScreenDTO{" +
-                "standardScreeningId=" + standardScreeningId +
-                ", standardScreenScreeningTime=" + standardScreenScreeningTime +
-                ", standardScreenSeatsBooked='" + standardScreenSeatsBooked + '\'' +
-                ", bookings=" + bookings +
-                '}';
+    public FilmsDTO getFilms() {
+        return films;
+    }
+
+    public void setFilms(FilmsDTO films) {
+        this.films = films;
     }
 
     @Override
@@ -71,11 +72,12 @@ public class StandardScreenDTO {
         return Objects.equals(getStandardScreeningId(), that.getStandardScreeningId()) &&
                 Objects.equals(getStandardScreenScreeningTime(), that.getStandardScreenScreeningTime()) &&
                 Objects.equals(getStandardScreenSeatsBooked(), that.getStandardScreenSeatsBooked()) &&
-                Objects.equals(getBookings(), that.getBookings());
+                Objects.equals(getStandardScreenDate(), that.getStandardScreenDate()) &&
+                Objects.equals(getFilms(), that.getFilms());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getBookings());
+        return Objects.hash(getStandardScreeningId(), getStandardScreenScreeningTime(), getStandardScreenSeatsBooked(), getStandardScreenDate(), getFilms());
     }
 }

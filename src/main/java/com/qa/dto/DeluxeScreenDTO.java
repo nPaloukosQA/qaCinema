@@ -1,28 +1,27 @@
 package com.qa.dto;
 
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class DeluxeScreenDTO {
 
     private Long deluxeScreeningId;
-    private Long deluxeFilmId;
-    private Long deluxeBookingId;
     private Double deluxeScreeningTime;
     private String deluxeSeatsBooked;
+    private LocalDate deluxeScreenDate;
 
-    private List<BookingInfoDTO> bookings;
+    private FilmsDTO films;
 
     public DeluxeScreenDTO(){
 
     }
 
-    public DeluxeScreenDTO(Long deluxeFilmId, Long deluxeBookingId, Double deluxeScreeningTime, String deluxeSeatsBooked) {
+    public DeluxeScreenDTO(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate, FilmsDTO films) {
         super();
-        this.deluxeFilmId = deluxeFilmId;
-        this.deluxeBookingId = deluxeBookingId;
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
+        this.deluxeScreenDate = deluxeScreenDate;
+        this.films = films;
     }
 
     public Long getDeluxeScreeningId() {
@@ -31,22 +30,6 @@ public class DeluxeScreenDTO {
 
     public void setDeluxeScreeningId(Long deluxeScreeningId) {
         this.deluxeScreeningId = deluxeScreeningId;
-    }
-
-    public Long getDeluxeFilmId() {
-        return deluxeFilmId;
-    }
-
-    public void setDeluxeFilmId(Long deluxeFilmId) {
-        this.deluxeFilmId = deluxeFilmId;
-    }
-
-    public Long getDeluxeBookingId() {
-        return deluxeBookingId;
-    }
-
-    public void setDeluxeBookingId(Long deluxeBookingId) {
-        this.deluxeBookingId = deluxeBookingId;
     }
 
     public Double getDeluxeScreeningTime() {
@@ -65,41 +48,36 @@ public class DeluxeScreenDTO {
         this.deluxeSeatsBooked = deluxeSeatsBooked;
     }
 
-    public List<BookingInfoDTO> getBookings() {
-        return bookings;
+    public LocalDate getDeluxeScreenDate() {
+        return deluxeScreenDate;
     }
 
-    public void setBookings(List<BookingInfoDTO> bookings) {
-        this.bookings = bookings;
+    public void setDeluxeScreenDate(LocalDate deluxeScreenDate) {
+        this.deluxeScreenDate = deluxeScreenDate;
     }
 
-    @Override
-    public String toString(){
-        return "DeluxeScreenDTO{" +
-                "deluxeScreeningId=" + deluxeScreeningId +
-                ", deluxeFilmId=" + deluxeFilmId +
-                ", deluxeBookingId=" + deluxeBookingId +
-                ", deluxeScreeningTime=" + deluxeScreeningTime +
-                ", deluxeSeatsBooked=" + deluxeSeatsBooked + '\'' +
-                ", bookings=" + bookings +
-                '}';
+    public FilmsDTO getFilms() {
+        return films;
+    }
+
+    public void setFilms(FilmsDTO films) {
+        this.films = films;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof DeluxeScreenDTO)) return false;
         DeluxeScreenDTO that = (DeluxeScreenDTO) o;
-        return Objects.equals(deluxeScreeningId, that.deluxeScreeningId) &&
-                Objects.equals(deluxeFilmId, that.deluxeFilmId) &&
-                Objects.equals(deluxeBookingId, that.deluxeBookingId) &&
-                Objects.equals(deluxeScreeningTime, that.deluxeScreeningTime) &&
-                Objects.equals(deluxeSeatsBooked, that.deluxeSeatsBooked) &&
-                Objects.equals(bookings, that.bookings);
+        return Objects.equals(getDeluxeScreeningId(), that.getDeluxeScreeningId()) &&
+                Objects.equals(getDeluxeScreeningTime(), that.getDeluxeScreeningTime()) &&
+                Objects.equals(getDeluxeSeatsBooked(), that.getDeluxeSeatsBooked()) &&
+                Objects.equals(getDeluxeScreenDate(), that.getDeluxeScreenDate()) &&
+                Objects.equals(getFilms(), that.getFilms());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(deluxeScreeningId, deluxeFilmId, deluxeBookingId, deluxeScreeningTime, deluxeSeatsBooked, bookings);
+        return Objects.hash(getDeluxeScreeningId(), getDeluxeScreeningTime(), getDeluxeSeatsBooked(), getDeluxeScreenDate(), getFilms());
     }
 }

@@ -4,7 +4,6 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,10 +21,10 @@ public class Films {
     private Boolean filmsCurrentlyReleased;
 
     @OneToMany(mappedBy = "films") @LazyCollection(LazyCollectionOption.FALSE)
-    private List<StandardScreen> standardScreen = new ArrayList<>();
+    private List<StandardScreen> standardScreen;
 
     @OneToMany(mappedBy = "films") @LazyCollection(LazyCollectionOption.FALSE)
-    private List<DeluxeScreen> deluxeScreen = new ArrayList<>();
+    private List<DeluxeScreen> deluxeScreen;
 
     public Films () {
     }

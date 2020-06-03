@@ -2,7 +2,6 @@ package com.qa.service;
 
 import com.qa.domain.BookingInfo;
 import com.qa.dto.BookingInfoDTO;
-import com.qa.dto.StandardScreenDTO;
 import com.qa.exceptions.BookingInfoNotFoundException;
 import com.qa.repo.BookingInfoRepository;
 import org.junit.Before;
@@ -13,7 +12,6 @@ import org.mockito.Mock;
 import org.modelmapper.ModelMapper;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 

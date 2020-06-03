@@ -5,7 +5,6 @@ import com.qa.dto.DeluxeScreenDTO;
 import com.qa.exceptions.DeluxeScreenNotFoundException;
 import com.qa.repo.DeluxeScreenRepository;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
