@@ -2,23 +2,6 @@ import axiosConfig from "./axiosConfig.js";
 
 let subBtn = document.getElementById('submitBtn');
 
-    const getFilms = () => {
-        axiosConfig.get("/getAllFilms").then(response => {
-            console.log(response.data);
-            let filmSelector = document.getElementById("films");
-            for (let i = 0; i < response.data.length; i++) {
-                let option1 = document.createElement("option");
-                option1.value = response.data[i].filmsTitle;
-                option1.innerHTML = response.data[i].filmsTitle;
-                filmSelector.appendChild(option1);
-            }
-        })
-    };
-
-filmz:document.getElementById("films").valueOf(getFilms());
-
-
-
 
 const postData = () => {
     axiosConfig.post('/createBookingInfo', {
@@ -46,43 +29,68 @@ const postData = () => {
 
 subBtn.addEventListener('click', postData);
 
-// let stdScreens = [];
-//
-// function getStdScreens() {
-//     console.log("Starting API for getting Standard Screens")
-//
-//     var element = document.getElementById("std");
-//     var radioNodeList = document.getElementById("dlx");
-//
-//     for (let i = 0; stdScreens.length; i++) {
-//         var std = document.getElementById("std");
-//         std.setAttribute("id", "std" + i);
-//         std.setAttribute("data-target", "#std");
-//     }
-//
-//     var dlx = document.getElementById("dlx");
-//
-//     element.appendChild(std);
-//     radioNodeList.appendChild(dlx);
-//
-// }
-//
-//
-// let stdID
-// function OnStartUp() {
-//
-//     console.log("Start Up loaded");
-//
-//     axiosConfig.get("/getFilmsStandardScreenings/{filmsID}")
-//         .then(response => {
-//             console.log(response.data);
-//             for (let i = 0; i < response.data.length; i++){
-//                 console.log(response.data[i]);
-//             }
-//             getStdScreens();
-//
-//         })
-//
-// }
-//
-// window.onload = OnStartUp();
+
+const getFilms = () => {
+    axiosConfig.get("/getAllFilms").then(response => {
+        console.log(response.data);
+        let filmSelector = document.getElementById("films");
+        for (let i = 0; i < response.data.length; i++) {
+            let option1 = document.createElement("option");
+            option1.value = response.data[i].filmsTitle;
+            option1.innerHTML = response.data[i].filmsTitle;
+            filmSelector.appendChild(option1);
+        }
+    })
+};
+
+films:document.getElementById("films").valueOf(getFilms());
+
+
+let pickStdScreen = document.getElementById("std")
+
+function stdScreenTimes(filmID) {
+
+    axiosConfig.get("/getAllStandardScreens")
+        .then(response => {
+            console.log(response);
+            for (let i = 0; i < response.data.length; i++) {
+                if (response.data[i].films.filmsID == filmID) {
+                    console.log(response.data[i].films.filmsID);
+                }
+            }
+        })
+        .catch(error => {
+
+        })
+}
+
+let pickDlxScreen = document.getElementById("dlx")
+
+function dlxScreenTimes(filmId) {
+
+    axiosConfig.get("/getAllDeluxeScreens")
+        .then(response => {
+            console.log(response);
+            for (let i = 0; i < response.data.length; i++){
+                if (response.data[i].films.filmsId == filmId){
+                    console.log(response.data[i].films.filmsId);
+
+                }
+            }
+        })
+        .catch(error => {
+
+        })
+
+
+}
+
+pickStdScreen.addEventListener("click", stdScreenTimes);
+pickDlxScreen.addEventListener("click", dlxScreenTimes);
+
+function OnStartUp() {
+    stdScreenTimes();
+    dlxScreenTimes();
+}
+
+window.onload = OnStartUp();
