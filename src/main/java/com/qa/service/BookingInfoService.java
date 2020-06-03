@@ -6,6 +6,7 @@ import com.qa.exceptions.BookingInfoNotFoundException;
 import com.qa.repo.BookingInfoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class BookingInfoService {
     private final BookingInfoRepository repo;
 
     private final ModelMapper mapper;
+
 
     @Autowired
     public BookingInfoService(BookingInfoRepository repo, ModelMapper mapper) {

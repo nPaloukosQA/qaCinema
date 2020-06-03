@@ -5,7 +5,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class OpeningTimesSeleniumElements {
 
-    @FindBy(id = "enterId")
-    private WebElement elementName;
+    @FindBy(id = "openingTimesTitle")
+    private WebElement openingTimesTitle;
+
+    public WebElement getOpeningTimesTitle() {
+        return openingTimesTitle;
+    }
 
 }
