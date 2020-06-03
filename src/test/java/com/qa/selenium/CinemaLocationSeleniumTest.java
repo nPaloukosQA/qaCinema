@@ -16,28 +16,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.qa.selenium.CinemaLocationSeleniumElements;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CinemaLocationSeleniumTest {
+public class CinemaLocationSeleniumTest extends JUnitTestReporter {
 
     private WebDriver driver;
 
     @LocalServerPort
-    private int port;
+    private String port;
 
     @Before
     public void init() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\dunna\\IdeaProjects\\qaCinema\\chromedriver");
+       System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions opts = new ChromeOptions();
-//        opts.setHeadless(true);
-        this.driver = new ChromeDriver(opts);
+        driver = new ChromeDriver(opts);
+        System.out.println("heya!");
     }
 
     @After
-    public void tearDown() {
-        driver.quit();
+    public void driverClose() {
+        driver.close();
     }
 
     @Test
