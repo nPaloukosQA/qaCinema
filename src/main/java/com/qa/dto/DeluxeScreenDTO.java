@@ -1,7 +1,6 @@
 package com.qa.dto;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,17 +11,18 @@ public class DeluxeScreenDTO {
     private String deluxeSeatsBooked;
     private LocalDate deluxeScreenDate;
 
-    private List<BookingInfoDTO> bookings;
+    private List<FilmsDTO> films;
 
     public DeluxeScreenDTO(){
 
     }
 
-    public DeluxeScreenDTO(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate) {
+    public DeluxeScreenDTO(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate, List<FilmsDTO> films) {
         super();
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
         this.deluxeScreenDate = deluxeScreenDate;
+        this.films = films;
     }
 
     public Long getDeluxeScreeningId() {
@@ -57,23 +57,12 @@ public class DeluxeScreenDTO {
         this.deluxeScreenDate = deluxeScreenDate;
     }
 
-    public List<BookingInfoDTO> getBookings() {
-        return bookings;
+    public List<FilmsDTO> getFilms() {
+        return films;
     }
 
-    public void setBookings(List<BookingInfoDTO> bookings) {
-        this.bookings = bookings;
-    }
-
-    @Override
-    public String toString() {
-        return "DeluxeScreenDTO{" +
-                "deluxeScreeningId=" + deluxeScreeningId +
-                ", deluxeScreeningTime=" + deluxeScreeningTime +
-                ", deluxeSeatsBooked='" + deluxeSeatsBooked + '\'' +
-                ", deluxeScreenDate=" + deluxeScreenDate +
-                ", bookings=" + bookings +
-                '}';
+    public void setFilms(List<FilmsDTO> films) {
+        this.films = films;
     }
 
     @Override
@@ -85,11 +74,11 @@ public class DeluxeScreenDTO {
                 Objects.equals(getDeluxeScreeningTime(), that.getDeluxeScreeningTime()) &&
                 Objects.equals(getDeluxeSeatsBooked(), that.getDeluxeSeatsBooked()) &&
                 Objects.equals(getDeluxeScreenDate(), that.getDeluxeScreenDate()) &&
-                Objects.equals(getBookings(), that.getBookings());
+                Objects.equals(getFilms(), that.getFilms());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDeluxeScreeningId(), getDeluxeScreeningTime(), getDeluxeSeatsBooked(), getDeluxeScreenDate(), getBookings());
+        return Objects.hash(getDeluxeScreeningId(), getDeluxeScreeningTime(), getDeluxeSeatsBooked(), getDeluxeScreenDate(), getFilms());
     }
 }

@@ -24,7 +24,7 @@ import static java.lang.Thread.sleep;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class FilmClassificationSeleniumTest {
+public class nullFilmClassificationSeleniumTest {
 
     @LocalServerPort
     static String port;

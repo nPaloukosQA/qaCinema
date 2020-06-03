@@ -145,7 +145,7 @@ public class DeluxeScreenUnitTest {
 
     @Test
     public void constructorWithoutId() {
-        DeluxeScreen simple = new DeluxeScreen(2L, 16.25, "C07", LocalDate.of(2020,6,12));;
+        DeluxeScreen simple = new DeluxeScreen(null, 16.25, "C07", LocalDate.of(2020,6,12));;
         assertNull(simple.getDeluxeScreeningId());
         assertNotNull(simple.getDeluxeScreeningTime());
         assertNotNull(simple.getDeluxeSeatsBooked());
