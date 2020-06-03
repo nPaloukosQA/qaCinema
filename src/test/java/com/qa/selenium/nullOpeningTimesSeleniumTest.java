@@ -24,7 +24,7 @@ import static java.lang.Thread.sleep;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class OpeningTimesSeleniumTest {
+public class nullOpeningTimesSeleniumTest {
 
 @LocalServerPort
     static String port;
