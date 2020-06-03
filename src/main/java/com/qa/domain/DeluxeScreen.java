@@ -3,8 +3,6 @@ package com.qa.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,25 +18,28 @@ public class DeluxeScreen {
     private LocalDate deluxeScreenDate;
 
     @OneToMany (mappedBy = "deluxeScreen", fetch = FetchType.LAZY)
-    private List<BookingInfo> bookingInfo = new ArrayList<>();
+    private List<BookingInfo> bookingInfo;
 
     @ManyToOne(targetEntity = Films.class)
+    @JoinColumn(name = "filmsid")
     private Films films;
 
     public DeluxeScreen(){
     }
 
-    public DeluxeScreen(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate){
+    public DeluxeScreen(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate, Films films){
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
         this.deluxeScreenDate = deluxeScreenDate;
+        this.films = films;
     }
 
-   public DeluxeScreen(Long deluxeScreeningId, Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate){
+   public DeluxeScreen(Long deluxeScreeningId, Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate, Films films){
         this.deluxeScreeningId = deluxeScreeningId;
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
         this.deluxeScreenDate = deluxeScreenDate;
+        this.films = films;
    }
 
     public Long getDeluxeScreeningId() {

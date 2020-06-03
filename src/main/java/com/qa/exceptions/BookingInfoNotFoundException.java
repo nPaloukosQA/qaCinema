@@ -7,4 +7,5 @@ import javax.persistence.EntityNotFoundException;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "The booking info doesn't exist")
 public class BookingInfoNotFoundException extends EntityNotFoundException {
+    private static final long serialVersionUID = 34756L;
 }

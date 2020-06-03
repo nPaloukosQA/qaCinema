@@ -1,10 +1,7 @@
 package com.qa.service;
 
 import com.qa.domain.Films;
-import com.qa.domain.StandardScreen;
-import com.qa.dto.DeluxeScreenDTO;
 import com.qa.dto.FilmsDTO;
-import com.qa.dto.StandardScreenDTO;
 import com.qa.exceptions.FilmsNotFoundException;
 import com.qa.repo.FilmsRepository;
 import org.modelmapper.ModelMapper;
@@ -44,15 +41,15 @@ public class FilmsService {
         return this.mapToDTO(this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new));
     }
 
-    public List<StandardScreenDTO> getFilmsStandardScreenings(Long filmsID) {
-        Films tempFilms = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
-        return this.mapToDTO(tempFilms).getStandardScreen();
-    }
+    // public List<StandardScreenDTO> getFilmsStandardScreenings(Long filmsID) {
+    //     Films tempFilms = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
+    //     return this.mapToDTO(tempFilms).getStandardScreen();
+    // }
 
-    public List<DeluxeScreenDTO> getFilmsDeluxeScreenings(Long filmsID) {
-        Films tempFilms = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
-        return this.mapToDTO(tempFilms).getDeluxeScreen();
-    }
+    // public List<DeluxeScreenDTO> getFilmsDeluxeScreenings(Long filmsID) {
+    //     Films tempFilms = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);
+    //     return this.mapToDTO(tempFilms).getDeluxeScreen();
+    // }
 
     public FilmsDTO updateFilms(Long filmsID, Films films) {
         Films update = this.repo.findById(filmsID).orElseThrow(FilmsNotFoundException::new);

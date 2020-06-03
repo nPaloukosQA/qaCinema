@@ -30,6 +30,46 @@ function getCertImg(filmCert) {
     return;
 }
 
+function screenTimes(filmID){
+
+    axiosConfig.get("/getAllStandardScreens")
+        .then(response => {
+            console.log(response);
+            for (let i = 0; i < response.data.length; i++){
+                console.log(response.data[i]);
+                if (response.data[i].filmsID){
+
+                }
+            }
+        })
+        .catch(error => {
+
+        })
+    
+    axiosConfig.get("/getAllDeluxeScreens")
+        .then(response => {
+            console.log(response);
+            for (let i = 0; i < response.data.length; i++){
+                console.log(response.data[i]);
+                if (response.data[i].filmsID){
+
+                }
+            }
+        })
+        .catch(error => {
+
+        })
+
+    axiosConfig.get("/getAllBookingInfos")
+        .then(response => {
+            console.log("Booking info: ", response.data);
+            
+        })
+        .catch(error => {
+
+        })
+}
+
 function pageSetup(allOMDBInfo, allFilmInfo) {
 
     let ticketsButton = document.getElementById("filmTicketsButton");
@@ -57,6 +97,8 @@ function pageSetup(allOMDBInfo, allFilmInfo) {
     date.innerHTML = "Release Date: " + allOMDBInfo.Released;
     runtime.innerHTML = "Runtime: " + allOMDBInfo.Runtime;
     rating.innerHTML = "IMDB Rating: " + allOMDBInfo.imdbRating;
+
+    screenTimes(allFilmInfo.filmsID);
 }
 
 function OnStartUp() {

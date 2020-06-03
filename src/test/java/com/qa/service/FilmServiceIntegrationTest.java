@@ -4,14 +4,10 @@ import com.qa.domain.DeluxeScreen;
 import com.qa.domain.Films;
 import com.qa.domain.StandardScreen;
 import com.qa.dto.FilmsDTO;
-import com.qa.dto.StandardScreenDTO;
 import com.qa.repo.FilmsRepository;
-import org.apache.tomcat.util.scan.StandardJarScanFilter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -74,18 +70,6 @@ public class FilmServiceIntegrationTest {
     @Test
     public void findFilmsByIDTest() {
         assertThat(this.service.getFilmsById(this.testFilmsWithID.getFilmsID())).isEqualTo(this.mapToDTO(this.testFilmsWithID));
-    }
-
-    @Test
-    public void getFilmsStandardScreeningsTest() {
-        assertThat(this.service.getFilmsStandardScreenings(this.testFilmsWithID.getFilmsID())).isEqualTo
-                (this.mapToDTO(this.testFilmsWithID).getStandardScreen());
-    }
-
-    @Test
-    public void getFilmsDeluxeScreeningsTest() {
-        assertThat(this.service.getFilmsDeluxeScreenings(this.testFilmsWithID.getFilmsID())).isEqualTo
-                (this.mapToDTO(this.testFilmsWithID).getDeluxeScreen());
     }
 
     @Test

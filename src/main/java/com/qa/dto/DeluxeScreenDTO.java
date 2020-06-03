@@ -1,7 +1,6 @@
 package com.qa.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 public class DeluxeScreenDTO {
@@ -11,13 +10,13 @@ public class DeluxeScreenDTO {
     private String deluxeSeatsBooked;
     private LocalDate deluxeScreenDate;
 
-    private List<FilmsDTO> films;
+    private FilmsDTO films;
 
     public DeluxeScreenDTO(){
 
     }
 
-    public DeluxeScreenDTO(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate, List<FilmsDTO> films) {
+    public DeluxeScreenDTO(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate, FilmsDTO films) {
         super();
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
@@ -57,11 +56,11 @@ public class DeluxeScreenDTO {
         this.deluxeScreenDate = deluxeScreenDate;
     }
 
-    public List<FilmsDTO> getFilms() {
+    public FilmsDTO getFilms() {
         return films;
     }
 
-    public void setFilms(List<FilmsDTO> films) {
+    public void setFilms(FilmsDTO films) {
         this.films = films;
     }
 
