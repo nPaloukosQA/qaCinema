@@ -1,5 +1,6 @@
 package com.qa.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ public class DeluxeScreenDTO {
     private Long deluxeScreeningId;
     private Double deluxeScreeningTime;
     private String deluxeSeatsBooked;
-    private Date deluxeScreenDate;
+    private LocalDate deluxeScreenDate;
 
     private List<BookingInfoDTO> bookings;
 
@@ -17,7 +18,7 @@ public class DeluxeScreenDTO {
 
     }
 
-    public DeluxeScreenDTO(Double deluxeScreeningTime, String deluxeSeatsBooked, Date deluxeScreenDate) {
+    public DeluxeScreenDTO(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate) {
         super();
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
@@ -48,6 +49,14 @@ public class DeluxeScreenDTO {
         this.deluxeSeatsBooked = deluxeSeatsBooked;
     }
 
+    public LocalDate getDeluxeScreenDate() {
+        return deluxeScreenDate;
+    }
+
+    public void setDeluxeScreenDate(LocalDate deluxeScreenDate) {
+        this.deluxeScreenDate = deluxeScreenDate;
+    }
+
     public List<BookingInfoDTO> getBookings() {
         return bookings;
     }
@@ -67,21 +76,20 @@ public class DeluxeScreenDTO {
                 '}';
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof DeluxeScreenDTO)) return false;
         DeluxeScreenDTO that = (DeluxeScreenDTO) o;
-        return Objects.equals(deluxeScreeningId, that.deluxeScreeningId) &&
-                Objects.equals(deluxeScreeningTime, that.deluxeScreeningTime) &&
-                Objects.equals(deluxeSeatsBooked, that.deluxeSeatsBooked) &&
-                Objects.equals(deluxeScreenDate, that.deluxeScreenDate) &&
-                Objects.equals(bookings, that.bookings);
+        return Objects.equals(getDeluxeScreeningId(), that.getDeluxeScreeningId()) &&
+                Objects.equals(getDeluxeScreeningTime(), that.getDeluxeScreeningTime()) &&
+                Objects.equals(getDeluxeSeatsBooked(), that.getDeluxeSeatsBooked()) &&
+                Objects.equals(getDeluxeScreenDate(), that.getDeluxeScreenDate()) &&
+                Objects.equals(getBookings(), that.getBookings());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(deluxeScreeningId, deluxeScreeningTime, deluxeSeatsBooked, deluxeScreenDate, bookings);
+        return Objects.hash(getDeluxeScreeningId(), getDeluxeScreeningTime(), getDeluxeSeatsBooked(), getDeluxeScreenDate(), getBookings());
     }
 }

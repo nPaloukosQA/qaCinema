@@ -2,6 +2,7 @@ package com.qa.domain;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ public class DeluxeScreen {
     private Long deluxeScreeningId;
     private Double deluxeScreeningTime;
     private String deluxeSeatsBooked;
-    private Date deluxeScreenDate;
+    private LocalDate deluxeScreenDate;
 
     @OneToMany (mappedBy = "deluxeScreen", fetch = FetchType.LAZY)
     private List<BookingInfo> bookingInfo = new ArrayList<>();
@@ -27,13 +28,13 @@ public class DeluxeScreen {
     public DeluxeScreen(){
     }
 
-    public DeluxeScreen(Double deluxeScreeningTime, String deluxeSeatsBooked, Date deluxeScreenDate){
+    public DeluxeScreen(Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate){
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
         this.deluxeScreenDate = deluxeScreenDate;
     }
 
-   public DeluxeScreen(Long deluxeScreeningId, Double deluxeScreeningTime, String deluxeSeatsBooked, Date deluxeScreenDate){
+   public DeluxeScreen(Long deluxeScreeningId, Double deluxeScreeningTime, String deluxeSeatsBooked, LocalDate deluxeScreenDate){
         this.deluxeScreeningId = deluxeScreeningId;
         this.deluxeScreeningTime = deluxeScreeningTime;
         this.deluxeSeatsBooked = deluxeSeatsBooked;
@@ -80,11 +81,11 @@ public class DeluxeScreen {
         this.films = films;
     }
 
-    public Date getDeluxeScreenDate() {
+    public LocalDate getDeluxeScreenDate() {
         return deluxeScreenDate;
     }
 
-    public void setDeluxeScreenDate(Date deluxeScreenDate) {
+    public void setDeluxeScreenDate(LocalDate deluxeScreenDate) {
         this.deluxeScreenDate = deluxeScreenDate;
     }
 

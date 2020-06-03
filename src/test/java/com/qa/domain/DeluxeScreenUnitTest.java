@@ -3,6 +3,7 @@ package com.qa.domain;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import java.time.LocalDate;
 
 import static org.junit.Assert.*;
 
@@ -18,28 +19,22 @@ public class DeluxeScreenUnitTest {
 
     @Before
     public void setUp(){
-        testDeluxeScreen = new DeluxeScreen(1L, 2L, 3L, 4.5, "six");
-        testDeluxeScreenWithId = new DeluxeScreen(7L, 8L, 9L,10.11, "twelve");
+        testDeluxeScreen = new DeluxeScreen(2L, 16.25, "C07", LocalDate.of(2020,6,12));
+        testDeluxeScreenWithId = new DeluxeScreen(2L, 16.25, "C07", LocalDate.of(2020,6,12));;
         testDeluxeScreenWithId.setDeluxeScreeningId(deluxeScreenId);
-        testOtherDeluxeScreen = new DeluxeScreen(1L, 2L, 3L, 4.5, "six");
-        testOtherDeluxeScreenWithId = new DeluxeScreen(7L, 8L, 9L,10.11, "twelve");
+        testOtherDeluxeScreen = new DeluxeScreen(2L, 16.25, "C07", LocalDate.of(2020,6,12));;
+        testOtherDeluxeScreenWithId = new DeluxeScreen(2L, 16.25, "C07", LocalDate.of(2020,6,12));;
         testOtherDeluxeScreenWithId.setDeluxeScreeningId(deluxeScreenId);
     }
 
     @Test
     public void gettersAndSettersTest(){
         assertNotNull(testDeluxeScreenWithId.getDeluxeScreeningId());
-        assertNotNull(testDeluxeScreenWithId.getDeluxeFilmId());
-        assertNotNull(testDeluxeScreenWithId.getDeluxeBookingId());
         assertNotNull(testDeluxeScreenWithId.getDeluxeScreeningTime());
         assertNotNull(testDeluxeScreenWithId.getDeluxeSeatsBooked());
 
         testDeluxeScreenWithId.setDeluxeScreeningId(null);
         assertNull(testDeluxeScreenWithId.getDeluxeScreeningId());
-        testDeluxeScreenWithId.setDeluxeFilmId(null);
-        assertNull(testDeluxeScreenWithId.getDeluxeFilmId());
-        testDeluxeScreenWithId.setDeluxeBookingId(null);
-        assertNull(testDeluxeScreenWithId.getDeluxeBookingId());
         testDeluxeScreenWithId.setDeluxeScreeningTime(null);
         assertNull(testDeluxeScreenWithId.getDeluxeScreeningTime());
         testDeluxeScreenWithId.setDeluxeSeatsBooked(null);
@@ -107,47 +102,6 @@ public class DeluxeScreenUnitTest {
 ///////////////////////////////////////////////////////////////////////////////////
 
     @Test
-    public void nullDeluxeFilmId() {
-        testDeluxeScreen.setDeluxeFilmId(null);
-        assertFalse(testDeluxeScreen.equals(testOtherDeluxeScreen));
-    }
-    @Test
-    public void nullDeluxeFilmIdOnBoth() {
-        testDeluxeScreen.setDeluxeFilmId(null);
-        testOtherDeluxeScreen.setDeluxeFilmId(null);
-        assertTrue(testDeluxeScreen.equals(testOtherDeluxeScreen));
-    }
-
-    @Test
-    public void otherDeluxeFilmIdDifferent() {
-        testDeluxeScreen.setDeluxeFilmId(15L);
-        assertFalse(testDeluxeScreen.equals(testOtherDeluxeScreen));
-    }
-
-///////////////////////////////////////////////////////////////////////////////////
-
-    @Test
-    public void nullDeluxeBookingId() {
-        testDeluxeScreen.setDeluxeBookingId(null);
-        assertFalse(testDeluxeScreen.equals(testOtherDeluxeScreen));
-    }
-
-    @Test
-    public void nullDeluxeBookingIdOnBoth() {
-        testDeluxeScreen.setDeluxeBookingId(null);
-        testOtherDeluxeScreen.setDeluxeBookingId(null);
-        assertTrue(testDeluxeScreen.equals(testOtherDeluxeScreen));
-    }
-
-    @Test
-    public void otherDeluxeBookingIdDifferent() {
-        testOtherDeluxeScreen.setDeluxeBookingId(20L);
-        assertFalse(testDeluxeScreen.equals(testOtherDeluxeScreen));
-    }
-
-////////////////////////////////////////////////////////////////////////////////
-
-    @Test
     public void nullDeluxeScreeningTime() {
         testDeluxeScreen.setDeluxeScreeningTime(null);
         assertFalse(testDeluxeScreen.equals(testOtherDeluxeScreen));
@@ -191,10 +145,8 @@ public class DeluxeScreenUnitTest {
 
     @Test
     public void constructorWithoutId() {
-        DeluxeScreen simple = new DeluxeScreen(1L, 2L, 3.4, "five");
+        DeluxeScreen simple = new DeluxeScreen(2L, 16.25, "C07", LocalDate.of(2020,6,12));;
         assertNull(simple.getDeluxeScreeningId());
-        assertNotNull(simple.getDeluxeFilmId());
-        assertNotNull(simple.getDeluxeBookingId());
         assertNotNull(simple.getDeluxeScreeningTime());
         assertNotNull(simple.getDeluxeSeatsBooked());
     }
