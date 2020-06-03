@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FilmsRepository extends JpaRepository<Films, Long> {
-    
+
 }
