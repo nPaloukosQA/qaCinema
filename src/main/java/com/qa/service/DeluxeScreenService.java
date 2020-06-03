@@ -42,10 +42,9 @@ public class DeluxeScreenService {
 
     public DeluxeScreenDTO updateDeluxeScreen(Long deluxeScreenId, DeluxeScreen deluxeScreen) {
         DeluxeScreen update = this.repo.findById(deluxeScreenId).orElseThrow(DeluxeScreenNotFoundException::new);
-        update.setDeluxeFilmId(deluxeScreen.getDeluxeFilmId());
-        update.setDeluxeBookingId(deluxeScreen.getDeluxeBookingId());
         update.setDeluxeScreeningTime(deluxeScreen.getDeluxeScreeningTime());
         update.setDeluxeSeatsBooked(deluxeScreen.getDeluxeSeatsBooked());
+        update.setDeluxeScreenDate(deluxeScreen.getDeluxeScreenDate());
         DeluxeScreen tempDeluxeScreen = this.repo.save(update);
         return this.mapToDTO(tempDeluxeScreen);
     }
