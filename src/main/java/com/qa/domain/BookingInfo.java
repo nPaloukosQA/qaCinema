@@ -28,17 +28,9 @@ public class BookingInfo {
 
     }
 
-    public BookingInfo(String firstName, String surname, String dateOfBirth, String email, String phoneNumber, String address, String postCode) {
-        this.firstName = firstName;
-        this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.postCode = postCode;
-    }
-
-    public BookingInfo(Long bookingInfoId, String firstName, String surname, String dateOfBirth, String email, String phoneNumber, String address, String postCode) {
+    public BookingInfo(Long bookingInfoId, String firstName, String surname, String dateOfBirth, String email,
+            String phoneNumber, String address, String postCode, StandardScreen standardScreen,
+            DeluxeScreen deluxeScreen) {
         this.bookingInfoId = bookingInfoId;
         this.firstName = firstName;
         this.surname = surname;
@@ -47,8 +39,23 @@ public class BookingInfo {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.postCode = postCode;
+        this.standardScreen = standardScreen;
+        this.deluxeScreen = deluxeScreen;
     }
 
+    public BookingInfo(String firstName, String surname, String dateOfBirth, String email, String phoneNumber,
+            String address, String postCode, StandardScreen standardScreen, DeluxeScreen deluxeScreen) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.postCode = postCode;
+        this.standardScreen = standardScreen;
+        this.deluxeScreen = deluxeScreen;
+    }
+    
     public Long getBookingInfoId() {
         return bookingInfoId;
     }
@@ -166,4 +173,5 @@ public class BookingInfo {
     public int hashCode() {
         return Objects.hash(getBookingInfoId(), getFirstName(), getSurname(), getDateOfBirth(), getEmail(), getPhoneNumber(), getAddress(), getPostCode(), getStandardScreen(), getDeluxeScreen());
     }
+
 }

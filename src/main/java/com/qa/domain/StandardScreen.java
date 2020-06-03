@@ -3,8 +3,6 @@ package com.qa.domain;
 import javax.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,27 +17,32 @@ public class StandardScreen {
     private LocalDate standardScreenDate;
 
     @OneToMany (mappedBy = "standardScreen", fetch = FetchType.LAZY)
-    private List<BookingInfo> bookingInfo = new ArrayList<>();
+    private List<BookingInfo> bookingInfo;
 
     @ManyToOne (targetEntity = Films.class)
+    @JoinColumn(name = "filmsid")
     private Films films;
 
     public StandardScreen() {
 
     }
 
-    public StandardScreen(Double standardScreenScreeningTime, String standardScreenSeatsBooked, LocalDate standardScreenDate) {
+    public StandardScreen(Double standardScreenScreeningTime, String standardScreenSeatsBooked, LocalDate standardScreenDate, Films films) {
         this.standardScreenScreeningTime = standardScreenScreeningTime;
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
         this.standardScreenDate = standardScreenDate;
+        this.films = films;
     }
 
-    public StandardScreen(Long standardScreeningId, Double standardScreenScreeningTime, String standardScreenSeatsBooked, LocalDate standardScreenDate) {
+    public StandardScreen(Long standardScreeningId, Double standardScreenScreeningTime, String standardScreenSeatsBooked, LocalDate standardScreenDate, Films films) {
         this.standardScreeningId = standardScreeningId;
         this.standardScreenScreeningTime = standardScreenScreeningTime;
         this.standardScreenSeatsBooked = standardScreenSeatsBooked;
         this.standardScreenDate = standardScreenDate;
+        this.films = films;
     }
+
+
 
     public Long getStandardScreeningId() {
         return standardScreeningId;

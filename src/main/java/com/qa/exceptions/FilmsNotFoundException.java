@@ -7,4 +7,5 @@ import javax.persistence.EntityNotFoundException;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "The film doesn't exist")
 public class FilmsNotFoundException extends EntityNotFoundException {
+    private static final long serialVersionUID = 34758L;
 }
