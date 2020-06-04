@@ -41,7 +41,7 @@ public class BookingTicketsSeleniumElements {
     @FindBy(id = "timeSelector")
     private WebElement timeSelector;
 
-    @FindBy(id = "seatPicker")
+    @FindBy(className = "seatPicker")
     private WebElement seatPicker;
 
     @FindBy(id = "seatNumbersCheck")
@@ -64,6 +64,30 @@ public class BookingTicketsSeleniumElements {
 
     @FindBy(id = "submitBtn")
     private WebElement submitBtn;
+
+    @FindBy(id = "bs-select-1-11")
+    private WebElement b01;
+
+    @FindBy(id = "bs-select-1-1")
+    private WebElement b02;
+
+    @FindBy(id = "bs-select-1-2")
+    private WebElement b03;
+
+    @FindBy(id = "bs-select-1-2")
+    private WebElement seatsDropdown;
+
+    @FindBy(name = "login_email")
+    private WebElement payPalMail;
+
+    @FindBy(id = "password")
+    private WebElement payPalPassword;
+
+    @FindBy(id = "btnLogin")
+    private WebElement loginPaypal;
+
+    @FindBy(id = "payment-submit-btn")
+    private WebElement paymentBtn;
 
 
     public WebElement getFname() {
@@ -144,5 +168,37 @@ public class BookingTicketsSeleniumElements {
 
     public WebElement getFilmsSelector() {
         return filmsSelector;
+    }
+
+    public WebElement getB01() {
+        return b01;
+    }
+
+    public WebElement getB02() {
+        return b02;
+    }
+
+    public WebElement getB03() {
+        return b03;
+    }
+
+    public WebElement getSeatsDropdown() {
+        return seatsDropdown;
+    }
+
+    public WebElement getPayPalMail() {
+        return payPalMail;
+    }
+
+    public WebElement getPayPalPassword() {
+        return payPalPassword;
+    }
+
+    public WebElement getLoginPaypal() {
+        return loginPaypal;
+    }
+
+    public WebElement getPaymentBtn() {
+        return paymentBtn;
     }
 }

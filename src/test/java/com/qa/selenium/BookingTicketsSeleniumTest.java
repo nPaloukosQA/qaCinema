@@ -85,9 +85,16 @@ public class BookingTicketsSeleniumTest {
         command.getInputOfConcession().clear();
         command.getInputOfConcession().sendKeys("1");
 
-//        command.getB01().click();
-//        command.getB02().click();
-//        command.getB03().click();
+
+
+        command.getPaypalButton().click();
+        sleep(200000);
+        command.getPayPalMail().sendKeys("sb-myeb71983917@personal.example.com");
+        command.getLoginPaypal().click();
+        sleep(1000);
+        command.getPayPalPassword().sendKeys("16?+dnW!");
+        sleep(5000);
+        command.getPaymentBtn().click();
         sleep(2000);
 
     }
