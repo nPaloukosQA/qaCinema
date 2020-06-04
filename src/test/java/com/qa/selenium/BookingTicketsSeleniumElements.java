@@ -5,6 +5,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class BookingTicketsSeleniumElements {
 
+    @FindBy(id = "headerTicketsButton")
+    private WebElement headerTicketsButton;
+
     @FindBy(id = "fname")
     private WebElement fname;
 
@@ -22,6 +25,9 @@ public class BookingTicketsSeleniumElements {
 
     @FindBy(id = "postcode")
     private WebElement postcode;
+
+    @FindBy(id = "filmsSelector")
+    private WebElement filmsSelector;
 
     @FindBy(id = "std")
     private WebElement std;
@@ -130,5 +136,13 @@ public class BookingTicketsSeleniumElements {
 
     public WebElement getSubmitBtn() {
         return submitBtn;
+    }
+
+    public WebElement getHeaderTicketsButton() {
+        return headerTicketsButton;
+    }
+
+    public WebElement getFilmsSelector() {
+        return filmsSelector;
     }
 }
