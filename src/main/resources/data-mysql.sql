@@ -20,8 +20,8 @@ INSERT INTO deluxe_screen (filmsid, deluxe_screening_time, deluxe_seats_booked, 
     ('2', '13.00', 'C08', '2020-05-12');
 
 INSERT INTO booking_info (deluxe_screen_deluxe_screening_id, standard_screen_standard_screening_id, first_name, surname, date_of_birth, email, phone_number, address, post_code) VALUES
-    ('1', "", 'John', 'Doe', '1967-03-12', 'johnd@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
-    ("", '1', 'David', 'Lyac', '1981-03-12', 'davyl@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
-    ("", '1', 'Sam', 'Gill', '1967-03-12', 'samgilly@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
-    ('1', "", 'Paul', 'Mc-DuckingField', '1950-03-12', 'duckman82@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
-    ('1', "", 'Jordan', 'Wizard', '1820-03-12', 'i_love_java@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG');
+    ('1', null , 'John', 'Doe', '1967-03-12', 'johnd@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
+    (null, '1', 'David', 'Lyac', '1981-03-12', 'davyl@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
+    (null, '1', 'Sam', 'Gill', '1967-03-12', 'samgilly@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
+    ('1', null, 'Paul', 'Mc-DuckingField', '1950-03-12', 'duckman82@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG'),
+    ('1', null, 'Jordan', 'Wizard', '1820-03-12', 'i_love_java@gmail.com', '01234 567891', '1 Standard Street, Standard Village, Manchester', 'M1 1AG');
