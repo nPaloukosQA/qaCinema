@@ -1,5 +1,6 @@
 package com.qa.selenium;
 
+import com.mysql.cj.x.protobuf.MysqlxCursor;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -39,7 +40,7 @@ public class OpeningTimesSeleniumTests {
 
     @BeforeClass
     public static void reportSetup(){
-        report = new ExtentReports ("test-output" + File.separator + "Report.html", true);
+        report = new ExtentReports ("test-output" + File.separator + "Report-dan-openingTimes.html", true);
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Environment", "Automated Testing")
@@ -56,28 +57,26 @@ public class OpeningTimesSeleniumTests {
     }
 
     @Test
-    public void seleniumHeaderTest() throws InterruptedException {
-        test = report.startTest("Start Selenium Test for Header");
+    public void seleniumOpeningTimesTest() throws InterruptedException {
+        test = report.startTest("Start Selenium Test for Opening Times Page");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Browser started");
         driver.get("http://localhost:"+ port +"/homepage.html");
-        HeaderFooterSeleniumElements header = PageFactory.initElements(driver, HeaderFooterSeleniumElements.class);
+        OpeningTimesSeleniumElements header = PageFactory.initElements(driver, OpeningTimesSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
+
         wait.until(ExpectedConditions.elementToBeClickable(header.getBurgerMenu()));
-        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/homepage.html");
         header.getBurgerMenu().click();
-        sleep(2000);
-        WebElement headerFilmsLink = driver.findElement(By.id("headerLinkOpeningTimes"));
-        headerFilmsLink.click();
-        sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(header.getHoursLink()));
+        header.getHoursLink().click();
+
         assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/openingTimes.html");
         if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/openingTimes.html"))){
-            test.log(LogStatus.FAIL, "FAIL!");
+            test.log(LogStatus.FAIL, "Could not navigate to Opening Times Page: Result FAIL!");
             Assert.fail();
         } else {
-            test.log(LogStatus.INFO, "PASS!");
+            test.log(LogStatus.PASS, "Successfully navigated to the Opening Times Page: Result PASS!");
         }
-
     }
 
     @After
