@@ -85,10 +85,9 @@ public class BookingTicketsSeleniumTest {
         command.getInputOfConcession().clear();
         command.getInputOfConcession().sendKeys("1");
 
-        command.getB01().click();
-        command.getB02().click();
-        command.getB03().click();
-        command.getSubmitBtn().click();
+//        command.getB01().click();
+//        command.getB02().click();
+//        command.getB03().click();
         sleep(2000);
 
     }
