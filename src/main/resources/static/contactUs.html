@@ -46,6 +46,17 @@ template.html<!DOCTYPE html>
           border-radius: 4px;
           cursor: pointer;
         }
+
+        input[type=email], select, textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 6px;
+          margin-bottom: 16px;
+          resize: vertical;
+        }
         
         input[type=submit]:hover {
           background-color: #0056b3;
@@ -87,7 +98,7 @@ template.html<!DOCTYPE html>
                             <label style="color: white" for="subject">Subject</label>
                             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-                            <input type="submit" value="Submit">
+                            <input id="submitButton" type="submit" value="Submit">
                         </div>
                     </form>
                 </div>
