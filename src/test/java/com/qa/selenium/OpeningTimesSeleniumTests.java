@@ -1,13 +1,9 @@
 package com.qa.selenium;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-//import org.testng.ITestResult;
-//import org.testng.annotations.*;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,19 +18,17 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-
-import static java.lang.Thread.*;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.io.File;
+
+import static java.lang.Thread.sleep;
+import static org.testng.AssertJUnit.assertEquals;
+
+//import org.testng.ITestResult;
+//import org.testng.annotations.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class HeaderFooterSeleniumTests {
+public class OpeningTimesSeleniumTests {
     
     @LocalServerPort
     private int port;
@@ -49,7 +43,7 @@ public class HeaderFooterSeleniumTests {
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Environment", "Automated Testing")
-                .addSystemInfo("User Name", "Luke");
+                .addSystemInfo("User Name", "Dan");
         report.loadConfig(new File("extent-config.xml"));
 
     }
@@ -73,47 +67,19 @@ public class HeaderFooterSeleniumTests {
         assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/homepage.html");
         header.getBurgerMenu().click();
         sleep(2000);
-        WebElement headerFilmsLink = driver.findElement(By.id("headerLinkFilms"));
+        WebElement headerFilmsLink = driver.findElement(By.id("headerLinkOpeningTimes"));
         headerFilmsLink.click();
         sleep(3000);
-        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmsPage.html");
-        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/filmsPage.html"))){
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/openingTimes.html");
+        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/openingTimes.html"))){
             test.log(LogStatus.FAIL, "FAIL!");
             Assert.fail();
         } else {
             test.log(LogStatus.INFO, "PASS!");
         }
-        // WebElement headerLogoLink = driver.findElement(By.id("headerLogoLink"));
-        // headerLogoLink.click();
-        // sleep(3000);
-        // burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
-        // burgerMenu.click();
-        // sleep(2000);
-        // WebElement headerScreensLink = driver.findElement(By.id("headerLinkScreen"));
-        // headerScreensLink.click();
-        // sleep(3000);
-        // burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
-        // burgerMenu.click();
-        // sleep(2000);
-        // WebElement headerAboutLink = driver.findElement(By.id("headerLinkAbout"));
-        // headerAboutLink.click();
-        // sleep(3000);
+
     }
 
-    // @Test
-    // public void SeleniumFooterTest() throws InterruptedException {
-    //     driver.manage().window().maximize();
-    //     driver.get("http://127.0.0.1:5500/src/main/resources/static/homepage.html");
-    //     sleep(2000);
-    //     WebElement footerAboutUsLink = driver.findElement(By.id("footerLinkInformation"));
-    //     footerAboutUsLink.click();
-    //     sleep(3000);
-    //     sleep(2000);
-    //     WebElement footerLogoLink = driver.findElement(By.id("footerLinkLogo"));
-    //     footerLogoLink.click();
-    //     sleep(3000);
-    // }
-    
     @After
     public void getResult(){
         driver.close();
@@ -125,6 +91,5 @@ public class HeaderFooterSeleniumTests {
         report.flush();
         report.close();
     }
-
 
 }
