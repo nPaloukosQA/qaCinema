@@ -1,6 +1,5 @@
 package com.qa.dto;
 
-
 import com.qa.domain.DeluxeScreen;
 import com.qa.domain.StandardScreen;
 
@@ -17,25 +16,19 @@ FilmsDTO {
     private String filmsOMDBID;
     private Boolean filmsCurrentlyReleased;
 
-    private List<StandardScreen> standardScreen;
-    private List<DeluxeScreen> deluxeScreen;
-
-
 
     public FilmsDTO() {
 
     }
 
     public FilmsDTO(String filmsTitle, String filmsClassification, Boolean filmsIsFeature,
-                    String filmsOMDBID, Boolean filmsCurrentlyReleased, List<StandardScreen> standardScreen, List<DeluxeScreen> deluxeScreen) {
+                    String filmsOMDBID, Boolean filmsCurrentlyReleased) {
 
         this.filmsTitle = filmsTitle;
         this.filmsClassification = filmsClassification;
         this.filmsIsFeature = filmsIsFeature;
         this.filmsOMDBID = filmsOMDBID;
         this.filmsCurrentlyReleased = filmsCurrentlyReleased;
-        this.standardScreen = standardScreen;
-        this.deluxeScreen = deluxeScreen;
 
     }
 
@@ -87,22 +80,6 @@ FilmsDTO {
         this.filmsCurrentlyReleased = filmsCurrentlyReleased;
     }
 
-    public List<StandardScreen> getStandardScreen() {
-        return standardScreen;
-    }
-
-    public void setStandardScreen(List<StandardScreen> standardScreen) {
-        this.standardScreen = standardScreen;
-    }
-
-    public List<DeluxeScreen> getDeluxeScreen() {
-        return deluxeScreen;
-    }
-
-    public void setDeluxeScreen(List<DeluxeScreen> deluxeScreen) {
-        this.deluxeScreen = deluxeScreen;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,13 +90,11 @@ FilmsDTO {
                 Objects.equals(getFilmsClassification(), filmsDTO.getFilmsClassification()) &&
                 Objects.equals(getFilmsIsFeature(), filmsDTO.getFilmsIsFeature()) &&
                 Objects.equals(getFilmsOMDBID(), filmsDTO.getFilmsOMDBID()) &&
-                Objects.equals(getFilmsCurrentlyReleased(), filmsDTO.getFilmsCurrentlyReleased()) &&
-                Objects.equals(getStandardScreen(), filmsDTO.getStandardScreen()) &&
-                Objects.equals(getDeluxeScreen(), filmsDTO.getDeluxeScreen());
+                Objects.equals(getFilmsCurrentlyReleased(), filmsDTO.getFilmsCurrentlyReleased());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFilmsID(), getFilmsTitle(), getFilmsClassification(), getFilmsIsFeature(), getFilmsOMDBID(), getFilmsCurrentlyReleased(), getStandardScreen(), getDeluxeScreen());
+        return Objects.hash(getFilmsID(), getFilmsTitle(), getFilmsClassification(), getFilmsIsFeature(), getFilmsOMDBID(), getFilmsCurrentlyReleased());
     }
 }
