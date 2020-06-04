@@ -14,6 +14,7 @@ let seatSelect = document.getElementById("seatPicker");
 let seatsBooked = [];
 let chosenSeats = [];
 let totalTickets = 0;
+let currentScreen;
 
 function OnStartUp() {
     getFilms();
@@ -29,26 +30,29 @@ function availableSeats(){
                         console.log(response.data[i].standardScreenSeatsBooked);
                         seatsBooked = (response.data[i].standardScreenSeatsBooked).split(",");
                         console.log(seatsBooked);
+                        currentScreen = response.data[i];
                     }
                 }
                 availableSeatsPart2()
             })
             .catch(error => {
-                
+                console.log(error);
             });
     } else {
         axiosConfig.get("/getAllDeluxeScreens")
             .then(response => {
+                currentScreen = response.data;
                 for (let i = 0; i < response.data.length; i++){
                     console.log(response.data[i].deluxeScreeningId, timeSelect.value);
                     if(response.data[i].deluxeScreeningId == timeSelect.value){
                         seatsBooked = response.data[i].deluxeSeatsBooked.split(",");
+                        currentScreen = response.data[i];
                     }
                 }
                 availableSeatsPart2()
             })
             .catch(error => {
-
+                console.log(error);
             });
     }
     console.log(seatsBooked);
@@ -92,23 +96,70 @@ function updatePrice(){
 }
 
 function postData() {
-    axiosConfig.post('/createBookingInfo', {
-        firstName: document.getElementById("fname").value,
-        filmz: document.getElementById("films").value,
-        sScreen: document.getElementById("std").value,
-        dScreen: document.getElementById("dlx").value,
-        date: document.getElementById("dt").value,
-        time: document.getElementById("tm").value,
-        adults: document.getElementById("inputOfAdults").value,
-        children: document.getElementById("inputOfChildren").value,
-        concenssion: document.getElementById("inputOfConcession").value
-    })
-    .then(response =>{
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.log(error);
-    });
+    let fName = document.getElementById("fname").value;
+    let sName = document.getElementById("sname").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+    let postcode = document.getElementById("postcode").value;
+    let screenId = timeSelect.value;
+    let deluxe = true;
+
+    if (pickStdScreen.checked) {
+        axiosConfig.post('/createBookingInfo', {
+            firstName: fName,
+            surname: sName,
+            email: email,
+            phoneNumber: phone,
+            address: address,
+            postCode: postcode,
+            standardScreenStandardScreeningId: screenId,
+            deluxeScreenDeluxeScreeningId: null
+        })
+        .then(response =>{
+            console.log(response.data);
+            console.log(chosenSeats);
+            chosenSeats.forEach(element => {
+                console.log(element);
+                seatsBooked.push(element);
+            });
+            console.log(seatsBooked);
+            let seatsString = "";
+            seatsBooked.forEach(element => {
+                seatsString = seatsString+ element + ",";
+            })
+            currentScreen.standardScreenSeatsBooked = seatsString;
+            console.log(JSON.stringify(currentScreen));
+            axiosConfig.put(`/updateStandardScreen/${screenId}`, JSON.stringify(currentScreen))
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    } else {
+        axiosConfig.post('/createBookingInfo', {
+            firstName: fName,
+            surname: sName,
+            email: email,
+            phoneNumber: phone,
+            address: address,
+            postCode: postcode,
+            standardScreenStandardScreeningId: null,
+            deluxeScreenDeluxeScreeningId: screenId
+        })
+        .then(response =>{
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
 
 }
 
@@ -265,6 +316,8 @@ timeSelect.addEventListener("change", availableSeats)
 adult.addEventListener("change", updatePrice);
 child.addEventListener("change", updatePrice);
 concession.addEventListener("change", updatePrice);
+
+document.getElementById("submitBtn").addEventListener("click", postData)
 
 $('#seatPicker').change(function() {seatChecker()});
 
