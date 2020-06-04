@@ -5,9 +5,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class CinemaLocationSeleniumElements {
 
-    @FindBy(id = "ourLocation")
-    private  WebElement ourLocation;
-
     @FindBy(id = "oldTraffordLink")
     private WebElement oldTraffordLink;
 
@@ -16,18 +13,6 @@ public class CinemaLocationSeleniumElements {
 
     @FindBy(id = "ordsallParkLink")
     private WebElement ordsallParkLink;
-
-    public void clickOldTraffordLink() {
-        this.oldTraffordLink.click();
-    }
-
-    public WebElement getOurLocation() {
-        return ourLocation;
-    }
-
-    public void setOurLocation(WebElement ourLocation) {
-        this.ourLocation = ourLocation;
-    }
 
     public void clickIWMNorthLink() {
         this.iWMNorthLink.click();

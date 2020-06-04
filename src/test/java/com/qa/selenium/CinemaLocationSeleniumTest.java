@@ -1,10 +1,13 @@
 package com.qa.selenium;
 
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertFalse;
+import static org.testng.AssertJUnit.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,40 +20,92 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.File;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CinemaLocationSeleniumTest extends JUnitTestReporter {
-
-    private WebDriver driver;
+public class CinemaLocationSeleniumTest {
 
     @LocalServerPort
-    private String port;
+    private int port;
 
-    @Before
-    public void init() {
-       System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        ChromeOptions opts = new ChromeOptions();
-        driver = new ChromeDriver(opts);
-        System.out.println("heya!");
+    private WebDriver driver;
+    static ExtentReports report;
+    ExtentTest test;
+
+    @BeforeClass
+    public static void reportSetup(){
+        report = new ExtentReports ("test-output" + File.separator + "Report.html", true);
+        report
+                .addSystemInfo("Host Name", "QA")
+                .addSystemInfo("Environment", "Automated Testing")
+                .addSystemInfo("User Name", "Matt");
+        report.loadConfig(new File("extent-config.xml"));
+
     }
 
-    @After
-    public void driverClose() {
-        driver.close();
+    @Before
+    public void driverSetUp(){
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        ChromeOptions opts = new ChromeOptions();
+        this.driver = new ChromeDriver(opts);
     }
 
     @Test
-    public void testOldTraffordLink() {
+    public void seleniumLocationOldTraffordLinkTest() throws InterruptedException{
+        test = report.startTest("Start Selenium Test for Old Trafford Link");
         driver.manage().window().maximize();
-        driver.get("http:localhost:" + port);
+        test.log(LogStatus.INFO, "Browser started");
+        driver.get("http://localhost:"+ port +"/location.html");
         CinemaLocationSeleniumElements locationPage = PageFactory.initElements(driver, CinemaLocationSeleniumElements.class);
-
-        locationPage.clickOldTraffordLink();
-
         WebDriverWait wait = new WebDriverWait(driver, 2);
-        wait.until(ExpectedConditions.urlMatches("https://www.manutd.com/en/visit-old-trafford") );
-        assertFalse(driver.getCurrentUrl().contentEquals("http:localhost:\" + port"));
+        wait.until(ExpectedConditions.elementToBeClickable(locationPage.getOldTraffordLink()));
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/location.html");
+        locationPage.getOldTraffordLink().click();
+        sleep(2000);
+        assertEquals(driver.getCurrentUrl(), "https://www.manutd.com/en/visit-old-trafford");
+        if (!(driver.getCurrentUrl().equals("https://www.manutd.com/en/visit-old-trafford"))){
+            test.log(LogStatus.FAIL, "FAIL!");
+            Assert.fail();
+        } else {
+            test.log(LogStatus.INFO, "PASS!");
+        }
     }
+
+    @Test
+    public void seleniumLocationIWMNorthLinkTest() throws InterruptedException{
+        test = report.startTest("Start Selenium Test for IWM North Link");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Browser started");
+        driver.get("http://localhost:"+ port +"/location.html");
+        CinemaLocationSeleniumElements locationPage = PageFactory.initElements(driver, CinemaLocationSeleniumElements.class);
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.elementToBeClickable(locationPage.getiWMNorthLink()));
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/location.html");
+        locationPage.getiWMNorthLink().click();
+        sleep(2000);
+        assertEquals(driver.getCurrentUrl(), "https://www.iwm.org.uk/visits/iwm-north");
+        if (!(driver.getCurrentUrl().equals("https://www.iwm.org.uk/visits/iwm-north"))){
+            test.log(LogStatus.FAIL, "FAIL!");
+            Assert.fail();
+        } else {
+            test.log(LogStatus.INFO, "PASS!");
+        }
+    }
+
+    @After
+    public void getResult(){
+        driver.close();
+        report.endTest(test);
+    }
+
+    @AfterClass
+    public static void endReport(){
+        report.flush();
+        report.close();
+    }
+
+
 
 }
 
