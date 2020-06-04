@@ -35,7 +35,7 @@ public class CinemaLocationSeleniumTest {
 
     @BeforeClass
     public static void reportSetup(){
-        report = new ExtentReports ("test-output" + File.separator + "Report.html", true);
+        report = new ExtentReports ("test-output" + File.separator + "Report/Matt.html", true);
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Environment", "Automated Testing")
