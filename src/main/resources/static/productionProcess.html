@@ -58,7 +58,7 @@
                         <div class="carousel-inner">
 
                             <div class="carousel-item active" style="text-align: center">
-                                <img src="./assets/planningPoker.png" style="height:570px; width:570px" alt="planning-poker" >
+                                <img src="./assets/planningPoker.png" id="img1" style="height:570px; width:570px" alt="planning-poker" >
                                     <div class="carousel-caption">
                                         <h3>Step One</h3>
                                         <p>We started by designing user stories from our clients specification, then using planning poker to decide our story points for each task</p>
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                <img src="./assets/moscow.png" style="height:570px; width:570px" alt="moscow">
+                                <img src="./assets/moscow.png" id="img2" style="height:570px; width:570px" alt="moscow">
                                 <div class="carousel-caption">
                                     <h3>Step Two</h3>
                                     <p>Next we organised out user stories into a MoSCoW table so we could design our MVP</p>
@@ -74,7 +74,7 @@
                         </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                    <img src="./assets/sprintOne.png" style="height:590px; width:590px" alt="sprint-one">
+                                    <img src="./assets/sprintOne.png" id="img3" style="height:590px; width:590px" alt="sprint-one">
                                     <div class="carousel-caption">
                                         <h3>Step Three</h3>
                                         <p>We moved on by designing our first sprint from our backlog of user stories and assigned tasks to relevant persons</p>
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                    <img src="./assets/standUp.jpeg"  style="height:570px; width:570px" alt="stand-up-meeting" />
+                                    <img src="./assets/standUp.jpeg" id="img4" style="height:570px; width:570px" alt="stand-up-meeting" />
                                     <div class="carousel-caption">
                                         <h3>Step Four</h3>
                                         <p>Throughout Sprint One we maintained daily stand-up meetings via Microsoft Teams, discussing out progress and issues over the previous days</p>
@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                    <img src="./assets/sprintRetro.png"  style="height:520px; width:520px" alt="sprint-retrospective" />
+                                    <img src="./assets/sprintRetro.png" id="img5"style="height:520px; width:520px" alt="sprint-retrospective" />
                                     <div class="carousel-caption">
                                         <h3>Step Five</h3>
                                         <p>At the end of Sprint One we discussed our Sprint Retrospective, here we discussed what we achieved and how will we improve moving forward onto our next sprint</p>
@@ -98,7 +98,7 @@
                             </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                    <img src="./assets/sprintTwo.png"  style="height:590px; width:590px" alt="sprint-two" />
+                                    <img src="./assets/sprintTwo.png" id="img6"  style="height:590px; width:590px" alt="sprint-two" />
                                     <div class="carousel-caption">
                                         <h3>Step Six</h3>
                                         <p>Next we checked our back-log of tasks and designed our next sprint to reach the MVP from the client specification</p>
@@ -106,7 +106,7 @@
                             </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                    <img src="./assets/standUp.jpeg"  style="height:570px; width:570px" alt="stand-up-meeting" />
+                                    <img src="./assets/standUp.jpeg" id="img7" style="height:570px; width:570px" alt="stand-up-meeting" />
                                     <div class="carousel-caption">
                                         <h3>Step Seven</h3>
                                         <p>Through our second sprint we maintained our stand-up meetings in the same format from the first</p>
@@ -114,7 +114,7 @@
                             </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                    <img src="./assets/sprintRetro.png"  style="height:520px; width:520px" alt="sprint-retrospective" />
+                                    <img src="./assets/sprintRetro.png" id="img8" style="height:520px; width:520px" alt="sprint-retrospective" />
                                     <div class="carousel-caption">
                                         <h3>Step Eight</h3>
                                         <p>We performed a Sprint Retrospective of our final sprint and we evaluated what we achieved and how we would improve in the future</p>
@@ -122,12 +122,12 @@
                             </div>
 
                             <div class="carousel-item" style="text-align: center">
-                                    <img src="./assets/happyCustomers.png"  style="height:480px; width:480px" alt="happy-customers" />
+                                    <img src="./assets/happyCustomers.png" id="img9" style="height:480px; width:480px" alt="happy-customers" />
                                     <div class="carousel-caption">
                                         <h3>Step Nine</h3>
                                         <p>MVP - we finished our initial prototype to the clients specification</p>
                                         <a href="./webDev.html">
-                                        <p>Find out more about our developers</p>
+                                        <p id="developersLink">Find out more about our developers</p>
                                         </a>
                                     </div>
                             </div>
@@ -135,10 +135,10 @@
                         </div>
 
                         <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <a id="leftControl" class="carousel-control-prev" href="#demo" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                         </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <a id="rightControl" class="carousel-control-next" href="#demo" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </a>
 
