@@ -93,6 +93,27 @@ public class CinemaLocationSeleniumTest {
         }
     }
 
+    @Test
+    public void seleniumLocationOrdsallParkLinkTest() throws InterruptedException{
+        test = report.startTest("Start Selenium Test for IWM North Link");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Browser started");
+        driver.get("http://localhost:"+ port +"/location.html");
+        CinemaLocationSeleniumElements locationPage = PageFactory.initElements(driver, CinemaLocationSeleniumElements.class);
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.elementToBeClickable(locationPage.getOrdsallParkLink()));
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/location.html");
+        locationPage.getOrdsallParkLink().click();
+        sleep(2000);
+        assertEquals(driver.getCurrentUrl(), "https://www.salford.gov.uk/parks-and-open-spaces/salford-parks/ordsall-park/");
+        if (!(driver.getCurrentUrl().equals("https://www.salford.gov.uk/parks-and-open-spaces/salford-parks/ordsall-park/"))){
+            test.log(LogStatus.FAIL, "FAIL!");
+            Assert.fail();
+        } else {
+            test.log(LogStatus.INFO, "PASS!");
+        }
+    }
+
     @After
     public void getResult(){
         driver.close();
