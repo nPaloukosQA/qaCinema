@@ -1,7 +1,13 @@
 package com.qa.selenium;
 
-import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+//import org.testng.ITestResult;
+//import org.testng.annotations.*;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,35 +34,34 @@ import java.io.File;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class HeaderFooterSeleniumTests extends JUnitTestReporter {
+public class HeaderFooterSeleniumTests {
     
     @LocalServerPort
     private int port;
 
     private WebDriver driver;
-    ExtentReports report;
+    static ExtentReports report;
     ExtentTest test;
 
-    @BeforeTest
-    public void reportSetup(){
-        report = new ExtentReports (System.getProperty("user.dir") + "/test-output/Report.html",true);
+    @BeforeClass
+    public static void reportSetup(){
+        report = new ExtentReports ("test-output" + File.separator + "Report.html", true);
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Environment", "Automated Testing")
-                .addSystemInfo("User Name", "Tadas");
-        report.loadConfig(new File(System.getProperty("user.dir")+"\\extent-config.xml"));
+                .addSystemInfo("User Name", "Luke");
+        report.loadConfig(new File("extent-config.xml"));
 
     }
 
-    
-    @BeforeMethod
+    @Before
     public void driverSetUp(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions opts = new ChromeOptions();
         this.driver = new ChromeDriver(opts);
     }
 
-    @Test(priority = 1, enabled = true)
+    @Test
     public void seleniumHeaderTest() throws InterruptedException {
         test = report.startTest("Start Selenium Test for Header");
         driver.manage().window().maximize();
@@ -72,6 +77,12 @@ public class HeaderFooterSeleniumTests extends JUnitTestReporter {
         headerFilmsLink.click();
         sleep(3000);
         assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmsPage.html");
+        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/filmsPage.html"))){
+            test.log(LogStatus.FAIL, "FAIL!");
+            Assert.fail();
+        } else {
+            test.log(LogStatus.INFO, "PASS!");
+        }
         // WebElement headerLogoLink = driver.findElement(By.id("headerLogoLink"));
         // headerLogoLink.click();
         // sleep(3000);
@@ -103,20 +114,14 @@ public class HeaderFooterSeleniumTests extends JUnitTestReporter {
     //     sleep(3000);
     // }
     
-    @AfterMethod
-    public void getResult(ITestResult result){
+    @After
+    public void getResult(){
         driver.close();
-        if(result.getStatus() == ITestResult.FAILURE){
-            test.log(LogStatus.FAIL, "Test Case Failed is "+result.getName());
-            test.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable());
-        }else if(result.getStatus() == ITestResult.SKIP){
-            test.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
-        }
         report.endTest(test);
     }
 
-    @AfterTest
-    public void endReport(){
+    @AfterClass
+    public static void endReport(){
         report.flush();
         report.close();
     }
