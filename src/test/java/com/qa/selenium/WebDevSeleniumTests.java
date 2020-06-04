@@ -20,6 +20,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 import static org.testng.AssertJUnit.assertEquals;
@@ -105,11 +107,15 @@ public class WebDevSeleniumTests {
         wait.until(ExpectedConditions.elementToBeClickable(webDev.getDanPic()));
         webDev.getDanPic().click();
 
-        if (!(webDev.getDanPic().isDisplayed())){
-            test.log(LogStatus.FAIL, "Final image in carousel is not viable: Result FAIL!");
+//        List<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+//        driver.switchTo().window(tabs.get(1));
+
+        assertEquals(driver.getCurrentUrl(), "http://localhost:"+ port +"/webDev.html");
+        if (!(driver.getCurrentUrl().equals("http://localhost:"+ port +"/webDev.html"))){
+            test.log(LogStatus.PASS, "Found linkedIn page when image clicked: Result PASS!");
             Assert.fail();
         } else {
-            test.log(LogStatus.PASS, "Final image in carousel is viable: Result PASS!");
+            test.log(LogStatus.FAIL, "Did not find linkedIn page when image clicked: Result FAIL!");
         }
     }
 
