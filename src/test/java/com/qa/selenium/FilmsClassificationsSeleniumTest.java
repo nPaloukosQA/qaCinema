@@ -66,37 +66,15 @@ public class FilmsClassificationsSeleniumTest {
         WebDriverWait wait = new WebDriverWait(driver, 2);
 
         wait.until(ExpectedConditions.elementToBeClickable(classPage.getExternalLinkTwo()));
-        assertEquals(driver.getCurrentUrl(), "http://localhost:"+ port +"/filmClassifications.html");
         classPage.getExternalLinkTwo().click();
         sleep(2000);
 
-        assertEquals(driver.getCurrentUrl(), "https://www.bbfc.co.uk/");
-        if (!(driver.getCurrentUrl().equals("https://www.bbfc.co.uk/"))){
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmClassifications.html");
+        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/filmClassifications.html"))){
             test.log(LogStatus.FAIL, "Could not navigate external link Two: Result FAIL!");
             Assert.fail();
         } else {
             test.log(LogStatus.PASS, "Successfully navigated using external link Two: Result PASS!");
-        }
-    }
-
-    @Test
-    public void seleniumFilmClassificationPageTestOne() throws InterruptedException{
-        test = report.startTest("Start Selenium Test for Film Classifications Page Link One");
-        driver.manage().window().maximize();
-        test.log(LogStatus.INFO, "Browser started");
-        driver.get("http://localhost:"+ port +"/filmClassifications.html");
-        FilmsClassificationsSeleniumElements classPage = PageFactory.initElements(driver, FilmsClassificationsSeleniumElements.class);
-        WebDriverWait wait = new WebDriverWait(driver, 2);
-        wait.until(ExpectedConditions.elementToBeClickable(classPage.getExternalLinkTwo()));
-        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmClassifications.html");
-        classPage.getExternalLinkTwo().click();
-        sleep(2000);
-        assertEquals(driver.getCurrentUrl(), "https://www.bbfc.co.uk/");
-        if (!(driver.getCurrentUrl().equals("https://www.bbfc.co.uk/"))){
-            test.log(LogStatus.FAIL, "FAIL!");
-            Assert.fail();
-        } else {
-            test.log(LogStatus.INFO, "PASS!");
         }
     }
 
@@ -115,8 +93,8 @@ public class FilmsClassificationsSeleniumTest {
         wait.until(ExpectedConditions.elementToBeClickable(classPage.getExternalLinkThree()));
         classPage.getExternalLinkThree().click();
         sleep(2000);
-        assertEquals(driver.getCurrentUrl(), "https://www.britinfo.net/cinema/film-classification.htm");
-        if (!(driver.getCurrentUrl().equals("https://www.britinfo.net/cinema/film-classification.htm"))){
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmClassifications.html");
+        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/filmClassifications.html"))){
             test.log(LogStatus.FAIL, "Could not navigate external link Three: Result FAIL!");
             Assert.fail();
         } else {

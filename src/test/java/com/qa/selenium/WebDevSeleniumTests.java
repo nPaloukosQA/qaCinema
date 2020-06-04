@@ -29,8 +29,8 @@ import static org.testng.AssertJUnit.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class OpeningTimesSeleniumTests {
-    
+public class WebDevSeleniumTests {
+
     @LocalServerPort
     private int port;
 
@@ -40,7 +40,7 @@ public class OpeningTimesSeleniumTests {
 
     @BeforeClass
     public static void reportSetup(){
-        report = new ExtentReports ("test-output" + File.separator + "Report-dan-openingTimes.html", true);
+        report = new ExtentReports ("test-output" + File.separator + "Report-dan-webDev.html", true);
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Environment", "Automated Testing")
@@ -57,18 +57,18 @@ public class OpeningTimesSeleniumTests {
     }
 
     @Test
-    public void seleniumOpeningTimesTest() throws InterruptedException {
-        test = report.startTest("Start Selenium Test for Opening Times Page");
+    public void seleniumWebDevTest() throws InterruptedException {
+        test = report.startTest("Start Selenium Test for Web Dev Page");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Browser started");
-        driver.get("http://localhost:"+ port +"/homepage.html");
-        OpeningTimesSeleniumElements times = PageFactory.initElements(driver, OpeningTimesSeleniumElements.class);
+        driver.get("http://localhost:"+ port +"/webDev.html");
+        OpeningTimesSeleniumElements header = PageFactory.initElements(driver, OpeningTimesSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
 
-        wait.until(ExpectedConditions.elementToBeClickable(times.getBurgerMenu()));
-        times.getBurgerMenu().click();
-        wait.until(ExpectedConditions.elementToBeClickable(times.getHoursLink()));
-        times.getHoursLink().click();
+        wait.until(ExpectedConditions.elementToBeClickable(header.getBurgerMenu()));
+        header.getBurgerMenu().click();
+        wait.until(ExpectedConditions.elementToBeClickable(header.getHoursLink()));
+        header.getHoursLink().click();
 
         assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/openingTimes.html");
         if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/openingTimes.html"))){
