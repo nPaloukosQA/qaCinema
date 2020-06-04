@@ -20,6 +20,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 import static org.testng.AssertJUnit.assertEquals;
@@ -67,10 +69,12 @@ public class FilmsClassificationsSeleniumTest {
 
         wait.until(ExpectedConditions.elementToBeClickable(classPage.getExternalLinkTwo()));
         classPage.getExternalLinkTwo().click();
-        sleep(2000);
 
-        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmClassifications.html");
-        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/filmClassifications.html"))){
+        List<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+
+        assertEquals(driver.getCurrentUrl(), "https://www.bbfc.co.uk/");
+        if (!(driver.getCurrentUrl().equals("https://www.bbfc.co.uk/"))){
             test.log(LogStatus.FAIL, "Could not navigate external link Two: Result FAIL!");
             Assert.fail();
         } else {
@@ -87,14 +91,14 @@ public class FilmsClassificationsSeleniumTest {
         FilmsClassificationsSeleniumElements classPage = PageFactory.initElements(driver, FilmsClassificationsSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
 
-        wait.until(ExpectedConditions.elementToBeClickable(classPage.getClassLink()));
-        classPage.getClassLink().click();
-
         wait.until(ExpectedConditions.elementToBeClickable(classPage.getExternalLinkThree()));
         classPage.getExternalLinkThree().click();
-        sleep(2000);
-        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmClassifications.html");
-        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/filmClassifications.html"))){
+
+        List<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+
+        assertEquals(driver.getCurrentUrl(), "https://www.britinfo.net/cinema/film-classification.htm");
+        if (!(driver.getCurrentUrl().equals("https://www.britinfo.net/cinema/film-classification.htm"))){
             test.log(LogStatus.FAIL, "Could not navigate external link Three: Result FAIL!");
             Assert.fail();
         } else {

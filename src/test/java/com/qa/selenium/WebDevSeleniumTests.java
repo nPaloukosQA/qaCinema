@@ -57,25 +57,59 @@ public class WebDevSeleniumTests {
     }
 
     @Test
-    public void seleniumWebDevTest() throws InterruptedException {
+    public void seleniumWebDevCarouselTest() throws InterruptedException {
         test = report.startTest("Start Selenium Test for Web Dev Page");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Browser started");
         driver.get("http://localhost:"+ port +"/webDev.html");
-        OpeningTimesSeleniumElements header = PageFactory.initElements(driver, OpeningTimesSeleniumElements.class);
+        WebDevSeleniumElements webDev = PageFactory.initElements(driver, WebDevSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
 
-        wait.until(ExpectedConditions.elementToBeClickable(header.getBurgerMenu()));
-        header.getBurgerMenu().click();
-        wait.until(ExpectedConditions.elementToBeClickable(header.getHoursLink()));
-        header.getHoursLink().click();
+        wait.until(ExpectedConditions.elementToBeClickable(webDev.getRightControl()));
+        webDev.getRightControl().click();
+        sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(webDev.getRightControl()));
+        webDev.getRightControl().click();
+        sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(webDev.getRightControl()));
+        webDev.getRightControl().click();
+        sleep(1000);
 
-        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/openingTimes.html");
-        if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/openingTimes.html"))){
-            test.log(LogStatus.FAIL, "Could not navigate to Opening Times Page: Result FAIL!");
+        if (!(webDev.getDanPic().isDisplayed())){
+            test.log(LogStatus.FAIL, "Final image in carousel is not viable: Result FAIL!");
             Assert.fail();
         } else {
-            test.log(LogStatus.PASS, "Successfully navigated to the Opening Times Page: Result PASS!");
+            test.log(LogStatus.PASS, "Final image in carousel is viable: Result PASS!");
+        }
+    }
+
+    @Test
+    public void seleniumWebDevSocialLinkTest() throws InterruptedException {
+        test = report.startTest("Start Selenium Test for Web Dev Page");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Browser started");
+        driver.get("http://localhost:"+ port +"/webDev.html");
+        WebDevSeleniumElements webDev = PageFactory.initElements(driver, WebDevSeleniumElements.class);
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+
+        wait.until(ExpectedConditions.elementToBeClickable(webDev.getRightControl()));
+        webDev.getRightControl().click();
+        sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(webDev.getRightControl()));
+        webDev.getRightControl().click();
+        sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(webDev.getRightControl()));
+        webDev.getRightControl().click();
+        sleep(1000);
+
+        wait.until(ExpectedConditions.elementToBeClickable(webDev.getDanPic()));
+        webDev.getDanPic().click();
+
+        if (!(webDev.getDanPic().isDisplayed())){
+            test.log(LogStatus.FAIL, "Final image in carousel is not viable: Result FAIL!");
+            Assert.fail();
+        } else {
+            test.log(LogStatus.PASS, "Final image in carousel is viable: Result PASS!");
         }
     }
 
