@@ -107,9 +107,6 @@ public class WebDevSeleniumTests {
         wait.until(ExpectedConditions.elementToBeClickable(webDev.getDanPic()));
         webDev.getDanPic().click();
 
-//        List<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-//        driver.switchTo().window(tabs.get(1));
-
         assertEquals(driver.getCurrentUrl(), "http://localhost:"+ port +"/webDev.html");
         if (!(driver.getCurrentUrl().equals("http://localhost:"+ port +"/webDev.html"))){
             test.log(LogStatus.PASS, "Found linkedIn page when image clicked: Result PASS!");
