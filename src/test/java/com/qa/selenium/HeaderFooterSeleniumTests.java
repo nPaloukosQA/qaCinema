@@ -1,10 +1,7 @@
 package com.qa.selenium;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +16,15 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
 import static java.lang.Thread.*;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
+
+import java.io.File;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -29,29 +34,44 @@ public class HeaderFooterSeleniumTests extends JUnitTestReporter {
     private int port;
 
     private WebDriver driver;
+    ExtentReports report;
+    ExtentTest test;
+
+    @BeforeTest
+    public void reportSetup(){
+        report = new ExtentReports (System.getProperty("user.dir") + "/test-output/Report.html",true);
+        report
+                .addSystemInfo("Host Name", "QA")
+                .addSystemInfo("Environment", "Automated Testing")
+                .addSystemInfo("User Name", "Tadas");
+        report.loadConfig(new File(System.getProperty("user.dir")+"\\extent-config.xml"));
+
+    }
 
     
-    @Before
+    @BeforeMethod
     public void driverSetUp(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions opts = new ChromeOptions();
         this.driver = new ChromeDriver(opts);
     }
 
-    @Test
+    @Test(priority = 1, enabled = true)
     public void seleniumHeaderTest() throws InterruptedException {
+        test = report.startTest("Start Selenium Test for Header");
         driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Browser started");
         driver.get("http://localhost:"+ port +"/homepage.html");
         HeaderFooterSeleniumElements header = PageFactory.initElements(driver, HeaderFooterSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
         wait.until(ExpectedConditions.elementToBeClickable(header.getBurgerMenu()));
-        assertEquals(driver.getCurrentUrl(), "http:127.0.0.1:" + port + "/homepage.html");
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/homepage.html");
         header.getBurgerMenu().click();
         sleep(2000);
         WebElement headerFilmsLink = driver.findElement(By.id("headerLinkFilms"));
         headerFilmsLink.click();
         sleep(3000);
-        assertEquals(driver.getCurrentUrl(), "http:127.0.0.1:" + port + "/filmsPage.html");
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmsPage.html");
         // WebElement headerLogoLink = driver.findElement(By.id("headerLogoLink"));
         // headerLogoLink.click();
         // sleep(3000);
@@ -83,9 +103,23 @@ public class HeaderFooterSeleniumTests extends JUnitTestReporter {
     //     sleep(3000);
     // }
     
-    @After
-    public void getResult(){
+    @AfterMethod
+    public void getResult(ITestResult result){
         driver.close();
+        if(result.getStatus() == ITestResult.FAILURE){
+            test.log(LogStatus.FAIL, "Test Case Failed is "+result.getName());
+            test.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable());
+        }else if(result.getStatus() == ITestResult.SKIP){
+            test.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
+        }
+        report.endTest(test);
     }
+
+    @AfterTest
+    public void endReport(){
+        report.flush();
+        report.close();
+    }
+
 
 }
