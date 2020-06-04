@@ -5,6 +5,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class BookingTicketsSeleniumElements {
 
+    @FindBy(id = "headerTicketsButton")
+    private WebElement headerTicketsButton;
+
     @FindBy(id = "fname")
     private WebElement fname;
 
@@ -22,6 +25,9 @@ public class BookingTicketsSeleniumElements {
 
     @FindBy(id = "postcode")
     private WebElement postcode;
+
+    @FindBy(id = "filmsSelector")
+    private WebElement filmsSelector;
 
     @FindBy(id = "std")
     private WebElement std;
@@ -52,7 +58,7 @@ public class BookingTicketsSeleniumElements {
 
     @FindBy(id = "totalPrice")
     private WebElement totalPrice;
-    
+
     @FindBy(id = "paypal-button")
     private WebElement paypalButton;
 
@@ -60,4 +66,83 @@ public class BookingTicketsSeleniumElements {
     private WebElement submitBtn;
 
 
+    public WebElement getFname() {
+        return fname;
+    }
+
+    public WebElement getSname() {
+        return sname;
+    }
+
+    public WebElement getEmail() {
+        return email;
+    }
+
+    public WebElement getPhone() {
+        return phone;
+    }
+
+    public WebElement getAddress() {
+        return address;
+    }
+
+    public WebElement getPostcode() {
+        return postcode;
+    }
+
+    public WebElement getStd() {
+        return std;
+    }
+
+    public WebElement getDlx() {
+        return dlx;
+    }
+
+    public WebElement getDateSelector() {
+        return dateSelector;
+    }
+
+    public WebElement getTimeSelector() {
+        return timeSelector;
+    }
+
+    public WebElement getSeatPicker() {
+        return seatPicker;
+    }
+
+    public WebElement getSeatNumbersCheck() {
+        return seatNumbersCheck;
+    }
+
+    public WebElement getInputOfAdults() {
+        return inputOfAdults;
+    }
+
+    public WebElement getInputOfChildren() {
+        return inputOfChildren;
+    }
+
+    public WebElement getInputOfConcession() {
+        return inputOfConcession;
+    }
+
+    public WebElement getTotalPrice() {
+        return totalPrice;
+    }
+
+    public WebElement getPaypalButton() {
+        return paypalButton;
+    }
+
+    public WebElement getSubmitBtn() {
+        return submitBtn;
+    }
+
+    public WebElement getHeaderTicketsButton() {
+        return headerTicketsButton;
+    }
+
+    public WebElement getFilmsSelector() {
+        return filmsSelector;
+    }
 }

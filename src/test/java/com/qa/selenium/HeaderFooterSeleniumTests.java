@@ -9,9 +9,7 @@ import org.junit.Test;
 //import org.testng.ITestResult;
 //import org.testng.annotations.*;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
@@ -26,9 +24,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import static java.lang.Thread.*;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.File;
 
@@ -45,7 +41,7 @@ public class HeaderFooterSeleniumTests {
 
     @BeforeClass
     public static void reportSetup(){
-        report = new ExtentReports ("test-output" + File.separator + "Report.html", true);
+        report = new ExtentReports ("test-output" + File.separator + "Report-Luke-HeaderFooter.html", true);
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Environment", "Automated Testing")
