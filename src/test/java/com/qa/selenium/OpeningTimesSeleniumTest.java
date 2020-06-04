@@ -2,6 +2,7 @@ package com.qa.selenium;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertFalse;
 
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class OpeningTimesSeleniumTest {

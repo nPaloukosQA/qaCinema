@@ -44,10 +44,6 @@ public class FilmsServiceUnitTest {
 
     private FilmsDTO filmsDTO;
 
-    private List<StandardScreen> standardScreen;
-
-    private List<DeluxeScreen> deluxeScreen;
-
     private StandardScreen testSScreen;
 
     private DeluxeScreen testDscreen;
@@ -61,10 +57,10 @@ public class FilmsServiceUnitTest {
         this.filmsList = new ArrayList<>();
         this.testSScreen = new StandardScreen();
         this.testDscreen = new DeluxeScreen();
-        this.standardScreen = new ArrayList<>();
-        this.standardScreen.add(testSScreen);
-        this.deluxeScreen = new ArrayList<>();
-        this.deluxeScreen.add(testDscreen);
+        List<StandardScreen> standardScreen = new ArrayList<>();
+        standardScreen.add(testSScreen);
+        List<DeluxeScreen> deluxeScreen = new ArrayList<>();
+        deluxeScreen.add(testDscreen);
         this.testFilms = new Films("Title", "classification", true,
                 "AAA", true, standardScreen, deluxeScreen);
         this.filmsList.add(testFilms);

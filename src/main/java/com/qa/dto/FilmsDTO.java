@@ -1,6 +1,12 @@
 package com.qa.dto;
 
 
+import com.qa.domain.DeluxeScreen;
+import com.qa.domain.StandardScreen;
+
+import java.util.List;
+import java.util.Objects;
+
 public class
 FilmsDTO {
 
@@ -11,19 +17,25 @@ FilmsDTO {
     private String filmsOMDBID;
     private Boolean filmsCurrentlyReleased;
 
+    private List<StandardScreen> standardScreen;
+    private List<DeluxeScreen> deluxeScreen;
+
+
 
     public FilmsDTO() {
 
     }
 
     public FilmsDTO(String filmsTitle, String filmsClassification, Boolean filmsIsFeature,
-                    String filmsOMDBID, Boolean filmsCurrentlyReleased) {
+                    String filmsOMDBID, Boolean filmsCurrentlyReleased, List<StandardScreen> standardScreen, List<DeluxeScreen> deluxeScreen) {
 
         this.filmsTitle = filmsTitle;
         this.filmsClassification = filmsClassification;
         this.filmsIsFeature = filmsIsFeature;
         this.filmsOMDBID = filmsOMDBID;
         this.filmsCurrentlyReleased = filmsCurrentlyReleased;
+        this.standardScreen = standardScreen;
+        this.deluxeScreen = deluxeScreen;
 
     }
 
@@ -75,67 +87,39 @@ FilmsDTO {
         this.filmsCurrentlyReleased = filmsCurrentlyReleased;
     }
 
+    public List<StandardScreen> getStandardScreen() {
+        return standardScreen;
+    }
+
+    public void setStandardScreen(List<StandardScreen> standardScreen) {
+        this.standardScreen = standardScreen;
+    }
+
+    public List<DeluxeScreen> getDeluxeScreen() {
+        return deluxeScreen;
+    }
+
+    public void setDeluxeScreen(List<DeluxeScreen> deluxeScreen) {
+        this.deluxeScreen = deluxeScreen;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FilmsDTO)) return false;
+        FilmsDTO filmsDTO = (FilmsDTO) o;
+        return Objects.equals(getFilmsID(), filmsDTO.getFilmsID()) &&
+                Objects.equals(getFilmsTitle(), filmsDTO.getFilmsTitle()) &&
+                Objects.equals(getFilmsClassification(), filmsDTO.getFilmsClassification()) &&
+                Objects.equals(getFilmsIsFeature(), filmsDTO.getFilmsIsFeature()) &&
+                Objects.equals(getFilmsOMDBID(), filmsDTO.getFilmsOMDBID()) &&
+                Objects.equals(getFilmsCurrentlyReleased(), filmsDTO.getFilmsCurrentlyReleased()) &&
+                Objects.equals(getStandardScreen(), filmsDTO.getStandardScreen()) &&
+                Objects.equals(getDeluxeScreen(), filmsDTO.getDeluxeScreen());
+    }
+
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((FilmsID == null) ? 0 : FilmsID.hashCode());
-        result = prime * result + ((filmsClassification == null) ? 0 : filmsClassification.hashCode());
-        result = prime * result + ((filmsCurrentlyReleased == null) ? 0 : filmsCurrentlyReleased.hashCode());
-        result = prime * result + ((filmsIsFeature == null) ? 0 : filmsIsFeature.hashCode());
-        result = prime * result + ((filmsOMDBID == null) ? 0 : filmsOMDBID.hashCode());
-        result = prime * result + ((filmsTitle == null) ? 0 : filmsTitle.hashCode());
-        return result;
+        return Objects.hash(getFilmsID(), getFilmsTitle(), getFilmsClassification(), getFilmsIsFeature(), getFilmsOMDBID(), getFilmsCurrentlyReleased(), getStandardScreen(), getDeluxeScreen());
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        FilmsDTO other = (FilmsDTO) obj;
-        if (FilmsID == null) {
-            if (other.FilmsID != null)
-                return false;
-        } else if (!FilmsID.equals(other.FilmsID))
-            return false;
-        if (filmsClassification == null) {
-            if (other.filmsClassification != null)
-                return false;
-        } else if (!filmsClassification.equals(other.filmsClassification))
-            return false;
-        if (filmsCurrentlyReleased == null) {
-            if (other.filmsCurrentlyReleased != null)
-                return false;
-        } else if (!filmsCurrentlyReleased.equals(other.filmsCurrentlyReleased))
-            return false;
-        if (filmsIsFeature == null) {
-            if (other.filmsIsFeature != null)
-                return false;
-        } else if (!filmsIsFeature.equals(other.filmsIsFeature))
-            return false;
-        if (filmsOMDBID == null) {
-            if (other.filmsOMDBID != null)
-                return false;
-        } else if (!filmsOMDBID.equals(other.filmsOMDBID))
-            return false;
-        if (filmsTitle == null) {
-            if (other.filmsTitle != null)
-                return false;
-        } else if (!filmsTitle.equals(other.filmsTitle))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "FilmsDTO [FilmsID=" + FilmsID + ", filmsClassification=" + filmsClassification
-                + ", filmsCurrentlyReleased=" + filmsCurrentlyReleased + ", filmsIsFeature=" + filmsIsFeature
-                + ", filmsOMDBID=" + filmsOMDBID + ", filmsTitle=" + filmsTitle + "]";
-    }
-
-    
 }

@@ -47,10 +47,6 @@ public class FilmsControllerIntegrationTest {
 
     private long testID;
 
-    private List<StandardScreen> standardScreen;
-
-    private List<DeluxeScreen> deluxeScreen;
-
     private FilmsDTO filmsDTO;
 
     private FilmsDTO mapToDTO(Films films){
@@ -60,8 +56,8 @@ public class FilmsControllerIntegrationTest {
     @Before
     public void setUpForTests() {
         this.repository.deleteAll();
-        this.standardScreen = new ArrayList<>();
-        this.deluxeScreen = new ArrayList<>();
+        List<StandardScreen> standardScreen = new ArrayList<>();
+        List<DeluxeScreen> deluxeScreen = new ArrayList<>();
         this.testFilms = new Films("Title", "classification", true,
                 "AAA", true, standardScreen, deluxeScreen);
         this.testFilmsWithID = this.repository.save(testFilms);

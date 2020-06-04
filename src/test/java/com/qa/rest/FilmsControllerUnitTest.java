@@ -40,10 +40,6 @@ public class FilmsControllerUnitTest {
 
     private long testID = 1L;
 
-    private List<StandardScreen> standardScreen;
-
-    private List<DeluxeScreen> deluxeScreen;
-
     private FilmsDTO filmsDTO;
 
     private final ModelMapper mapper = new ModelMapper();
@@ -55,8 +51,8 @@ public class FilmsControllerUnitTest {
     @Before
     public void setUpForTests() {
         this.filmsList = new ArrayList<>();
-        this.standardScreen = new ArrayList<>();
-        this.deluxeScreen = new ArrayList<>();
+        List<StandardScreen> standardScreen = new ArrayList<>();
+        List<DeluxeScreen> deluxeScreen = new ArrayList<>();
         this.testFilms = new Films("Title", "classification", true,
                 "AAA", true, standardScreen, deluxeScreen);
         this.filmsList.add(testFilms);
