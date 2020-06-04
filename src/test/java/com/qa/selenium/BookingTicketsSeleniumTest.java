@@ -6,6 +6,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.junit.*;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -76,6 +77,18 @@ public class BookingTicketsSeleniumTest {
         command.getDateSelector().click();
         sleep(1000);
         command.getTimeSelector().click();
+        sleep(1000);
+        command.getInputOfAdults().clear();
+        command.getInputOfAdults().sendKeys("1");
+        command.getInputOfChildren().clear();
+        command.getInputOfChildren().sendKeys("1");
+        command.getInputOfConcession().clear();
+        command.getInputOfConcession().sendKeys("1");
+
+        command.getB01().click();
+        command.getB02().click();
+        command.getB03().click();
+        command.getSubmitBtn().click();
         sleep(2000);
 
     }
