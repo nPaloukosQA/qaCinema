@@ -45,7 +45,7 @@ public class HeaderFooterSeleniumTests {
 
     @BeforeClass
     public static void reportSetup(){
-        report = new ExtentReports ("test-output" + File.separator + "Report.html", true);
+        report = new ExtentReports ("test-output" + File.separator + "Report-Luke-HeaderFooter.html", true);
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Environment", "Automated Testing")
