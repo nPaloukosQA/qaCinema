@@ -52,7 +52,7 @@ public class BookingTicketsSeleniumElements {
 
     @FindBy(id = "totalPrice")
     private WebElement totalPrice;
-    
+
     @FindBy(id = "paypal-button")
     private WebElement paypalButton;
 
@@ -60,4 +60,75 @@ public class BookingTicketsSeleniumElements {
     private WebElement submitBtn;
 
 
+    public WebElement getFname() {
+        return fname;
+    }
+
+    public WebElement getSname() {
+        return sname;
+    }
+
+    public WebElement getEmail() {
+        return email;
+    }
+
+    public WebElement getPhone() {
+        return phone;
+    }
+
+    public WebElement getAddress() {
+        return address;
+    }
+
+    public WebElement getPostcode() {
+        return postcode;
+    }
+
+    public WebElement getStd() {
+        return std;
+    }
+
+    public WebElement getDlx() {
+        return dlx;
+    }
+
+    public WebElement getDateSelector() {
+        return dateSelector;
+    }
+
+    public WebElement getTimeSelector() {
+        return timeSelector;
+    }
+
+    public WebElement getSeatPicker() {
+        return seatPicker;
+    }
+
+    public WebElement getSeatNumbersCheck() {
+        return seatNumbersCheck;
+    }
+
+    public WebElement getInputOfAdults() {
+        return inputOfAdults;
+    }
+
+    public WebElement getInputOfChildren() {
+        return inputOfChildren;
+    }
+
+    public WebElement getInputOfConcession() {
+        return inputOfConcession;
+    }
+
+    public WebElement getTotalPrice() {
+        return totalPrice;
+    }
+
+    public WebElement getPaypalButton() {
+        return paypalButton;
+    }
+
+    public WebElement getSubmitBtn() {
+        return submitBtn;
+    }
 }
