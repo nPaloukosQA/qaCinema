@@ -1,6 +1,6 @@
 package com.qa.selenium;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +11,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -23,36 +26,32 @@ import static java.lang.Thread.*;
 public class HeaderFooterSeleniumTests extends JUnitTestReporter {
     
     @LocalServerPort
-    static String port;
+    private int port;
 
-    static WebDriver driver;
+    private WebDriver driver;
 
     
     @Before
     public void driverSetUp(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions opts = new ChromeOptions();
-        driver = new ChromeDriver(opts);
-        System.out.println("heya!");
+        this.driver = new ChromeDriver(opts);
     }
-
-    @Test
-	public void htmlsampleTest0() {
-		assertTrue(1 < 2);
-	}
 
     @Test
     public void seleniumHeaderTest() throws InterruptedException {
         driver.manage().window().maximize();
-        driver.get("http://127.0.0.1:"+ port +"/src/main/resources/static/homepage.html");
-        sleep(2000);
-        WebElement burgerMenu = driver.findElement(By.id("headerBurgerMenu"));
-        burgerMenu.click();
+        driver.get("http://localhost:"+ port +"/homepage.html");
+        HeaderFooterSeleniumElements header = PageFactory.initElements(driver, HeaderFooterSeleniumElements.class);
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.elementToBeClickable(header.getBurgerMenu()));
+        assertEquals(driver.getCurrentUrl(), "http:127.0.0.1:" + port + "/homepage.html");
+        header.getBurgerMenu().click();
         sleep(2000);
         WebElement headerFilmsLink = driver.findElement(By.id("headerLinkFilms"));
         headerFilmsLink.click();
         sleep(3000);
-        assertTrue(driver.getCurrentUrl().contentEquals("http:127.0.0.1:" + port + "/src/main/resources/static/filmsPage.html"));
+        assertEquals(driver.getCurrentUrl(), "http:127.0.0.1:" + port + "/filmsPage.html");
         // WebElement headerLogoLink = driver.findElement(By.id("headerLogoLink"));
         // headerLogoLink.click();
         // sleep(3000);

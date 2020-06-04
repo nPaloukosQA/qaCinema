@@ -2,7 +2,7 @@ import axiosOMDBConfig from './axiosOMDBConfig.js';
 import axiosConfig from './axiosConfig.js';
 
 function getCertImg(filmCert) {
-    console.log(filmCert.toUpperCase());
+    //console.log(filmCert.toUpperCase());
     let certImg = document.getElementById("filmCertImg");
     switch(filmCert.toUpperCase()) {
         case "PG":
@@ -32,12 +32,23 @@ function getCertImg(filmCert) {
 
 function screenTimes(filmID){
 
+
+    console.log(filmID);
     axiosConfig.get("/getAllStandardScreens")
         .then(response => {
-            console.log(response);
             for (let i = 0; i < response.data.length; i++){
                 if (response.data[i].films.filmsID == filmID){
-                    console.log(response.data[i].films.filmsID);
+                    let date = new Date(response.data[i].standardScreenDate);
+                    let trueDate = date.toLocaleString('en-En',{weekday: "long", month: "long", day: "numeric"});
+                    let time = response.data[i].standardScreenScreeningTime;
+                    let minutes = Math.round((time % 1)* 100);
+                    if (minutes < 10) { minutes = "0" + minutes;}
+                    let trueTime = "" + (Math.floor(time)) + ":" + minutes;
+                    let output = trueDate + " @ " + trueTime;
+                    let screenDiv = document.getElementById("standardScreen");
+                    let p1 = document.createElement("p");
+                    p1.innerHTML = output;
+                    screenDiv.appendChild(p1);
                 }
             }
         })
@@ -47,10 +58,25 @@ function screenTimes(filmID){
     
     axiosConfig.get("/getAllDeluxeScreens")
         .then(response => {
-            console.log(response);
+            //console.log(response);
             for (let i = 0; i < response.data.length; i++){
-                if (response.data[i].filmsID){
-
+                if (response.data[i].films.filmsID == filmID){
+                    console.log(response.data[i]);
+                    let date = new Date(response.data[i].deluxeScreenDate);
+                    let trueDate = date.toLocaleString('en-En',{weekday: "long", month: "long", day: "numeric"});
+                    console.log(trueDate);
+                    let time = response.data[i].deluxeScreeningTime;
+                    console.log(time);
+                    let minutes = Math.round((time % 1)* 100);
+                    if (minutes < 10) { minutes = "0" + minutes;}
+                    let trueTime = "" + (Math.floor(time)) + ":" + minutes;
+                    console.log(trueTime);
+                    let output = trueDate + " @ " + trueTime;
+                    console.log(output);
+                    let screenDiv = document.getElementById("deluxeScreen");
+                    let p1 = document.createElement("p");
+                    p1.innerHTML = output;
+                    screenDiv.appendChild(p1);
                 }
             }
         })
@@ -63,8 +89,8 @@ function pageSetup(allOMDBInfo, allFilmInfo) {
 
     let ticketsButton = document.getElementById("filmTicketsButton");
     ticketsButton.href = "./bookingTickets.html?id=" + allFilmInfo.filmsID;
-    console.log(allOMDBInfo);
-    console.log(allFilmInfo);
+    //console.log(allOMDBInfo);
+    //console.log(allFilmInfo);
     let title = document.getElementById("filmInfoTitle");
     title.innerHTML = allOMDBInfo.Title;
     let img1 = document.getElementById("filmPoster");
@@ -102,11 +128,11 @@ function OnStartUp() {
 
     axiosOMDBConfig.get("/?i=" + filmOMDBID + "&plot=full&apikey=f20b5cf1")
         .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
 
             axiosConfig.get(`/getFilmsById/${filmID}`)
                 .then(response2 => {
-                    console.log(response.data);
+                    //console.log(response.data);
                     pageSetup(response.data, response2.data);
                 })
                 .catch(error => {
