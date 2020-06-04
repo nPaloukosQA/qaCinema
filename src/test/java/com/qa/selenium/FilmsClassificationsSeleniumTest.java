@@ -58,19 +58,18 @@ public class FilmsClassificationsSeleniumTest {
 
     @Test
     public void seleniumFilmClassificationLinkOneTest() throws InterruptedException {
-        test = report.startTest("Start Selenium Test for Film Classifications Page");
+        test = report.startTest("Start Selenium Test for Film Classifications link One Page");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Browser started");
         driver.get("http://localhost:"+ port +"/filmClassifications.html");
         FilmsClassificationsSeleniumElements classPage = PageFactory.initElements(driver, FilmsClassificationsSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
 
-        wait.until(ExpectedConditions.elementToBeClickable(classPage.getClassLink()));
-        classPage.getClassLink().click();
-
         wait.until(ExpectedConditions.elementToBeClickable(classPage.getExternalLinkTwo()));
+        assertEquals(driver.getCurrentUrl(), "http://localhost:"+ port +"/filmClassifications.html");
         classPage.getExternalLinkTwo().click();
         sleep(2000);
+
         assertEquals(driver.getCurrentUrl(), "https://www.bbfc.co.uk/");
         if (!(driver.getCurrentUrl().equals("https://www.bbfc.co.uk/"))){
             test.log(LogStatus.FAIL, "Could not navigate external link Two: Result FAIL!");
@@ -81,11 +80,32 @@ public class FilmsClassificationsSeleniumTest {
     }
 
     @Test
-    public void seleniumFilmClassificationLinkTwoTest() throws InterruptedException {
-        test = report.startTest("Start Selenium Test for Film Classifications Page");
+    public void seleniumFilmClassificationPageTestOne() throws InterruptedException{
+        test = report.startTest("Start Selenium Test for Film Classifications Page Link One");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Browser started");
-        driver.get("http://localhost:" + port + "/homepage.html");
+        driver.get("http://localhost:"+ port +"/filmClassifications.html");
+        FilmsClassificationsSeleniumElements classPage = PageFactory.initElements(driver, FilmsClassificationsSeleniumElements.class);
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.elementToBeClickable(classPage.getExternalLinkTwo()));
+        assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmClassifications.html");
+        classPage.getExternalLinkTwo().click();
+        sleep(2000);
+        assertEquals(driver.getCurrentUrl(), "https://www.bbfc.co.uk/");
+        if (!(driver.getCurrentUrl().equals("https://www.bbfc.co.uk/"))){
+            test.log(LogStatus.FAIL, "FAIL!");
+            Assert.fail();
+        } else {
+            test.log(LogStatus.INFO, "PASS!");
+        }
+    }
+
+    @Test
+    public void seleniumFilmClassificationLinkTwoTest() throws InterruptedException {
+        test = report.startTest("Start Selenium Test for Film Classifications link Two Page");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Browser started");
+        driver.get("http://localhost:" + port + "/filmClassifications.html");
         FilmsClassificationsSeleniumElements classPage = PageFactory.initElements(driver, FilmsClassificationsSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
 
