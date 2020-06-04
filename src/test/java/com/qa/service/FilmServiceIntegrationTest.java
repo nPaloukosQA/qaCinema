@@ -38,20 +38,16 @@ public class FilmServiceIntegrationTest {
 
     private Films testFilmsWithID;
 
-    private List<StandardScreen> standardScreen;
-
-    private List<DeluxeScreen> deluxeScreen;
-
     private FilmsDTO mapToDTO(Films films){
         return this.mapper.map(films, FilmsDTO.class);
     }
 
     @Before
     public void setUpForTests() {
-        this.standardScreen = new ArrayList<>();
-        this.deluxeScreen = new ArrayList<>();
-        this.testFilms = new Films("Title", "classification", true,
-                "AAA", true, standardScreen, deluxeScreen);
+        List<StandardScreen> standardScreen = new ArrayList<>();
+        List<DeluxeScreen> deluxeScreen = new ArrayList<>();
+        this.testFilms = new Films("Avenger: Infinity War", "12A", true,
+                "tt4154756", true, standardScreen, deluxeScreen);
         this.repo.deleteAll();
         this.testFilmsWithID = this.repo.save(this.testFilms);
     }
