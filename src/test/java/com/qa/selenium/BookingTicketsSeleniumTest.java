@@ -27,6 +27,12 @@ import java.util.List;
 import static java.lang.Thread.*;
 import static org.testng.AssertJUnit.assertEquals;
 
+/////////////////////////////////////////////////////////////////////////////////////
+
+//  Test Ignored due to PayPal putting in measures to stop automatic testing
+
+////////////////////////////////////////////////////////////////////////////////////
+
 @Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
