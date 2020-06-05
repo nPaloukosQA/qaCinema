@@ -77,7 +77,7 @@ public class BookingTicketsSeleniumElements {
     @FindBy(id = "bs-select-1-2")
     private WebElement seatsDropdown;
 
-    @FindBy(name = "login_email")
+    @FindBy(id = "email")
     private WebElement payPalMail;
 
     @FindBy(id = "password")
