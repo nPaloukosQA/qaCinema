@@ -1,6 +1,4 @@
-# Project Title
-
-QA cinema
+# QA Cinema
 
 ## Getting Started
 
