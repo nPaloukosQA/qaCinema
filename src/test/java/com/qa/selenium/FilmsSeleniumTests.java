@@ -8,9 +8,12 @@ import org.junit.Test;
 //import org.testng.ITestResult;
 //import org.testng.annotations.*;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,6 +27,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.File;
 
@@ -56,13 +60,72 @@ public class FilmsSeleniumTests {
         this.driver = new ChromeDriver(opts);
     }
 
+    // @Test
+    // public void CarouselTests() throws InterruptedException {
+    //     test = report.startTest("Start Selenium Test for HomePage Carousel");
+    //     driver.manage().window().maximize();
+    //     test.log(LogStatus.INFO, "Browser started");
+    //     driver.get("http://localhost:"+ port +"/homepage.html");
+    //     FilmsSeleniumElements films = PageFactory.initElements(driver, FilmsSeleniumElements.class);
+    //     WebDriverWait wait = new WebDriverWait(driver, 2);
+
+    //     wait.until(ExpectedConditions.elementToBeClickable(films.getCarouselRight()));
+    //     if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/homepage.html"))){
+    //         test.log(LogStatus.FAIL, "Home Page Loaded: FAIL!");
+    //         Assert.fail();
+    //     } else {
+    //         test.log(LogStatus.PASS, "Home Page Loaded: PASS!");
+    //     }
+    //     assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/homepage.html");
+    //     films.getCarouselRight().click();
+    //     Thread.sleep(1000);
+    //     WebElement image1 = driver.findElement(By.id("carouselImage1"));
+    //     Thread.sleep(1000);
+    //     if (!(image1.isDisplayed())){
+    //         test.log(LogStatus.FAIL, "Films carousel right button: FAIL!");
+    //         Assert.fail();
+    //     } else {
+    //         test.log(LogStatus.PASS, "Films carousel right button: PASS!");
+    //     }
+    //     assertTrue(image1.isDisplayed());
+
+    //     films.getCarouselLeft().click();
+    //     Thread.sleep(1000);
+    //     WebElement image0 = driver.findElement(By.id("carouselImage0"));
+    //     Thread.sleep(1000);
+    //     if (!(image0.isDisplayed())){
+    //         test.log(LogStatus.FAIL, "Films carousel left button: FAIL!");
+    //         Assert.fail();
+    //     } else {
+    //         test.log(LogStatus.PASS, "Films carousel left button: PASS!");
+    //     }
+    //     assertTrue(image0.isDisplayed());
+
+    //     films.getCarouselRight().click();
+    //     Thread.sleep(1000);
+    //     films.getCarouselRight().click();
+    //     Thread.sleep(1000);
+    //     WebElement image2 = driver.findElement(By.id("carouselImage2"));
+    //     Thread.sleep(1000);
+    //     image2.click();
+    //     Thread.sleep(2000);
+
+    //     if (!(driver.getCurrentUrl().equals("http://localhost:" + port + "/filmInfoPage.html?omdbid=tt0080684&id=3"))){
+    //         test.log(LogStatus.FAIL, "Film Info Page Loaded: FAIL!");
+    //         Assert.fail();
+    //     } else {
+    //         test.log(LogStatus.PASS, "Film Info Page Loaded: PASS!");
+    //     }
+    //     assertEquals(driver.getCurrentUrl(), "http://localhost:" + port + "/filmInfoPage.html?omdbid=tt0080684&id=3");
+    // }
+
     @Test
-    public void filmsTest() throws InterruptedException {
-        test = report.startTest("Start Selenium Test for Header");
+    public void CarouselTests() throws InterruptedException {
+        test = report.startTest("Start Selenium Test for film info page");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Browser started");
-        driver.get("http://localhost:"+ port +"/homepage.html");
-        HeaderFooterSeleniumElements header = PageFactory.initElements(driver, HeaderFooterSeleniumElements.class);
+        driver.get("http://localhost:"+ port +"/filmInfoPage.html?omdbid=tt0080684&id=3");
+        FilmsSeleniumElements films = PageFactory.initElements(driver, FilmsSeleniumElements.class);
         WebDriverWait wait = new WebDriverWait(driver, 2);
 
         
