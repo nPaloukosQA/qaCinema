@@ -20,7 +20,33 @@ public class FilmsSeleniumElements {
 	}
     
     // Film Info Page
+
     @FindBy(id = "filmCertImg")
     private WebElement filmCertImg;
 
+    @FindBy(id = "filmTicketsButton")
+    private WebElement filmTicketsButton;
+
+    @FindBy(id = "filmInfoTitle")
+    private WebElement filmInfoTitle;
+
+    @FindBy(id = "fname")
+    private WebElement fName;
+
+	public WebElement getFilmCertImg() {
+		return filmCertImg;
+	}
+
+	public WebElement getFilmTicketsButton() {
+		return filmTicketsButton;
+	}
+
+	public WebElement getFilmInfoTitle() {
+		return filmInfoTitle;
+	}
+
+	public WebElement getfName() {
+		return fName;
+	}
+    
 }
