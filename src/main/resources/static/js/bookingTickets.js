@@ -1,7 +1,7 @@
 import axiosConfig from "./axiosConfig.js";
 
 let filmsSelector = document.getElementById("filmsSelector");
-let subBtn = document.getElementById('submitBtn');
+let subBtn = document.getElementById('paypal-button');
 let pickStdScreen = document.getElementById("std");
 let pickDlxScreen = document.getElementById("dlx");
 let dateSelect = document.getElementById("dateSelector");
@@ -317,7 +317,7 @@ adult.addEventListener("change", updatePrice);
 child.addEventListener("change", updatePrice);
 concession.addEventListener("change", updatePrice);
 
-document.getElementById("submitBtn").addEventListener("click", postData)
+document.getElementById("paypal-button").addEventListener("click", postData)
 
 $('#seatPicker').change(function() {seatChecker()});
 

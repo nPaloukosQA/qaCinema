@@ -6,6 +6,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.junit.*;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -76,6 +77,24 @@ public class BookingTicketsSeleniumTest {
         command.getDateSelector().click();
         sleep(1000);
         command.getTimeSelector().click();
+        sleep(1000);
+        command.getInputOfAdults().clear();
+        command.getInputOfAdults().sendKeys("1");
+        command.getInputOfChildren().clear();
+        command.getInputOfChildren().sendKeys("1");
+        command.getInputOfConcession().clear();
+        command.getInputOfConcession().sendKeys("1");
+
+
+
+        command.getPaypalButton().click();
+        sleep(200000);
+        command.getPayPalMail().sendKeys("sb-myeb71983917@personal.example.com");
+        command.getLoginPaypal().click();
+        sleep(1000);
+        command.getPayPalPassword().sendKeys("16?+dnW!");
+        sleep(5000);
+        command.getPaymentBtn().click();
         sleep(2000);
 
     }
